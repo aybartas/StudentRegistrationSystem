@@ -62,12 +62,14 @@
             </div>
         </header>
 
-        <div class="sidebar-navigation hidde-sm hidden-xs">
-            <div class="logo">
-                <a href="#">X Ünİversİtesİ<em><br>Ders Takİp Sİstemİ</em></a>
+        <div class="sidebar-navigation hidde-sm hidden-xs" style="width:20vw">
+            <div class="logo" style="line-height: 50px">
+                <a href="#" style="white-space: nowrap;font-size:1.8vw">X Ünİversİtesİ <br>
+                <em style="font-size:1.35vw">Ders Takİp Sİstemİ</em></a>
+
             </div>
-            <nav>
-                <ul>
+            <nav style="position:absolute; left:2vw; width:15vw; margin-top:15vw">
+                <ul style="margin-left:5px">
                     <li>
                         <a href="#top">
                             <span class="rect"></span>
@@ -117,21 +119,25 @@
                             Danışmanına Bak
                         </a>
                     </li>
+                    <li style="color: white; margin-top: 10vw;white-space: nowrap; text-align:center">
+                        <span title="Umur Ergenay">UE&nbsp&nbsp&nbsp&nbsp&nbsp</span><span title="Tuna Aybar Taş">TAT&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <span title="Sümeyye Turan">ST&nbsp&nbsp&nbsp&nbsp&nbsp</span><span title="Berkay Kütük">BK</span>
+                    </li>
                 </ul>
             </nav>
-            <ul class="social-icons">
-                <li style="color:white"><span title="Umur Ergenay">UE</span></li>
-                <li style="color:white"><span title="Tuna Aybar Taş">TAT</span></li>
-                <li style="color:white"><span title="Sümeyye Turan">ST</span></li>
-                <li style="color:white"><span title="Berkay Kütük">BK</span></li>
+            <ul class="social-icons"style="margin-top: 15vw;">
+                <li style="color:white"></li>
+                <li style="color:white"></li>
+                <li style="color:white"></li>
+                <li style="color:white"></li>
             </ul>
         </div>
-        <div style="margin-left:24%">
+        <div style="margin-left:20%">
             <div class="container body-content">
                 @RenderBody()
                 <hr />
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                    <p>&copy; @DateTime.Now.Year - X Üniversitesi Ders Takip Sistemi</p>
                 </footer>
             </div>
         </div>
