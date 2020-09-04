@@ -215,17 +215,17 @@ header {
 
 .sidebar-navigation nav {
   position: relative;
-  top: 60%;
+  top: 0%;
   left: 60%;
-  -webkit-transform: translateX(-60%) translateY(-60%);
+  
   -moz-transform: translateX(-60%) translateY(-60%);
   -ms-transform: translateX(-60%) translateY(-60%);
   -o-transform: translateX(-60%) translateY(-60%);
-  transform: translateX(-60%) translateY(-60%);
+ 
 }
 
 .sidebar-navigation ul {
-  margin-left: 45px;
+  margin-left: 5px;
   list-style: none;
   padding: 0;
 }
