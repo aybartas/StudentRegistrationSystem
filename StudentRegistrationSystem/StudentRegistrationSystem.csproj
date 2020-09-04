@@ -147,38 +147,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.min.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\fontAwesome.css" />
-    <Content Include="css\fonts\flexslider-icon.svg" />
-    <Content Include="css\light-box.css" />
-    <Content Include="css\owl-carousel.css" />
     <Content Include="css\templatemo-style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="js\main.js" />
-    <Content Include="js\plugins.js" />
-    <Content Include="js\vendor\bootstrap.js" />
-    <Content Include="js\vendor\bootstrap.min.js" />
-    <Content Include="js\vendor\jquery-1.11.2.min.js" />
     <Content Include="Views\Shared\js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
-    <Content Include="js\vendor\npm.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="css\fonts\flexslider-icon.eot" />
-    <Content Include="css\fonts\flexslider-icon.ttf" />
-    <Content Include="css\fonts\flexslider-icon.woff" />
-    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -207,6 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\fonts\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
