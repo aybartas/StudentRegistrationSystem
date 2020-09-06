@@ -139,8 +139,7 @@
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\css\simple-sidebar.css" />
-    <Content Include="Content\img\logo.png" />
-    <Content Include="Content\img\logo2.jpeg" />
+    <Content Include="Content\img\logo2.png" />
     <Content Include="Content\jquery\jquery.js" />
     <Content Include="Content\jquery\jquery.min.js" />
     <Content Include="Content\jquery\jquery.slim.js" />
