@@ -1,44 +1,104 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/simple-sidebar.css" rel="stylesheet">
 </head>
-<!-- try-->
-<!-- asdasd-->
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right d-none d-md-block" id="sidebar-wrapper">
+            <div class="sidebar-heading" style="padding:1rem; background-color:#45489a">
+                <img src="~/Content/img/logo2.png" />
+                <div style="font-size:1.4em"><b>X ÜNİVERSİTESİ</b></div>
+                <div style="font-size:1.3em; white-space:nowrap">Ders Takip Sistemi</div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Ders Ara</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Ders Seç</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Profili Yönet</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Transkript Al</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Ders Programını Gör</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Öğretim Programını İzle</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Danışmanına Bak</a>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom d-md-none" style="background-color:#45489a">
+                @*<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>*@
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Ders Ara</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Ders Seç</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Profili Yönet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Transkript Al</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Ders Programını Gör</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Öğretim Programını İzle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Danışmanına Bak</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/jquery/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });</script>
 </body>
 </html>
