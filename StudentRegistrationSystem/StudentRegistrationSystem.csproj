@@ -131,6 +131,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009041803021_dummyattribueaded.cs" />
+    <Compile Include="Migrations\202009041803021_dummyattribueaded.designer.cs">
+      <DependentUpon>202009041803021_dummyattribueaded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009041805122_dummyAttributeDeleted.cs" />
+    <Compile Include="Migrations\202009041805122_dummyAttributeDeleted.designer.cs">
+      <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
@@ -193,6 +201,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009041803021_dummyattribueaded.resx">
+      <DependentUpon>202009041803021_dummyattribueaded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041805122_dummyAttributeDeleted.resx">
+      <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
