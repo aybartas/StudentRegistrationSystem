@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace StudentRegistrationSystem.Controllers
 {
-    public class HomeController : Controller
+    public class SharedController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        // GET: Shared
+        public ActionResult _Layout()
         {
             return View();
         }
