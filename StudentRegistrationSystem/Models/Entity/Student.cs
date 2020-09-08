@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,12 @@ namespace StudentRegistrationSystem.Models
 {
     public class Student
     {
-      
+       //[Key]
+      // [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StudentID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public int CitizenshipNo { get; set; }
+        public long CitizenshipNo { get; set; }
         public string Gender { get; set; }
 
         public string Phone { get; set; }

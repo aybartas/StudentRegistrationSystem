@@ -9,8 +9,7 @@ namespace StudentRegistrationSystem.Models
 {
     public class Enrollment
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public int EnrollmentID { get; set; }
         public int SectionID { get; set; }
         public int StudentID { get; set; }
