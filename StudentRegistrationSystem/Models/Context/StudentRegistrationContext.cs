@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using StudentRegistrationSystem.Models;
+using StudentRegistrationSystem.Models.Entity;
 
 namespace StudentRegistrationSystem.Models.Context
 {
@@ -25,6 +26,7 @@ namespace StudentRegistrationSystem.Models.Context
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
