@@ -13,16 +13,18 @@ namespace StudentRegistrationSystem.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
+            /*   
             using (var db = new StudentRegistrationContext())
             {
 
-                var student = new Student {StudentID= 41 ,LecturerID = 6, Name = "umur" };
-                db.Students.Add(student);
-                db.SaveChanges();
+               var student = new Student {StudentID= 46 ,LecturerID = 6, Name = "umur" };
+               db.Students.Add(student);
+               db.SaveChanges();
 
             }
+            */
             return View();
         }
+
     }
 }

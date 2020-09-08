@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.EnterpriseServices.Internal;
-using System.Linq;
-using System.Web;
 
 namespace StudentRegistrationSystem.Models
 {
     public class Student
     {
-       //[Key]
-      // [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StudentID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -30,6 +27,6 @@ namespace StudentRegistrationSystem.Models
         public Department Department { get; set; }
         public Lecturer Lecturer { get; set; }
 
-          
+
     }
 }
