@@ -10,8 +10,7 @@ namespace StudentRegistrationSystem.Models
 {
     public class Section
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
         public int SectionID { get; set; }
         public int Number { get; set; }
 

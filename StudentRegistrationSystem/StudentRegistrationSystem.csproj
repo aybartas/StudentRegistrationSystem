@@ -139,6 +139,22 @@
     <Compile Include="Migrations\202009041805122_dummyAttributeDeleted.designer.cs">
       <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009072206037_citizenshipNoConvertedLong.cs" />
+    <Compile Include="Migrations\202009072206037_citizenshipNoConvertedLong.designer.cs">
+      <DependentUpon>202009072206037_citizenshipNoConvertedLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009072211513_allAttemptsEndedWithPain.cs" />
+    <Compile Include="Migrations\202009072211513_allAttemptsEndedWithPain.designer.cs">
+      <DependentUpon>202009072211513_allAttemptsEndedWithPain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009072213389_iamdonewiththis.cs" />
+    <Compile Include="Migrations\202009072213389_iamdonewiththis.designer.cs">
+      <DependentUpon>202009072213389_iamdonewiththis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs" />
+    <Compile Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.designer.cs">
+      <DependentUpon>202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
@@ -208,6 +224,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009041805122_dummyAttributeDeleted.resx">
       <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009072206037_citizenshipNoConvertedLong.resx">
+      <DependentUpon>202009072206037_citizenshipNoConvertedLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009072211513_allAttemptsEndedWithPain.resx">
+      <DependentUpon>202009072211513_allAttemptsEndedWithPain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009072213389_iamdonewiththis.resx">
+      <DependentUpon>202009072213389_iamdonewiththis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.resx">
+      <DependentUpon>202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
