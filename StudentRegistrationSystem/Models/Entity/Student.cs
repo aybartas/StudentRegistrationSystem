@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+//aaa
 namespace StudentRegistrationSystem.Models.Entity
 {
     public class Student
