@@ -12,19 +12,16 @@ namespace StudentRegistrationSystem.Controllers
         // GET: Login
         public ActionResult Index()
         {
-           Admin admin = new Admin();
-            //{
-            //    Username = "123",
-            //    Password = "pass"
-            //};
-            Student student = new Student();
-            //{ StudentID = 46, LecturerID = 6, Name = "umur" };
+           // admin ve kullanıcı listleri gönderilecek
+           // viewmodel kullan
 
             return View();
         }
         [HttpPost]
-        public ActionResult Login()
+        public ActionResult ManagerLogin(Admin admin)
         {
+            // admmine data geliyo postta sıkıntı yok 
+
             return View();
         }
     }
