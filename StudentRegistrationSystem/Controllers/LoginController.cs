@@ -12,12 +12,15 @@ namespace StudentRegistrationSystem.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            Admin admin = new Admin
-            {
-                Username = "123",
-                Password = "pass"
-            };
-            return View(admin);
+           Admin admin = new Admin();
+            //{
+            //    Username = "123",
+            //    Password = "pass"
+            //};
+            Student student = new Student();
+            //{ StudentID = 46, LecturerID = 6, Name = "umur" };
+
+            return View();
         }
         [HttpPost]
         public ActionResult Login()

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Management.Instrumentation;
 using System.Web;
 
-namespace StudentRegistrationSystem.Models
+namespace StudentRegistrationSystem.Models.Entity
 {
     public class Section
     {
