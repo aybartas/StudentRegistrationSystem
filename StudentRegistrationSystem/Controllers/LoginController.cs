@@ -11,28 +11,17 @@ namespace StudentRegistrationSystem.Controllers
     
     public class LoginController : Controller
     {
-        StudentRegistrationContext src = new StudentRegistrationContext();
+       
         // GET: Login
         public ActionResult Index()
         {
-           // admin ve kullanıcı listleri gönderilecek
-           // viewmodel kullan
-
+         
             return View();
         }
         [HttpPost]
         public ActionResult Index(User user)
         {
-            var userInDb = src.Users.FirstOrDefault(x => x.UserID == user.UserID && x.Password == user.Password);
-            if (userInDb!=null)
-            {
-                return View();
-            }
-            else
-            {
-                ViewBag.Message = "Kullanıcı Adı veya Şifre Hatalı!";
-                return View();
-            }
+            return View();
            
         }
     }

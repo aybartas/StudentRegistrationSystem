@@ -133,45 +133,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009041803021_dummyattribueaded.cs" />
-    <Compile Include="Migrations\202009041803021_dummyattribueaded.designer.cs">
-      <DependentUpon>202009041803021_dummyattribueaded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009041805122_dummyAttributeDeleted.cs" />
-    <Compile Include="Migrations\202009041805122_dummyAttributeDeleted.designer.cs">
-      <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009072206037_citizenshipNoConvertedLong.cs" />
-    <Compile Include="Migrations\202009072206037_citizenshipNoConvertedLong.designer.cs">
-      <DependentUpon>202009072206037_citizenshipNoConvertedLong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009072211513_allAttemptsEndedWithPain.cs" />
-    <Compile Include="Migrations\202009072211513_allAttemptsEndedWithPain.designer.cs">
-      <DependentUpon>202009072211513_allAttemptsEndedWithPain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009072213389_iamdonewiththis.cs" />
-    <Compile Include="Migrations\202009072213389_iamdonewiththis.designer.cs">
-      <DependentUpon>202009072213389_iamdonewiththis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs" />
-    <Compile Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.designer.cs">
-      <DependentUpon>202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009080921062_ForeignKeysAddedAgain.cs" />
-    <Compile Include="Migrations\202009080921062_ForeignKeysAddedAgain.designer.cs">
-      <DependentUpon>202009080921062_ForeignKeysAddedAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081201312_adminekle.cs" />
-    <Compile Include="Migrations\202009081201312_adminekle.designer.cs">
-      <DependentUpon>202009081201312_adminekle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081205253_adminekle2.cs" />
-    <Compile Include="Migrations\202009081205253_adminekle2.designer.cs">
-      <DependentUpon>202009081205253_adminekle2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009100837146_UserEklendi.cs" />
-    <Compile Include="Migrations\202009100837146_UserEklendi.designer.cs">
-      <DependentUpon>202009100837146_UserEklendi.cs</DependentUpon>
+    <Compile Include="Migrations\202009101453277_dbcreated.cs" />
+    <Compile Include="Migrations\202009101453277_dbcreated.designer.cs">
+      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
@@ -218,35 +182,8 @@
     <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009041803021_dummyattribueaded.resx">
-      <DependentUpon>202009041803021_dummyattribueaded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009041805122_dummyAttributeDeleted.resx">
-      <DependentUpon>202009041805122_dummyAttributeDeleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009072206037_citizenshipNoConvertedLong.resx">
-      <DependentUpon>202009072206037_citizenshipNoConvertedLong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009072211513_allAttemptsEndedWithPain.resx">
-      <DependentUpon>202009072211513_allAttemptsEndedWithPain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009072213389_iamdonewiththis.resx">
-      <DependentUpon>202009072213389_iamdonewiththis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.resx">
-      <DependentUpon>202009072216508_disablingAutoIncrementAttemptsAreCompletedWithFailure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080921062_ForeignKeysAddedAgain.resx">
-      <DependentUpon>202009080921062_ForeignKeysAddedAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081201312_adminekle.resx">
-      <DependentUpon>202009081201312_adminekle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081205253_adminekle2.resx">
-      <DependentUpon>202009081205253_adminekle2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009100837146_UserEklendi.resx">
-      <DependentUpon>202009100837146_UserEklendi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101453277_dbcreated.resx">
+      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
