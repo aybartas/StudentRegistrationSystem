@@ -15,6 +15,7 @@ namespace StudentRegistrationSystem.Controllers
     {
         StudentRegistrationContext src = new StudentRegistrationContext();
         // GET: Login
+        [AllowAnonymous]
         public ActionResult Login()
         {
            // admin ve kullanıcı listleri gönderilecek
@@ -22,7 +23,10 @@ namespace StudentRegistrationSystem.Controllers
 
             return View();
         }
+
+        
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(User user)
         {
             var userInDb = src.Users.FirstOrDefault(x => x.UserID == user.UserID && x.Password == user.Password);
@@ -30,7 +34,7 @@ namespace StudentRegistrationSystem.Controllers
             {
                 
                 FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(),false);
-                return RedirectToAction("Index","SearchCourse");
+                return RedirectToAction("Index","SearchCourse",userInDb);
             }
             else
             {
@@ -43,7 +47,7 @@ namespace StudentRegistrationSystem.Controllers
         {
 
             FormsAuthentication.SignOut();
-            return View("Login");
+            return RedirectToAction("Login");
         }
 
     }
