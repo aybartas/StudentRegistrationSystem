@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
+    <Compile Include="Models\Entity\DataAccessHelper.cs" />
     <Compile Include="Models\Entity\Department.cs" />
     <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />
