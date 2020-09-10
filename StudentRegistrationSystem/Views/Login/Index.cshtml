@@ -17,25 +17,25 @@
 <body>
 
     <div>
-        <h2>Lütfen Giriş Yapınız</h2>
+        
         <div class="container w-50 h-50 text-center mt-5">
+            <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
+            @ViewBag.Message
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserID)
+                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                </div>
 
-            
-                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
-                {
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserID)
-                        @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    </div>
+                <button type="submit" class="btn btn-primary btn-success">Submit</button>
+            }
 
-                    <button type="submit" class="btn btn-primary btn-success">Submit</button>
-                }
 
-          
 
         </div>
        

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StudentRegistrationSystem.Models.Context;
 using StudentRegistrationSystem.Models.Entity;
 
 namespace StudentRegistrationSystem.Controllers
@@ -10,7 +11,7 @@ namespace StudentRegistrationSystem.Controllers
     
     public class LoginController : Controller
     {
-        
+        StudentRegistrationContext src = new StudentRegistrationContext();
         // GET: Login
         public ActionResult Index()
         {
@@ -22,11 +23,17 @@ namespace StudentRegistrationSystem.Controllers
         [HttpPost]
         public ActionResult Index(User user)
         {
-            if ()
+            var userInDb = src.Users.FirstOrDefault(x => x.UserID == user.UserID && x.Password == user.Password);
+            if (userInDb!=null)
             {
-
+                return View();
             }
-            return View();
+            else
+            {
+                ViewBag.Message = "Kullanıcı Adı veya Şifre Hatalı!";
+                return View();
+            }
+           
         }
     }
 }
