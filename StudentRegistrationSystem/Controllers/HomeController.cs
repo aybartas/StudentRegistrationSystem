@@ -1,29 +1,49 @@
-﻿using StudentRegistrationSystem.Models;
-using StudentRegistrationSystem.Models.Context;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StudentRegistrationSystem.Models.Context;
+using StudentRegistrationSystem.Models.Entity;
+
+using System.Web.Security;
 
 namespace StudentRegistrationSystem.Controllers
 {
+    
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+        StudentRegistrationContext src = new StudentRegistrationContext();
+        // GET: Login
+        public ActionResult Login()
         {
-            /*   
-            using (var db = new StudentRegistrationContext())
-            {
+           // admin ve kullanıcı listleri gönderilecek
+           // viewmodel kullan
 
-               var student = new Student {StudentID= 46 ,LecturerID = 6, Name = "umur" };
-               db.Students.Add(student);
-               db.SaveChanges();
-
-            }
-            */
             return View();
+        }
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            var userInDb = src.Users.FirstOrDefault(x => x.UserID == user.UserID && x.Password == user.Password);
+            if (userInDb!=null)
+            {
+                
+                FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(),false);
+                return RedirectToAction("Index","SearchCourse");
+            }
+            else
+            {
+                ViewBag.Message = "Kullanıcı Adı veya Şifre Hatalı!";
+                return View();
+            } 
+        }
+
+        public ActionResult Logout()
+        {
+
+            FormsAuthentication.SignOut();
+            return View("Login");
         }
 
     }
