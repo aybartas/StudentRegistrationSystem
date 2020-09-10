@@ -26,7 +26,7 @@ namespace StudentRegistrationSystem.Controllers
             var userInDb = src.Users.FirstOrDefault(x => x.UserID == user.UserID && x.Password == user.Password);
             if (userInDb!=null)
             {
-                return View();
+                return RedirectToAction("Index","SearchCourse");
             }
             else
             {
