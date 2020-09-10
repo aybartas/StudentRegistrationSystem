@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 //aaa
 namespace StudentRegistrationSystem.Models.Entity
 {
-    public class Student
+    public class User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int StudentID { get; set; }
+        public int UserID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public long CitizenshipNo { get; set; }
@@ -22,6 +22,7 @@ namespace StudentRegistrationSystem.Models.Entity
         public string DepartmentCode { get; set; }
 
         public int LecturerID { get; set; }
+        public string Role { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
         public Department Department { get; set; }

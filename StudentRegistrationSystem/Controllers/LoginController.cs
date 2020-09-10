@@ -7,8 +7,10 @@ using StudentRegistrationSystem.Models.Entity;
 
 namespace StudentRegistrationSystem.Controllers
 {
+    
     public class LoginController : Controller
     {
+        
         // GET: Login
         public ActionResult Index()
         {
@@ -18,10 +20,12 @@ namespace StudentRegistrationSystem.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ManagerLogin(Admin admin)
+        public ActionResult Index(User user)
         {
-            // admmine data geliyo postta sıkıntı yok 
+            if ()
+            {
 
+            }
             return View();
         }
     }

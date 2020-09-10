@@ -12,9 +12,9 @@ namespace StudentRegistrationSystem.Models.Entity
         
         public int EnrollmentID { get; set; }
         public int SectionID { get; set; }
-        public int StudentID { get; set; }
+        public int UserID { get; set; }
         public string Grade { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual User Student { get; set; }
         public virtual Section Section { get; set; }
 
     }

@@ -11,23 +11,17 @@ namespace StudentRegistrationSystem.Models.Context
 {
     public class StudentRegistrationContext : DbContext
     {
-        /* 
-
-           public StudentRegistrationContext() : base("StudentRegistrationContext") //name of conn string
+        /*public StudentRegistrationContext() : base("StudentRegistrationContext") //name of conn string
           {
-
           }
-
-
-         */
+        */
         public DbSet<Department> Departments { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Section> Sections { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Admin> Admins { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

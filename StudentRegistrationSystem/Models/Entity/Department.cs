@@ -17,7 +17,7 @@ namespace StudentRegistrationSystem.Models.Entity
 
         public string Phone { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<User> Students { get; set; }
         public virtual ICollection<Lecturer> Lecturers { get; set; }
 
         public virtual ICollection<Lecture> Lectures { get; set; }

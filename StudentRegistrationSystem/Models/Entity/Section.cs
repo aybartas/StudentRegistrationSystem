@@ -14,7 +14,9 @@ namespace StudentRegistrationSystem.Models.Entity
         public int SectionID { get; set; }
         public int Number { get; set; }
 
-        public String Time { get; set; }
+        public string Time { get; set; }
+        public string EndTime { get; set; }
+        public string Day { get; set; }
         public int Quota { get; set; }
         public string Building { get; set; }
         public string Classroom { get; set; }

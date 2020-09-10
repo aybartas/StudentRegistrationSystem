@@ -169,15 +169,18 @@
     <Compile Include="Migrations\202009081205253_adminekle2.designer.cs">
       <DependentUpon>202009081205253_adminekle2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009100837146_UserEklendi.cs" />
+    <Compile Include="Migrations\202009100837146_UserEklendi.designer.cs">
+      <DependentUpon>202009100837146_UserEklendi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
-    <Compile Include="Models\Entity\Admin.cs" />
     <Compile Include="Models\Entity\Department.cs" />
     <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />
     <Compile Include="Models\Entity\Lecturer.cs" />
     <Compile Include="Models\Entity\Section.cs" />
-    <Compile Include="Models\Entity\Student.cs" />
+    <Compile Include="Models\Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +190,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -212,10 +214,6 @@
     <Folder Include="Controllers\Admin\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
@@ -246,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009081205253_adminekle2.resx">
       <DependentUpon>202009081205253_adminekle2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009100837146_UserEklendi.resx">
+      <DependentUpon>202009100837146_UserEklendi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
