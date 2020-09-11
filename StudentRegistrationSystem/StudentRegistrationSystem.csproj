@@ -152,6 +152,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\Script\script.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />

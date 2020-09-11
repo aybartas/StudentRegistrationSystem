@@ -15,9 +15,11 @@
     <link href="~/Content/css/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
-
     <div>
         <div class="cotn_principal">
+       
+            <b style="font-family :'Open Sans', sans-serif;position:relative;margin-top:1%;font-size:48px">Üniversite Ders Takip Sistemi</b>
+
             <div class="cont_centrar" style="position:relative; top:70px;">
 
                 <div class="cont_login">
@@ -34,7 +36,7 @@
                             <div class="cont_ba_opcitiy">
                                 <h3>Admin Giriş Ekranı</h3>
                                 <p>Yetkiliyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
-                                <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                                <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
                             </div>
                         </div>
                     </div>
@@ -63,7 +65,7 @@
                             <h2>Admin Giriş</h2>
                             <input type="text" placeholder="Kullanıcı Adınızı Giriniz" />
                             <input type="password" placeholder="Şifreniz" />
-                            <button class="btn_login" onclick="cambiar_login()">Giriş</button>
+                            <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
 
                         </div>
 
@@ -72,30 +74,27 @@
                 </div>
 
             </div>
-            <strong style="position:relative; left:5px; top:-350px; font-size:30px; font-family:Tahoma;">
-                <a>
-                    X ÜNİVERSİTESİ DERS SEÇİM EKRANI</a>
-                        </strong>
-                            <br>
-                            <img src="~/Content/img/logo2.png" />
+
+            <br>
+            <img src="~/Content/img/logo.jpg" style="position:Relative;  height:150px;  left:5px; top:8vh;  ">
         </div>
         @*<div class="container w-50 h-50 text-center mt-5">
-            <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
-            @ViewBag.Message
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserID)
-                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                </div>
+                <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
+                @ViewBag.Message
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserID)
+                        @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    </div>
 
-                <button type="submit" class="btn btn-primary btn-success">Submit</button>
-            }
-        </div>*@
+                    <button type="submit" class="btn btn-primary btn-success">Submit</button>
+                }
+            </div>*@
     </div>
     <script src="~/Content/jquery/jquery.min.js"></script>
     <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
