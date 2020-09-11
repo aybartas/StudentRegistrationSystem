@@ -13,88 +13,120 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="~/Content/css/simple-sidebar.css" rel="stylesheet">
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    
+
+
 </head>
-<body>
-    <div>
-        <div class="cotn_principal">
-       
-            <b style="font-family :'Open Sans', sans-serif;position:relative;margin-top:1%;font-size:48px">Üniversite Ders Takip Sistemi</b>
+<body style="background-color: #b0bec5;">
+    <div class="container w-50 h-50" style="margin-top: 5%;margin-bottom: 5%;" >
 
-            <div class="cont_centrar" style="position:relative; top:70px;">
-
-                <div class="cont_login">
-                    <div class="cont_info_log_sign_up">
-                        <div class="col_md_login">
-                            <div class="cont_ba_opcitiy">
-
-                                <h3>Öğrenci Giriş Ekranı</h3>
-                                <p>Öğrenciyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
-                                <button class="btn_login" onclick="cambiar_login()">Giriş</button>
-                            </div>
-                        </div>
-                        <div class="col_md_sign_up">
-                            <div class="cont_ba_opcitiy">
-                                <h3>Admin Giriş Ekranı</h3>
-                                <p>Yetkiliyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
-                                <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="cont_back_info">
-                        <div class="cont_img_back_grey">
-                            <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-                        </div>
-
-                    </div>
-                    <div class="cont_forms">
-                        <div class="cont_img_back_">
-                            <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-                        </div>
-                        <div class="cont_form_login">
-                            <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                            <h2>Öğrenci Giriş</h2>
-                            <input type="text" placeholder="Öğrenci Numarası" />
-                            <input type="password" placeholder="Şifreniz" />
-                            <button class="btn_login" onclick="cambiar_login()">Giriş</button>
-                        </div>
-
-                        <div class="cont_form_sign_up">
-                            <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                            <h2>Admin Giriş</h2>
-                            <input type="text" placeholder="Kullanıcı Adınızı Giriniz" />
-                            <input type="password" placeholder="Şifreniz" />
-                            <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
-
-                        </div>
-
-                    </div>
-
+            <div class="row text-md-center mt-lg-1">
+                
+                <div class="col-md-auto">
+                    <p class="h1" style="font-family: 'Open Sans', sans-serif;">Üniversite Ders Takip Sistemi </p>
                 </div>
-
+                
             </div>
 
-            <br>
-            <img src="~/Content/img/logo.jpg" style="position:Relative;  height:150px;  left:5px; top:8vh;  ">
-        </div>
-        @*<div class="container w-50 h-50 text-center mt-5">
-                <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
-                @ViewBag.Message
-                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-                {
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserID)
-                        @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    </div>
+            <div class="row align-items-center">
+                <div class="col">
 
-                    <button type="submit" class="btn btn-primary btn-success">Submit</button>
-                }
-            </div>*@
+                </div>
+                <div class="col">
+                    <div class="cont_login">
+                        <div class="cont_info_log_sign_up">
+                            <div class="col_md_login">
+                                <div class="cont_ba_opcitiy">
+
+                                    <h3>Öğrenci Giriş Ekranı</h3>
+                                    <p>Öğrenciyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
+                                    <button class="btn_login" onclick="cambiar_login()">Giriş</button>
+                                </div>
+                            </div>
+                            <div class="col_md_sign_up">
+                                <div class="cont_ba_opcitiy">
+                                    <h3>Admin Giriş Ekranı</h3>
+                                    <p>Yetkiliyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
+                                    <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="cont_back_info">
+                            <div class="cont_img_back_grey">
+                                <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                            </div>
+
+                        </div>
+                        <div class="cont_forms">
+                            <div class="cont_img_back_">
+                                <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                            </div>
+                            <div class="cont_form_login">
+                                <a href="#" onclick="ocultar_login_sign_up()">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <h2>Öğrenci Giriş</h2>
+                                <input type="text" placeholder="Öğrenci Numarası" />
+                                <input type="password" placeholder="Şifreniz" />
+                                <button class="btn_login" onclick="cambiar_login()">Giriş</button>
+                            </div>
+
+                            <div class="cont_form_sign_up">
+                                <a href="#" onclick="ocultar_login_sign_up()">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <h2>Admin Giriş</h2>
+                                <input type="text" placeholder="Kullanıcı Adınızı Giriniz" />
+                                <input type="password" placeholder="Şifreniz" />
+                                <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+
+            <div class="row align-items-end">
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <img src="~/Content/img/logo.jpg" style="position:Relative;  height:150px;  left:5px; top:8vh;  ">
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        
+
+        <br>
+
+
+        @*<div class="container w-50 h-50 text-center mt-5">
+            <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
+            @ViewBag.Message
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserID)
+                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-success">Submit</button>
+            }
+        </div>*@
     </div>
     <script src="~/Content/jquery/jquery.min.js"></script>
     <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
