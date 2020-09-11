@@ -12,11 +12,13 @@ namespace StudentRegistrationSystem.Models.Entity
     {
         readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
 
-        //public User GetUser(int UserID)
-        //{
+        public List<Enrollment> GetEnrollments(int UserID)
+        {
+            User user = _dbContext.Users.Find(UserID);
+            List <Enrollment> enrollments = user.Enrollments.Cast<Enrollment>().ToList();
            
-            
-        //}
+            return enrollments;
+        }
         public List<User> FetchUsers()
         {
             return _dbContext.Users.ToList();

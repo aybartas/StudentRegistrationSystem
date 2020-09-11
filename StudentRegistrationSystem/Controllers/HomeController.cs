@@ -18,8 +18,13 @@ namespace StudentRegistrationSystem.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-           // admin ve kullanıcı listleri gönderilecek
-           // viewmodel kullan
+            //DataAccessHelper dataAccessHelper = new DataAccessHelper();
+            //List<Enrollment> enlist = dataAccessHelper.GetEnrollments(21626424);
+            //System.Diagnostics.Debug.WriteLine(enlist[0].Grade);
+            //System.Collections.Generic.List`1[StudentRegistrationSystem.Models.Entity.Enrollment]
+
+            // admin ve kullanıcı listleri gönderilecek
+            // viewmodel kullan
 
             return View();
         }
