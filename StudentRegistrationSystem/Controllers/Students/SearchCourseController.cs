@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentRegistrationSystem.Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +11,9 @@ namespace StudentRegistrationSystem.Controllers.Students
     {
         // GET: SearchCourse
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(User user)
         {
+            ViewBag.message = "Hoşgeldiniz" + user.Name;
             return View();
         }
     }

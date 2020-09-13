@@ -16,7 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="~/Content/fontAwesome.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="~/Content/css/simple-sidebar.css" rel="stylesheet">
 </head>
@@ -29,6 +29,7 @@
             <div class="sidebar-heading" style="padding:1rem; background-color:#45489a">
                 <img src="~/Content/img/logo2.png" />
                 <div style="font-size:1.4em"><b>X ÜNİVERSİTESİ</b></div>
+                @HttpContext.Current.User.Identity.Name
                 <div style="font-size:1.3em; white-space:nowrap">Ders Takip Sistemi</div>
             </div>
             <div class="list-group list-group-flush">

@@ -14,7 +14,7 @@ namespace StudentRegistrationSystem.Models.Entity
         public string Phone { get; set; }
         public string DepartmentCode { get; set; }
         public Department Department { get; set; }
-        public virtual ICollection<Student> ConsultedStudents { get; set; }
+        public virtual ICollection<User> ConsultedStudents { get; set; }
         public virtual ICollection<Section> Sections { get; set; }
        
 

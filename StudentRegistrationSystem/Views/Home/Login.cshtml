@@ -1,0 +1,163 @@
+﻿@model StudentRegistrationSystem.Models.Entity.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>X Üniversitesi Ders Seçim Ekranı</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/simple-sidebar.css" rel="stylesheet">
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    
+
+
+</head>
+<body style="background-color: #b0bec5;">
+    <div class="container w-50 h-50" style="margin-top: 5%;margin-bottom: 5%;" >
+
+            <div class="row text-md-center mt-lg-1">
+                
+                <div class="col-md-auto">
+                    <p class="h1" style="font-family: 'Open Sans', sans-serif;">Üniversite Ders Takip Sistemi </p>
+                </div>
+                
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <div class="cont_login">
+                        <div class="cont_info_log_sign_up">
+                            <div class="col_md_login">
+                                <div class="cont_ba_opcitiy">
+
+                                    <h3>Öğrenci Giriş Ekranı</h3>
+                                    <p>Öğrenciyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
+                                    <button class="btn_login" onclick="cambiar_login()">Giriş</button>
+                                </div>
+                            </div>
+                            <div class="col_md_sign_up">
+                                <div class="cont_ba_opcitiy">
+                                    <h3>Admin Giriş Ekranı</h3>
+                                    <p>Yetkiliyseniz Giriş Yapmak İçin Giriş butonuna basınız.</p>
+                                    <button class="btn_sign_up" onclick="cambiar_sign_up()">Giriş</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="cont_back_info">
+                            <div class="cont_img_back_grey">
+                                <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                            </div>
+
+                        </div>
+                        <div class="cont_forms">
+                            <div class="cont_img_back_">
+                                <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                            </div>
+
+                            <div class="cont_form_login">
+                                <a href="#" onclick="ocultar_login_sign_up()">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <!-- form start-->
+                                <h2>Öğrenci Giriş</h2>
+                                <input type="text" placeholder="Öğrenci Numarası" />
+                                <input type="password" placeholder="Şifreniz" />
+                                <button class="btn_login" onclick="cambiar_login()">Giriş</button>
+                                
+                            </div>
+
+                            <div class="cont_form_sign_up">
+                                <a href="" onclick="ocultar_login_sign_up()">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                                <!-- form start-->
+                                @using (Html.BeginForm())
+                                {
+
+                                    <h2>Admin Giriş</h2>
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.LabelFor(m => m.UserID,htmlAttributes:new { @class= "control-label"})
+                                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control",pattern= "^(0|[1-9][0-9]*)$", placeholder = "Lütfen kullanıcı adınızı girin",required="required" })
+                                    <div class="container-sm">
+                                        @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+
+                                    </div>
+
+
+                                    <br />
+
+                                    @Html.LabelFor(m => m.Password)
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lütfen parolanızı girin", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                   
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <button type="submit" class="btn_sign_up">Giriş</button>
+                                    <br />
+                                    <br />
+
+                                    <div class="container-sm text-danger">@ViewBag.Message </div>
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+
+            <div class="row align-items-end">
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <img src="~/Content/img/logo.jpg" style="position:Relative;  height:150px;  left:5px; top:8vh;  ">
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        
+
+        <br>
+
+
+        @*<div class="container w-50 h-50 text-center mt-5">
+            <h2 style="margin-top:2vh">Lütfen Giriş Yapınız</h2>
+            @ViewBag.Message
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserID)
+                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", placeholder = "Username" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-success">Submit</button>
+            }
+        </div>*@
+    </div>
+   
+    <script src="~/Content/jquery/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Script/script.js"></script>
+</body>
+</html>
