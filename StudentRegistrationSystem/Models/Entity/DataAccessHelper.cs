@@ -13,7 +13,32 @@ namespace StudentRegistrationSystem.Models.Entity
     {
         readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
 
-
+        public Lecturer GetAdvisor(int UserID)
+        {
+            User user = _dbContext.Users.Find(UserID);
+            int lecID = user.LecturerID;
+            Lecturer lecturer = _dbContext.Lecturers.Find(lecID);
+            return lecturer;
+        }
+        public List<Lecture> GetDeptAll (int UserID)
+        {
+            User user = _dbContext.Users.Find(UserID);
+            List<Lecture> lectures = GetLecture();
+            List<Lecture> rlectures = new List<Lecture>();
+            foreach(Lecture l in lectures)
+            {
+                if (l.DepartmentCode == user.DepartmentCode)
+                {
+                    rlectures.Add(l);
+                }
+            }
+            return rlectures;
+        }
+        public User FindUserByID (int UserID)
+        {
+            User user = _dbContext.Users.Find(UserID);
+            return user;
+        }
         public List<Lecture> GetTranscript(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -28,7 +53,7 @@ namespace StudentRegistrationSystem.Models.Entity
             List<Lecture> lectures = GetLecture(sections);
             return lectures;
         }
-        public List<Lecture> Syllabus(int UserID)
+        public List<Lecture> GetSyllabus(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
             List<Section> sections = new List<Section>();

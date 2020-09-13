@@ -11,10 +11,8 @@ namespace StudentRegistrationSystem.Models.Context
 {
     public class StudentRegistrationContext : DbContext
     {
-        /*public StudentRegistrationContext() : base("StudentRegistrationContext") //name of conn string
-          {
-          }
-        */
+        //public StudentRegistrationContext() : base("StudentRegistrationContext") /*name of conn string*/    { }
+        
         public DbSet<Department> Departments { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
