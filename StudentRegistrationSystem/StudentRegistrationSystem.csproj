@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202009101453277_dbcreated.designer.cs">
       <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009130004533_userPropertiesFixed.cs" />
+    <Compile Include="Migrations\202009130004533_userPropertiesFixed.designer.cs">
+      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\DataAccessHelper.cs" />
@@ -343,6 +347,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009101453277_dbcreated.resx">
       <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009130004533_userPropertiesFixed.resx">
+      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

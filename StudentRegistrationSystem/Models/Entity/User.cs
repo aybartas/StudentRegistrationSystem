@@ -7,8 +7,12 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class User
     {
+     
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Kullanici Adı")]
+        [Range(10000000,99999999,ErrorMessage ="Lütfen geçerli bir kullanici adi giriniz")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kullanıcı Adı sadece rakam içerebilir.")]
         public int UserID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -17,6 +21,10 @@ namespace StudentRegistrationSystem.Models.Entity
 
         public string Phone { get; set; }
         public string EducationType { get; set; }
+       
+        [Display(Name = "Parola")]
+        [Required(ErrorMessage ="Parola alanı boş bırakılamaz")]
+        [StringLength(50,MinimumLength =1,ErrorMessage ="Lütfen geçerli bir şifre giriniz")]
         public string Password { get; set; }
 
         public string DepartmentCode { get; set; }
