@@ -18,7 +18,14 @@ namespace StudentRegistrationSystem.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            
+            //Lecturer l = dataAccessHelper.LecturerFinderBySection(7);
+            //System.Diagnostics.Debug.WriteLine(l.Name + l.LastName);
+            //List<Section> l = dataAccessHelper.GetSectionsOfLecture(4);
+            //foreach (Section s in l)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(s.Time);
+            //}
+
             return View();
         }
 
@@ -51,10 +58,7 @@ namespace StudentRegistrationSystem.Controllers
     //Lecturer l = dataAccessHelper.GetAdvisor(21226224);
     //System.Diagnostics.Debug.WriteLine(l.Name + l.LastName);
     //List<Lecture> abc = dataAccessHelper.GetDeptAll(21226224);
-    //foreach(Lecture l in abc)
-    //{
-    //    System.Diagnostics.Debug.WriteLine(l.Name);
-    //}
+
     //List<Lecture> abc = dataAccessHelper.GetTranscript(21226224);
     //List<Lecture> abc2 = dataAccessHelper.GetSyllabus(21226224);
     //System.Diagnostics.Debug.WriteLine(abc[0].LectureCode + abc[1].LectureCode);
