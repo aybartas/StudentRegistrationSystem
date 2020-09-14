@@ -13,19 +13,14 @@ namespace StudentRegistrationSystem.Controllers
     
     public class HomeController : Controller
     {
-        DataAccessHelper dataAccessHelper = new DataAccessHelper();
+        GetAddHelper GetAddHelper = new GetAddHelper();
+        LectureHelper LectureHelper = new LectureHelper();
+        StudentHelper studentHelper = new StudentHelper();
 
         [AllowAnonymous]
         public ActionResult Login()
         {
-            //Lecturer l = dataAccessHelper.LecturerFinderBySection(7);
-            //System.Diagnostics.Debug.WriteLine(l.Name + l.LastName);
-            //List<Section> l = dataAccessHelper.GetSectionsOfLecture(4);
-            //foreach (Section s in l)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(s.Time);
-            //}
-
+            
             return View();
         }
 
@@ -33,7 +28,7 @@ namespace StudentRegistrationSystem.Controllers
         [AllowAnonymous]
         public ActionResult Login(User user)
         {
-            User userInDb = dataAccessHelper.FindUserByID(user.UserID);
+            User userInDb = studentHelper.FindUserByID(user.UserID);
             if (userInDb!=null && user.UserID==userInDb.UserID && user.Password==userInDb.Password)
             {
                 
@@ -70,5 +65,12 @@ namespace StudentRegistrationSystem.Controllers
 
     // admin ve kullanıcı listleri gönderilecek
     // viewmodel kullan
+    //Lecturer l = dataAccessHelper.LecturerFinderBySection(7);
+    //System.Diagnostics.Debug.WriteLine(l.Name + l.LastName);
+    //List<Section> l = dataAccessHelper.GetSectionsOfLecture(4);
+    //foreach (Section s in l)
+    //{
+    //    System.Diagnostics.Debug.WriteLine(s.Time);
+    //}
 
 }

@@ -7,7 +7,6 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class User
     {
-     
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Kullanici Adı")]

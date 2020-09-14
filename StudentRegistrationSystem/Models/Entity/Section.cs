@@ -10,7 +10,6 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class Section
     {
-       
         public int SectionID { get; set; }
         public int Number { get; set; }
 

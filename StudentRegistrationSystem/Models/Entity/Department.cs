@@ -9,8 +9,6 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class Department
     {
-     
-        
         [Key]
         public string DepartmentCode { get; set; }
         public string Name { get; set; }

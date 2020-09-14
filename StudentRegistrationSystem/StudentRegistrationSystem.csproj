@@ -132,6 +132,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Helpers\LectureHelper.cs" />
+    <Compile Include="Helpers\StudentHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Students\SearchCourseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -147,7 +149,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
-    <Compile Include="Models\Entity\DataAccessHelper.cs" />
+    <Compile Include="Helpers\GetAddHelper.cs" />
     <Compile Include="Models\Entity\Department.cs" />
     <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />

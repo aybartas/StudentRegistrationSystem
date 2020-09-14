@@ -9,7 +9,6 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class Enrollment
     {
-        
         public int EnrollmentID { get; set; }
         public int SectionID { get; set; }
         public int UserID { get; set; }
