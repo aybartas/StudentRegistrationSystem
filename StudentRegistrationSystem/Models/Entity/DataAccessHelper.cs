@@ -39,6 +39,25 @@ namespace StudentRegistrationSystem.Models.Entity
             User user = _dbContext.Users.Find(UserID);
             return user;
         }
+        public List<Section> GetSectionsOfLecture(int LectureID)
+        {
+            List<Section> sections = new List<Section>();
+            List<Section> allsections = GetSection();
+            foreach(Section s in allsections)
+            {
+                if (s.LectureID == LectureID)
+                {
+                    sections.Add(s);
+                }
+            }
+            return sections;
+        }
+        public Lecturer LecturerFinderBySection(int SectionID)
+        {
+            Section section = _dbContext.Sections.Find(SectionID);
+            Lecturer lecturer = _dbContext.Lecturers.Find(section.LecturerID);
+            return lecturer;            
+        }
         public List<Lecture> GetTranscript(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -66,6 +85,19 @@ namespace StudentRegistrationSystem.Models.Entity
             }
             List<Lecture> lectures = GetLecture(sections);
             return lectures;
+        }
+        public List<Section> GetSyllabusSec(int UserID)
+        {
+            List<Enrollment> enrollment = GetEnrollments(UserID);
+            List<Section> sections = new List<Section>();
+            foreach (Enrollment x in enrollment)
+            {
+                if (x.Grade == null)
+                {
+                    sections.Add(_dbContext.Sections.Find(x.SectionID));
+                }
+            }
+            return sections;
         }
         public List<Enrollment> GetEnrollments(int UserID)
         {
