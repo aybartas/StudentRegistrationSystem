@@ -21,13 +21,14 @@
 <body style="background-color: #b0bec5;">
     <div class="container w-50 h-50" style="margin-top: 5%;margin-bottom: 5%;" >
 
-            <div class="row text-md-center mt-lg-1">
-                
-                <div class="col-md-auto">
-                    <p class="h1" style="font-family: 'Open Sans', sans-serif;">Üniversite Ders Takip Sistemi </p>
-                </div>
-                
+        <div class="row text-md-center mt-lg-1">
+
+            <div class="col-md-auto">
+                <p class="h1" style="font-family: 'Open Sans', sans-serif;">Üniversite Ders Takip Sistemi </p>
             </div>
+            <div class="container-sm text-danger">@TempData["data"] </div>
+
+        </div>
 
             <div class="row align-items-center">
                 <div class="col">
@@ -70,11 +71,40 @@
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </a>
                                 <!-- form start-->
-                                <h2>Öğrenci Giriş</h2>
-                                <input type="text" placeholder="Öğrenci Numarası" />
-                                <input type="password" placeholder="Şifreniz" />
-                                <button class="btn_login" onclick="cambiar_login()">Giriş</button>
-                                
+                                @using (Html.BeginForm())
+                                {
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <h2>Öğrenci Giriş</h2>
+
+
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.LabelFor(n => n.UserID, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextBoxFor(n => n.UserID, new { @class = "form-control", pattern = "^(0|[1-9][0-9]*)$", placeholder = "Kullanıcı Adı", required = "required" })
+                                    <div class="container-sm">
+                                        @Html.ValidationMessageFor(n => n.UserID, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    @Html.LabelFor(n => n.Password)
+                                    @Html.PasswordFor(n => n.Password, new { @class = "form-control", placeholder = "Lütfen parolanızı girin", required = "required" })
+                                    @Html.ValidationMessageFor(n => n.Password, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @*@{Model.Role = "U"; }*@
+                                    @Html.Hidden("Role", "U");
+                                    <button type="submit" class="btn_login">Giriş</button>
+                                    <br />
+                                    <br />
+                                }
+
+                                @*<input type="text" placeholder="Öğrenci Numarası" />
+        <input type="password" placeholder="Şifreniz" />
+        <button class="btn_login" onclick="cambiar_login()">Giriş</button>*@
+
                             </div>
 
                             <div class="cont_form_sign_up">
@@ -84,36 +114,39 @@
                                 <!-- form start-->
                                 @using (Html.BeginForm())
                                 {
-
+                                    <br />
+                                    <br />
+                                    <br />
                                     <h2>Admin Giriş</h2>
                                     @Html.AntiForgeryToken()
 
 
-                                    @Html.LabelFor(m => m.UserID,htmlAttributes:new { @class= "control-label"})
-                                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control",pattern= "^(0|[1-9][0-9]*)$", placeholder = "Lütfen kullanıcı adınızı girin",required="required" })
+
+                                    @Html.LabelFor(m => m.UserID, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", pattern = "^(0|[1-9][0-9]*)$", placeholder = "Kullanıcı Adı", required = "required" })
                                     <div class="container-sm">
                                         @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
 
                                     </div>
 
 
-                                    <br />
+
 
                                     @Html.LabelFor(m => m.Password)
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lütfen parolanızı girin", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                   
+                                    <br />
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @*@{Model.Role = "A"; }*@
+                                    @Html.Hidden("Role", "A");
                                     <button type="submit" class="btn_sign_up">Giriş</button>
                                     <br />
                                     <br />
-
-                                    <div class="container-sm text-danger">@ViewBag.Message </div>
                                 }
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
                 <div class="col">

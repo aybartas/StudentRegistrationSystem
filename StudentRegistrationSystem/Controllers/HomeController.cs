@@ -29,17 +29,17 @@ namespace StudentRegistrationSystem.Controllers
         public ActionResult Login(User user)
         {
             User userInDb = studentHelper.FindUserByID(user.UserID);
-            if (userInDb!=null && user.UserID==userInDb.UserID && user.Password==userInDb.Password)
+            if (userInDb != null && user.UserID == userInDb.UserID && user.Password == userInDb.Password && user.Role == userInDb.Role)
             {
-                
-                FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(),false);
-                return RedirectToAction("Index","SearchCourse",userInDb);
+
+                FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
+                return RedirectToAction("Index", "SearchCourse", userInDb);
             }
             else
             {
-                ViewBag.Message = "Kullanıcı Adı veya Şifre Hatalı!";
-                return View();
-            } 
+                TempData["data"] = "Kullanıcı Adı veya Şifre Hatalı!";
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         public ActionResult Logout()
