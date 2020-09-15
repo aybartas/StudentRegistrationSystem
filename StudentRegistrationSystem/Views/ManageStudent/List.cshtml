@@ -1,4 +1,4 @@
-﻿@model StudentRegistrationSystem.Models.Entity.User
+﻿@model StudentRegistrationSystem.ViewModels.StudentListViewModel
 
 @{
     ViewBag.Title = "List";
@@ -18,11 +18,66 @@
                 <th>Öğretim Tipi</th>
                 <th>Danışman</th>
 
-                <th><button type="button" class="btn btn-success btn-sm">Öğrenci Ekle</button></th>
+                <th>
+
+                    @Html.ActionLink("Öğrenci Ekle", "Form", "ManageStudent", new { @class= "btn btn-success btn-sm" })
+
+                   @*<button type="button" class="btn btn-success btn-sm">Öğrenci Ekle</button>*@
+                </th>
 
             </tr>
         </thead>
         <tbody>
+
+            @foreach(var record in Model.StudentRecordViewModels)
+            {
+            <tr>
+                <th>@record.UserID</th>
+                <th>@record.Name</th>
+                <th>@record.Lastname</th>
+                <th>@record.Department</th>
+                <th>@record.EducationType</th>
+                <th>@record.Advisor</th>
+                <th>
+                    <div class="bnt-group">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#ogrencino">
+                            Sil
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm">Yönet</button>
+
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ogrencino" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+                                    <button type="button" class="btn btn-success">Evet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </th>
+
+            </tr>
+
+            }
+            
+
+
             <tr>
                 <th>21635633</th>
                 <th>Fatih</th>
@@ -67,6 +122,9 @@
                 </th>
 
             </tr>
+
+
+
         </tbody>
     </table>
 

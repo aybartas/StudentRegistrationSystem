@@ -9,7 +9,14 @@ namespace StudentRegistrationSystem.Helpers
 {
     public class DepartmentHelper
     {
-        readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        
+        public  StudentRegistrationContext _dbContext { get; set; }
+
+        public DepartmentHelper()
+        {
+            _dbContext = new StudentRegistrationContext();
+        }
+
         public List<Department> GetDepartments()
         {
             return _dbContext.Departments.ToList();

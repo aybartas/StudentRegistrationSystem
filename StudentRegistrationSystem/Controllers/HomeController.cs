@@ -13,7 +13,7 @@ namespace StudentRegistrationSystem.Controllers
     
     public class HomeController : Controller
     {
-        GetAddHelper GetAddHelper = new GetAddHelper();
+       
         LectureHelper LectureHelper = new LectureHelper();
         StudentHelper studentHelper = new StudentHelper();
 
