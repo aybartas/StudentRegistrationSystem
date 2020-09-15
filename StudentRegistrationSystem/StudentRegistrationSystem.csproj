@@ -133,7 +133,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\ManageStudentController.cs" />
+    <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />
+    <Compile Include="Helpers\LecturerHelper.cs" />
+    <Compile Include="Helpers\SectionHelper.cs" />
     <Compile Include="Helpers\StudentHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Students\SearchCourseController.cs" />
@@ -150,7 +153,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
-    <Compile Include="Helpers\GetAddHelper.cs" />
     <Compile Include="Models\Entity\Department.cs" />
     <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />

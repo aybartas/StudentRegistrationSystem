@@ -10,9 +10,31 @@ namespace StudentRegistrationSystem
     public class StudentHelper
     {
         LectureHelper lectureHelper = new LectureHelper();
-        GetAddHelper getAddHelper = new GetAddHelper();
         readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
 
+        public List<User> GetOnlyStudents()
+        {
+            List<User> students = new List<User>();
+            List<User> all = GetUsers();
+            foreach(User u in all)
+            {
+                if (u.Role.Equals("U"))
+                {
+                    students.Add(u);
+                }
+            }
+            return students;
+        }
+        public List<User> GetUsers()
+        {
+            return _dbContext.Users.ToList();
+        }
+        public int AddUser(User user)
+        {
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
+            return user.UserID;
+        }
         public Lecturer GetAdvisor(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
@@ -23,7 +45,7 @@ namespace StudentRegistrationSystem
         public List<Lecture> GetDeptAll(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
-            List<Lecture> lectures = getAddHelper.GetLecture();
+            List<Lecture> lectures = lectureHelper.GetLecture();
             List<Lecture> rlectures = new List<Lecture>();
             foreach (Lecture l in lectures)
             {

@@ -9,8 +9,18 @@ namespace StudentRegistrationSystem
 {
     public class LectureHelper
     {
-        GetAddHelper GetAddHelper = new GetAddHelper();
         readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public List<Lecture> GetLecture()
+        {
+            return _dbContext.Lectures.ToList();
+        }
+        public int AddLecture(Lecture lecture)
+        {
+            _dbContext.Lectures.Add(lecture);
+            _dbContext.SaveChanges();
+            return lecture.LectureID;
+        }
+
         public List<Lecture> GetLecturesOfSections(List<Section> sections)
         {
             List<Lecture> lectures = new List<Lecture>();
@@ -19,25 +29,6 @@ namespace StudentRegistrationSystem
                 lectures.Add(_dbContext.Lectures.Find(x.LectureID));
             }
             return lectures;
-        }
-        public List<Section> GetSectionsOfLecture(int LectureID)
-        {
-            List<Section> sections = new List<Section>();
-            List<Section> allsections = GetAddHelper.GetSection();
-            foreach (Section s in allsections)
-            {
-                if (s.LectureID == LectureID)
-                {
-                    sections.Add(s);
-                }
-            }
-            return sections;
-        }
-        public Lecturer LecturerFinderBySection(int SectionID)
-        {
-            Section section = _dbContext.Sections.Find(SectionID);
-            Lecturer lecturer = _dbContext.Lecturers.Find(section.LecturerID);
-            return lecturer;
         }
     }
 }
