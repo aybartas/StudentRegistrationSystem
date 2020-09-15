@@ -20,6 +20,10 @@ namespace StudentRegistrationSystem.Helpers
             _dbContext.SaveChanges();
             return department.DepartmentCode;
         }
-
+        public string DepNameFinder(string DepartmentCode)
+        {
+            Department dep = _dbContext.Departments.Find(DepartmentCode);
+            return dep.Name;
+        }
     }
 }
