@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Öğrenci Ekleme</h3>
+</div>
+<div class="container contact w-75">
+    <div class="row bg-light">
+
+        <div class="col-md-3">
+            <div class="contact-info mt-4 ml-3">
+                <i class="fas fa-plus fa-3x" style="color: green;"></i>
+
+
+            </div>
+        </div>
+
+        <div class="col mt-4">
+
+            <form action="">
+
+                <div class="contact-form">
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Öğrenci Numarası:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" pattern="[0-9]+"
+                                   placeholder="Öğrenci numarası giriniz" name="fname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">İsim:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" placeholder="İsim giriniz" name="fname" pattern="[A-Za-z]+"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Soyisim:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" placeholder="Soyisim giriniz" name="fname" pattern="[A-Za-z]+"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">TCKN:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="TCKN giriniz"
+                                   name="fname" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Cinsiyet</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Kadın</option>
+                                <option>Erkek</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Telefon:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="Telefon giriniz"
+                                   name="fname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Öğretim Türü</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Birinci Öğretim</option>
+                                <option>İkinci Öğretim</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bölüm</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Bilgisayar Mühendisliği</option>
+                                <option>Makine Mühendisliği</option>
+                                <option>Matematik Mühendisliği</option>
+                                <option>İnşaat Mühendisliği</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Danışman</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Aykut Ertem</option>
+                                <option>Aydın Kaya</option>
+                                <option>Murat Aydos</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success ml-5  "> Öğrenci Ekle</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+</div>

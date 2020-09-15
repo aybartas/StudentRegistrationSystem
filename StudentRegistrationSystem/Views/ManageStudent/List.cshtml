@@ -1,0 +1,85 @@
+﻿@model StudentRegistrationSystem.Models.Entity.User
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Öğrenciler</h3>
+    <table class="table table-striped bg-light text-center">
+        <thead>
+            <tr class="text-muted">
+                <th> Numarası</th>
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Bölüm</th>
+                <th>Öğretim Tipi</th>
+                <th>Danışman</th>
+
+                <th><button type="button" class="btn btn-success btn-sm">Öğrenci Ekle</button></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>21635633</th>
+                <th>Fatih</th>
+                <th>Şimşek</th>
+                <th>Bilgisayar Mühendisliği</th>
+                <th>Birinci Öğretim</th>
+                <th>Selçuk Yılmaz </th>
+                <th>
+                    <div class="bnt-group">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#ogrencino">
+                            Sil
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm">Yönet</button>
+
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ogrencino" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+                                    <button type="button" class="btn btn-success">Evet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </th>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <!-- end of pagination -->
+
+</div>
