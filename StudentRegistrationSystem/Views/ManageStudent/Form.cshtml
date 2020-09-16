@@ -131,7 +131,7 @@
                         <div class="col-sm-8">
                             @{ 
                                 StudentRegistrationSystem.Models.Entity.Department dummyDepartment = new StudentRegistrationSystem.Models.Entity.Department();
-                                dummyDepartment.Name = "Lütfen bölüm seçiniz";
+                                dummyDepartment.Name = "Bölüm Seçiniz";
                                 Model.departments.Insert(0, dummyDepartment);
                             }
                             @Html.DropDownListFor(m => m.departments, new SelectList(Model.departments, "DepartmentCode", "Name"), new { @class = "form-control", required = "required", @id = "ddlDepartment", @onchange = "javascript:GetAdvisor(this.value);" })
@@ -198,7 +198,7 @@
                 cache: false,
                 type: "POST",
                 success: function (data) {
-                    var markup = "<option value='' disabled hidden selected>Select Advisor</option>";
+                    var markup = "<option value='' disabled hidden selected>Danışman Seçiniz</option>";
                     for (var x = 0; x < data.length; x++) {
                         markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                     }
