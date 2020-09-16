@@ -1,0 +1,140 @@
+﻿@model IEnumerable<StudentRegistrationSystem.Models.Entity.Lecture>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Card</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Haftalık Dersler</h2>
+
+        <div class="card-deck">
+
+
+
+            <div class="card bg-light">
+                <br />
+                <h4 class="text-center">Pazartesi</h4>
+                <hr />
+                @foreach (var x in ViewBag.Pazartesi)
+                {
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            @x.Time-@x.EndTime:
+                            <br />
+                            @x.Lecture.Name
+                            <button class="btn btn-success btn-sm">Ekle</button>
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="card bg-light">
+                <br />
+                <h4 class="text-center">Salı</h4>
+                <hr />
+                @foreach (var x in ViewBag.Salı)
+                {
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            @x.Time-@x.EndTime:
+                            <br />
+                            @x.Lecture.Name
+                            <button class="btn btn-success btn-sm">Ekle</button>
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="card bg-light">
+                <br />
+                <h4 class="text-center">Çarşamba</h4>
+                <hr />
+                @foreach (var x in ViewBag.Çarsamba)
+                {
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            @x.Time-@x.EndTime:
+                            <br />
+                            @x.Lecture.Name
+                            <button class="btn btn-success btn-sm">Ekle</button>
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="card bg-light">
+                <br />
+                <h4 class="text-center">Perşembe</h4>
+                <hr />
+                @foreach (var x in ViewBag.Persembe)
+                {
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            @x.Time-@x.EndTime:
+                            <br />
+                            @x.Lecture.Name
+                            <button class="btn btn-success btn-sm">Ekle</button>
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="card bg-light">
+                <br />
+                <h4 class="text-center">Cuma</h4>
+                <hr />
+                @foreach (var x in ViewBag.Cuma)
+                {
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            @x.Time-@x.EndTime:
+                            <br />
+                            @x.Lecture.Name
+                            <button class="btn btn-success btn-sm">Ekle</button>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+          <div class="container">
+              <h2 class="text-center">Ders Programı</h2>
+              <br />
+              <div class="table-responsive">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th>Günler</th>
+                              <th>Pazartesi</th>
+                              <th>Salı</th>
+                              <th>Çarşamba</th>
+                              <th>Perşembe</th>
+                              <th>Cuma</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Ders Saati</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+</body>
+</html>
+
