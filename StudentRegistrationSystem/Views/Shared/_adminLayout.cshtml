@@ -32,7 +32,7 @@
                         <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Admin Paneli</a>
                         <div class="bottom-border pb-3">
                             <div class="container text-center">
-                                <p style="color: aliceblue;">@ViewBag.Message</p>
+                                <p style="color: aliceblue;">Hoşgeldiniz @HttpContext.Current.User.Identity.Name.Split(',')[1]!</p>
                             </div>
 
                         </div>
@@ -86,7 +86,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Hayır</button>
-                    @Html.ActionLink("Evet", "Logout", "Home", new { @class = "btn btn-success"})
+                    <a href="@Url.Action("Logout","Home")" class="btn btn-success">Evet</a>
+                    @*@Html.ActionLink("Evet", @Url.Action("Logout","Home"), new { @class = "btn btn-success"})*@
                     @*<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>*@
                 </div>
             </div>

@@ -30,7 +30,7 @@
                         <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Öğrenci Paneli</a>
                         <div class="bottom-border pb-3">
                             <div class="container text-center">
-                                <p style="color: aliceblue;">@ViewBag.Message</p>
+                                <p style="color: aliceblue;">Hoşgeldiniz @HttpContext.Current.User.Identity.Name.Split(',')[1]!</p>
                             </div>
 
                         </div>
