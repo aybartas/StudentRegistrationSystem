@@ -51,9 +51,6 @@ namespace StudentRegistrationSystem.Controllers.Admin
             return View(addStudentViewModel);
         }
 
-
-
-
         [HttpPost]
         public ActionResult AddStudentForm(string departmentCode)
         {
@@ -80,11 +77,19 @@ namespace StudentRegistrationSystem.Controllers.Admin
         [HttpPost]
         public ActionResult Form(AddStudentViewModel addStudentViewModel)
         {
+            if (ModelState.IsValid)
+            {
+                studentHelper._dbContext.Users.Add(addStudentViewModel.user);
+                studentHelper._dbContext.SaveChanges();
+                System.Diagnostics.Debug.WriteLine("dsfsd");
+                return RedirectToAction("List", "ManageStudent");
+             
 
-           
-            
+            }
+
             return RedirectToAction("Form", "ManageStudent");
         }
+
 
 
 

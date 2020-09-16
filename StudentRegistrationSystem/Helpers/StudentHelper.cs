@@ -9,8 +9,15 @@ namespace StudentRegistrationSystem
 {
     public class StudentHelper
     {
-        LectureHelper lectureHelper = new LectureHelper();
-        readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public LectureHelper lectureHelper { get; set; }
+        //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public  StudentRegistrationContext _dbContext  { get; set; }
+
+        public StudentHelper()
+        {
+            lectureHelper = new LectureHelper();
+            _dbContext = new StudentRegistrationContext();
+        }
 
         public List<User> GetOnlyStudents()
         {
