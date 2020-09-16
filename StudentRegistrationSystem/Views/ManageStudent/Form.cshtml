@@ -7,32 +7,6 @@
 
 @*<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>*@
 
-<script src="~/Content/jquery/ajaxuncompressed.js"></script>
-<script language="javascript" type="text/javascript">
-    function GetAdvisor(departmentCode) {
-        var procemessage = "<option value='0'> Please wait...</option>";
-        $("#ddlAdvisor").html(procemessage).show();
-        var url = "/ManageStudent/AddStudentForm/";
-
-        $.ajax({
-            url: url,
-            data: { departmentCode: departmentCode },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>Select Advisor</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#ddlAdvisor").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-</script>
 
 <div class="container">
     <h3 class="text-muted text-center mb-3">Öğrenci Ekleme</h3>
@@ -136,7 +110,7 @@
                         <label for="exampleFormControlSelect1">Bölüm</label>
                         <div class="col-sm-8">
 
-                            @Html.DropDownListFor(m => m.departments, new SelectList(Model.departments, "DepartmentCode", "Name"), new {@class = "form-control", @id = "ddlDepartment", @onchange = "javascript:GetAdvisor(this.value);" })
+                            @Html.DropDownListFor(m => m.departments, new SelectList(Model.departments, "DepartmentCode", "Name"), new { @class = "form-control", @id = "ddlDepartment", @onchange = "javascript:GetAdvisor(this.value);" })
                             <br />
                             <br />
                             <select id="ddlAdvisor" name="ddlAdvisor" class="form-control">
@@ -145,11 +119,11 @@
 
 
                             @*<select class="form-control " id="exampleFormControlSelect1">
-                                <option>Bilgisayar Mühendisliği</option>
-                                <option>Makine Mühendisliği</option>
-                                <option>Matematik Mühendisliği</option>
-                                <option>İnşaat Mühendisliği</option>
-                            </select>*@
+                                    <option>Bilgisayar Mühendisliği</option>
+                                    <option>Makine Mühendisliği</option>
+                                    <option>Matematik Mühendisliği</option>
+                                    <option>İnşaat Mühendisliği</option>
+                                </select>*@
 
                         </div>
                     </div>
@@ -183,3 +157,35 @@
         </div>
     </div>
 </div>
+
+@section Javascript {
+
+
+    <script src="~/Content/jquery/ajaxuncompressed.js"></script>
+    <script  type="text/javascript">
+        function GetAdvisor(departmentCode) {
+            var procemessage = "<option value='0'> Please wait...</option>";
+            $("#ddlAdvisor").html(procemessage).show();
+            var url = "/ManageStudent/AddStudentForm/";
+
+            $.ajax({
+                url: url,
+                data: { departmentCode: departmentCode },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>Select Advisor</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlAdvisor").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+
+        }
+    </script>
+
+}

@@ -31,9 +31,17 @@ namespace StudentRegistrationSystem.Controllers
             User userInDb = studentHelper.FindUserByID(user.UserID);
             if (userInDb != null && user.UserID == userInDb.UserID && user.Password == userInDb.Password && user.Role == userInDb.Role)
             {
-
-                FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
-                return RedirectToAction("Index", "SearchCourse", userInDb);
+                if (user.Role.Equals("U"))
+                {
+                    FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
+                    return RedirectToAction("Index", "Home", userInDb);
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
+                    return RedirectToAction("Indexa", "Home", userInDb);
+                }
+                
             }
             else
             {
@@ -47,6 +55,16 @@ namespace StudentRegistrationSystem.Controllers
 
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
+        }
+        public ActionResult Index()
+        {
+
+            return View();
+        }
+        public ActionResult Indexa()
+        {
+
+            return View();
         }
 
     }

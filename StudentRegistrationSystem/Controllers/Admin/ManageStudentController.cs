@@ -60,7 +60,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
             List<Lecturer> templecturers = lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
 
-            SelectList lecturers = new SelectList(templecturers, "departmentCode", "advisorName", 0);
+            SelectList lecturers = new SelectList(templecturers, "departmentCode", "Name","Lastname", 0);
             return Json(lecturers);
         }
 
