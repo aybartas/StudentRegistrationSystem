@@ -34,12 +34,12 @@ namespace StudentRegistrationSystem.Controllers
                 if (user.Role.Equals("U"))
                 {
                     FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
-                    return RedirectToAction("Index", "Home", userInDb);
+                    return RedirectToAction("Users", "Home", userInDb);
                 }
                 else
                 {
                     FormsAuthentication.SetAuthCookie((userInDb.UserID).ToString(), false);
-                    return RedirectToAction("Indexa", "Home", userInDb);
+                    return RedirectToAction("Admin", "Home", userInDb);
                 }
                 
             }
@@ -56,14 +56,14 @@ namespace StudentRegistrationSystem.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-        public ActionResult Index()
+        public ActionResult Users(User user)
         {
-
+            ViewBag.Message = "Hoşgeldiniz " + user.Name + "!";
             return View();
         }
-        public ActionResult Indexa()
+        public ActionResult Admin(User user)
         {
-
+            ViewBag.Message = "Hoşgeldiniz " + user.Name+ "!";
             return View();
         }
 

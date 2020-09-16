@@ -355,8 +355,8 @@
     <Content Include="Views\Shared\_studentLayout.cshtml" />
     <Content Include="Views\ManageStudent\List.cshtml" />
     <Content Include="Views\ManageStudent\Form.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Indexa.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009101453277_dbcreated.resx">

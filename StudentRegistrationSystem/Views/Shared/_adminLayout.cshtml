@@ -32,7 +32,7 @@
                         <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Admin Paneli</a>
                         <div class="bottom-border pb-3">
                             <div class="container text-center">
-                                <p style="color: aliceblue;">Hoşgeldin Umur!</p>
+                                <p style="color: aliceblue;">@ViewBag.Message</p>
                             </div>
 
                         </div>
@@ -54,7 +54,7 @@
                             <div class="col-md-5">
                                 <form>
                                     <div class="input-group">
-                                        <input type="text" class="form-control search-input" placeholder="Search...">
+                                        <input type="text" class="form-control search-input" placeholder="Ara...">
                                         <button type="button" class="btn btn-white search-button"><i class="fas fa-search text-danger"></i></button>
                                     </div>
                                 </form>
@@ -78,15 +78,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Want to leave?</h4>
+                    <h4 class="modal-title">Çıkmak mı istiyorsunuz?</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    Press logout to leave
+                    Çıkmak için Çıkış Yap butonuna basınız
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Burada Kal</button>
+                    @Html.ActionLink("Çıkış Yap", "Logout", "Home", new { @class = "btn btn-danger"})
+                    @*<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>*@
                 </div>
             </div>
         </div>
