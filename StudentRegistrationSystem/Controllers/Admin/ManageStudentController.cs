@@ -45,24 +45,24 @@ namespace StudentRegistrationSystem.Controllers.Admin
         public ActionResult Form()
         {
 
-            AddStudentViewModel addStudentViewModel = new AddStudentViewModel(departmentHelper.GetDepartments(), lecturerHelper.GetLecturer());
+            AddStudentViewModel addStudentViewModel = new AddStudentViewModel(departmentHelper.GetDepartments());
 
 
             return View(addStudentViewModel);
         }
 
 
+
+
         [HttpPost]
-        public ActionResult AddStudentForm(AddStudentViewModel addStudentViewModel)
+        public ActionResult AddStudentForm(string departmentCode)
         {
 
-            User newStudent = new User();
-            
-           
+            List<Lecturer> templecturers = lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
 
-            return View();
+            SelectList lecturers = new SelectList(templecturers, "departmentCode", "advisorName", 0);
+            return Json(lecturers);
         }
-
 
 
     }

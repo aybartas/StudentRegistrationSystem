@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace StudentRegistrationSystem.ViewModels
 {
@@ -11,13 +12,13 @@ namespace StudentRegistrationSystem.ViewModels
         public User user { get; set; }
         public List<Department> departments { get; set; }
 
-        public List<Lecturer> lecturers { get; set; }
+        public SelectList lecturers { get; set; }
 
-        public AddStudentViewModel(List<Department> departments, List<Lecturer> lecturers)
+        public AddStudentViewModel(List<Department> departments)
         {
             user = new User();
             this.departments = departments;
-            this.lecturers = lecturers;
+           
         }
     }
 }
