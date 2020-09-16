@@ -28,5 +28,8 @@ namespace StudentRegistrationSystem.ViewModels
             this.Advisor = Advisor;
         }
 
+        public StudentRecordViewModel()
+        {
+        }
     }
 }

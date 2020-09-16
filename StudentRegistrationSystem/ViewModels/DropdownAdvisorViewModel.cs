@@ -11,5 +11,8 @@ namespace StudentRegistrationSystem.ViewModels
         public string FullName { get; set; }
 
         public string DeptCode { get; set; }
+
+        
     }
+        
 }

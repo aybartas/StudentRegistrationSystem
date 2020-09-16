@@ -20,5 +20,9 @@ namespace StudentRegistrationSystem.ViewModels
             this.departments = departments;
            
         }
+
+        public AddStudentViewModel()
+        {
+        }
     }
 }

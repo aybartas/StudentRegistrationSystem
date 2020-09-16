@@ -13,5 +13,9 @@ namespace StudentRegistrationSystem.ViewModels
         {
             StudentRecordViewModels = studentRecordViewModels;
         }
+
+        public StudentListViewModel()
+        {
+        }
     }
 }

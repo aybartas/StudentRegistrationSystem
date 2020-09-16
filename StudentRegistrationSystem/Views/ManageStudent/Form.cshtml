@@ -80,9 +80,9 @@
 
                                 items.Add(new SelectListItem {Text = "Cinsiyet Seçiniz", Value = "0" ,Selected = true , Disabled=true });
 
-                                items.Add(new SelectListItem { Text = "Kadın", Value = "1" });
+                                items.Add(new SelectListItem { Text = "Kadın", Value = "Kadın" });
 
-                                items.Add(new SelectListItem { Text = "Erkek", Value = "2"});
+                                items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek"});
                              }
 
                             @*@Html.DropDownListFor(n => n.user.Gender, new SelectList(new List<string> { "Erkek", "Kadın" }), "Cinsiyet Seçiniz", new { @class = "form-control" })*@
@@ -134,7 +134,7 @@
                                 dummyDepartment.Name = "Bölüm Seçiniz";
                                 Model.departments.Insert(0, dummyDepartment);
                             }
-                            @Html.DropDownListFor(m => m.departments, new SelectList(Model.departments, "DepartmentCode", "Name"), new { @class = "form-control", required = "required", @id = "ddlDepartment", @onchange = "javascript:GetAdvisor(this.value);" })
+                            @Html.DropDownListFor(m => m.user.DepartmentCode, new SelectList(Model.departments, "DepartmentCode", "Name"), new { @class = "form-control", required = "required", @id = "ddlDepartment", @onchange = "javascript:GetAdvisor(this.value);" })
                          
                             
                             

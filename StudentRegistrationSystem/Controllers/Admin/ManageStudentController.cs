@@ -77,6 +77,18 @@ namespace StudentRegistrationSystem.Controllers.Admin
             return Json(lecturers);
         }
 
+        [HttpPost]
+        public ActionResult Form(AddStudentViewModel addStudentViewModel)
+        {
+
+           
+            
+            return RedirectToAction("Form", "ManageStudent");
+        }
+
+
+
+
 
     }
 }
