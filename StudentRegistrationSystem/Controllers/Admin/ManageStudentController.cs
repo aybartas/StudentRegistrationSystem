@@ -60,7 +60,20 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
             List<Lecturer> templecturers = lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
 
-            SelectList lecturers = new SelectList(templecturers, "departmentCode", "Name","Lastname", 0);
+            List<DropdownAdvisorViewModel> dropdownAdvisors = new List<DropdownAdvisorViewModel>();
+
+            foreach(Lecturer temp in templecturers)
+            {
+                DropdownAdvisorViewModel dropdownAdvisor = new DropdownAdvisorViewModel
+                {
+                    Id = temp.LecturerID,
+                    FullName = temp.Name +" "+ temp.LastName,
+                    DeptCode = temp.DepartmentCode
+                };
+                dropdownAdvisors.Add(dropdownAdvisor);
+            }
+
+            SelectList lecturers = new SelectList(dropdownAdvisors, "Id", "FullName", 0);
             return Json(lecturers);
         }
 

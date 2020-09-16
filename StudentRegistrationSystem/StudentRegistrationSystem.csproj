@@ -161,6 +161,7 @@
     <Compile Include="Models\Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddStudentViewModel.cs" />
+    <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
   </ItemGroup>
