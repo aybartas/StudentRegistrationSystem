@@ -104,7 +104,14 @@ namespace StudentRegistrationSystem.Controllers.Admin
             studentHelper._dbContext.SaveChanges();
             return RedirectToAction("List", "ManageStudent");
         }
-
+        
+        public ActionResult Update(int UserID)
+        {
+            User user = studentHelper.FindUserByID(UserID);
+            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user.Name, user.LastName, user.Gender,
+             user.Phone, user.EducationType, user.Password, user.LecturerID, user, lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
+            return View(updateStudentViewModel);
+        }
 
     }
 }
