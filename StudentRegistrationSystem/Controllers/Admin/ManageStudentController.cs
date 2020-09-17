@@ -75,13 +75,29 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
 
         [HttpPost]
-        public ActionResult Form(AddStudentViewModel addStudentViewModel)
+        public ActionResult Form(AddStudentViewModel addStudentViewModel,int ddlAdvisor)
         {
+            Lecturer lecturer = lecturerHelper._dbContext.Lecturers.Find(ddlAdvisor);
+
+            System.Diagnostics.Debug.WriteLine(lecturer.LecturerID);
+
+
+            addStudentViewModel.user.Password = "adasdaads02";
+            addStudentViewModel.user.LecturerID = ddlAdvisor;
+            addStudentViewModel.user.Lecturer = lecturer;
             if (ModelState.IsValid)
             {
+
+            
+                         
+                addStudentViewModel.user.Role = "U";
+                addStudentViewModel.user.Password = addStudentViewModel.user.CitizenshipNo.ToString().Substring(0, 4);
+
                 studentHelper._dbContext.Users.Add(addStudentViewModel.user);
-                studentHelper._dbContext.SaveChanges();
-                System.Diagnostics.Debug.WriteLine("dsfsd");
+               
+                
+                
+                studentHelper._dbContext.SaveChanges();       
                 return RedirectToAction("List", "ManageStudent");
              
 
@@ -89,10 +105,6 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
             return RedirectToAction("Form", "ManageStudent");
         }
-
-
-
-
 
 
     }

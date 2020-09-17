@@ -9,7 +9,14 @@ namespace StudentRegistrationSystem.Helpers
 {
     public class LecturerHelper
     {
-        readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public  StudentRegistrationContext _dbContext { get; set; }
+
+        public LecturerHelper()
+        {
+            _dbContext = new StudentRegistrationContext();
+        }
+
         public List<Lecturer> GetLecturer()
         {
             return _dbContext.Lecturers.ToList();
