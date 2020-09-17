@@ -7,6 +7,7 @@ using StudentRegistrationSystem.Models.Context;
 using StudentRegistrationSystem.Models.Entity;
 
 using System.Web.Security;
+using StudentRegistrationSystem.Helpers;
 
 namespace StudentRegistrationSystem.Controllers
 {
@@ -64,7 +65,7 @@ namespace StudentRegistrationSystem.Controllers
         }
         public ActionResult Admin()
         {
-           
+            //ViewBag.StudentCount = studentHelper.GetOnlyStudents().Count();
             return View();
         }
 

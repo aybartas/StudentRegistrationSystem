@@ -18,8 +18,8 @@
     <title>Yönetici Paneli</title>
 </head>
 <body onload="GetAdvisor();">
-
     <!-- navbar -->
+    @{StudentRegistrationSystem.Helpers.StudentHelper studentHelper = new StudentRegistrationSystem.Helpers.StudentHelper();}
     <nav class="navbar navbar-expand-md navbar-light">
         <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#myNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
 
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Admin","Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
                             <li class="nav-item"><a href="@Url.Action("List","ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğretmenler</a></li>
@@ -109,7 +109,7 @@
                                         <i class="fas fa-user-graduate fa-3x text-secondary "></i>
                                         <div class="text-right text-secondary">
                                             <h5>Öğrenciler</h5>
-                                            <h3>55</h3>
+                                            <h3>@studentHelper.GetOnlyStudents().Count()</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                         <i class="fas fa-user-tie fa-3x text-secondary"></i>
                                         <div class="text-right text-secondary">
                                             <h5>Akademisyenler</h5>
-                                            <h3>10</h3>
+                                            <h3>@studentHelper._dbContext.Lecturers.Count()</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -143,8 +143,8 @@
                                         <i class="fas fa-university fa-3x text-secondary"></i>
                                         <div class="text-right text-secondary">
                                             <h5>Dersler</h5>
-                                            <h3>100</h3>
-                                        </div>
+                                            <h3>@studentHelper._dbContext.Lectures.Count()</h3>
+</div>
                                     </div>
                                 </div>
 
@@ -158,7 +158,7 @@
                                         <i class="fas fa-school fa-3x text-secondary"></i>
                                         <div class="text-right text-secondary">
                                             <h5>Şubeler</h5>
-                                            <h3>200</h3>
+                                            <h3>@studentHelper._dbContext.Sections.Count()</h3>
                                         </div>
                                     </div>
                                 </div>

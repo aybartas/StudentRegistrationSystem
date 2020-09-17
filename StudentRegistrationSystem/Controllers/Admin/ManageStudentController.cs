@@ -93,7 +93,9 @@ namespace StudentRegistrationSystem.Controllers.Admin
                
                 
                 
-                studentHelper._dbContext.SaveChanges();       
+                studentHelper._dbContext.SaveChanges();
+                
+                TempData["Success"] = "Not Null";
                 return RedirectToAction("List", "ManageStudent");
              
             }
@@ -104,7 +106,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
         public ActionResult Delete(int UserID)
         {
-            
+            TempData["DeleteSuccess"] = "Not Null";
             studentHelper._dbContext.Users.Remove(studentHelper._dbContext.Users.Find(UserID));
             studentHelper._dbContext.SaveChanges();
             return RedirectToAction("List", "ManageStudent");

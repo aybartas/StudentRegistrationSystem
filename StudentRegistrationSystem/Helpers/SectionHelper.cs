@@ -9,7 +9,8 @@ namespace StudentRegistrationSystem.Helpers
 {
     public class SectionHelper
     {
-        readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public StudentRegistrationContext _dbContext { get; set; }
         public List<Section> GetSection()
         {
             return _dbContext.Sections.ToList();

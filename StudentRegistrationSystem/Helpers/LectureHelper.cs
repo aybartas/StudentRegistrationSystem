@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace StudentRegistrationSystem
+namespace StudentRegistrationSystem.Helpers
 {
     public class LectureHelper
     {
-        readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
+        public StudentRegistrationContext _dbContext { get; set; }
         public List<Lecture> GetLecture()
         {
             return _dbContext.Lectures.ToList();
