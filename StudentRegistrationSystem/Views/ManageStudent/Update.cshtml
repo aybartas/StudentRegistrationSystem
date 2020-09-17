@@ -11,15 +11,17 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img src="https://media.istockphoto.com/vectors/student-icon-isolated-vector-id578555190?k=6&m=578555190&s=170667a&w=0&h=JzLVMnG_ioZRjXQ5zFuQsAL2UzBSA7tfQ2HYTkz4jrA="
                      alt="Admin" class="rounded-circle" style="width: 80%;">
-                <span class="font-weight-bold">@Model.Name @Model.LastName</span>
+                <span class="font-weight-bold">@Model.user.Name @Model.user.LastName</span>
                 <span class="text-black-50">Öğrenci</span>
                 <span> </span>
             </div>
         </div>
         <div class="col-md-5 border-right">
+            @{Model.userID = Model.user.UserID;}
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
+
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Öğrenci Bilgileri</h4>
@@ -27,11 +29,11 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">İsim:</label>@*<input type="text" class="form-control"placeholder="İsim" value="@Model.Name">*@
-                            @Html.TextBoxFor(n => n.user.Name, new { @class = "form-control", placeholder = "İsim", required = "required", @Value = Model.Name })
+                            @Html.TextBoxFor(n => n.Name, new { @class = "form-control", placeholder = "İsim", required = "required", @Value = Model.user.Name })
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Soyisim:</label>
-                            @Html.TextBoxFor(n => n.user.LastName, new { @class = "form-control", placeholder = "Soyisim", required = "required", @Value = Model.LastName })
+                            @Html.TextBoxFor(n => n.LastName, new { @class = "form-control", placeholder = "Soyisim", required = "required", @Value = Model.user.LastName })
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -39,7 +41,8 @@
                             <label class="labels">Cinsiyet:</label>
                             @{
                                 List<SelectListItem> items = new List<SelectListItem>();
-                                if (Model.Gender.Equals("Erkek")){
+                                if (Model.user.Gender.Equals("Erkek"))
+                                {
                                     items.Add(new SelectListItem { Text = "Kadın", Value = "Kadın" });
 
                                     items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek", Selected = true });
@@ -48,10 +51,10 @@
                                 {
                                     items.Add(new SelectListItem { Text = "Kadın", Value = "Kadın", Selected = true });
 
-                                    items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek"});
+                                    items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek" });
                                 }
                             }
-                            @Html.DropDownListFor(n => n.user.Gender, items, new { @class = "form-control" })
+                            @Html.DropDownListFor(n => n.Gender, items, new { @class = "form-control" })
                         </div>
 
 
@@ -59,27 +62,27 @@
                             <label class="labels">Öğretim Tipi:</label>
                             @{
                                 List<SelectListItem> educations = new List<SelectListItem>();}
-                            @if (Model.EducationType[0].Equals('B'))
+                            @if (Model.user.EducationType[0].Equals('B'))
                             {
-                            educations.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim" , Selected = true});
+                                educations.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim", Selected = true });
 
-                            educations.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim" });
+                                educations.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim" });
                             }
                             else
                             {
-                            educations.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim", Selected = true });
+                                educations.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim", Selected = true });
 
-                            educations.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim" });
+                                educations.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim" });
 
-                            
+
                             }
 
-                            @Html.DropDownListFor(n => n.user.EducationType, educations, new { @class = "form-control" })
+                            @Html.DropDownListFor(n => n.EducationType, educations, new { @class = "form-control" })
                         </div>
 
                         <div class="col-md-12">
                             <label class="labels">Telefon:</label>
-                            @Html.TextBoxFor(n => n.user.Phone, new { @class = "form-control", placeholder = "Telefon Numarası", required = "required", pattern = "[0-9]+", @Value = Model.Phone })
+                            @Html.TextBoxFor(n => n.Phone, new { @class = "form-control", placeholder = "Telefon Numarası", required = "required", pattern = "[0-9]+", @Value = Model.user.Phone })
 
                         </div>
                         <div class="col-md-12">
@@ -87,7 +90,7 @@
                             @{ List<SelectListItem> advisors = new List<SelectListItem>();}
                             @foreach (Lecturer l in Model.departmentLecturers)
                             {
-                                if (Model.LecturerID == l.LecturerID)
+                                if (Model.user.LecturerID == l.LecturerID)
                                 {
                                     advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString(), Selected = true });
                                 }
@@ -96,7 +99,7 @@
                                     advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString() });
                                 }
                             }
-                            @Html.DropDownListFor(n => n.user.LecturerID, advisors, new { @class = "form-control" })
+                            @Html.DropDownListFor(n => n.LecturerID, advisors, new { @class = "form-control" })
                         </div>
                     </div>
 
@@ -108,7 +111,7 @@
 
 
                 </div>
-                                }
+            }
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">

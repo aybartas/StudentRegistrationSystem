@@ -9,6 +9,7 @@ namespace StudentRegistrationSystem.ViewModels
     public class UpdateStudentViewModel
     {
         public User user { get; set; }
+        public int userID { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
@@ -17,18 +18,15 @@ namespace StudentRegistrationSystem.ViewModels
         public string Password { get; set; }
         public int LecturerID { get; set; }
         public List<Lecturer> departmentLecturers { get; set; }
-        public UpdateStudentViewModel(string name, string lastName, string gender, 
-            string phone, string educationType, string password, int lecturerID, User userp, List<Lecturer> lecturers)
+        public UpdateStudentViewModel()
         {
-            Name = name;
-            LastName = lastName;
-            Gender = gender;
-            Phone = phone;
-            EducationType = educationType;
-            Password = password;
-            LecturerID = lecturerID;
+        }
+        public UpdateStudentViewModel(User userp, List<Lecturer> lecturers)
+        {
             user = userp;
             departmentLecturers = lecturers;
         }
+
+        
     }
 }
