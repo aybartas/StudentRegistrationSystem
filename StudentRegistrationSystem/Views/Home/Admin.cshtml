@@ -4,5 +4,79 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
-<h2>Admin</h2>
 
+<div class="col-xl-7">
+    <h4 class="text-muted mb-4">Admin Paneli </h4>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse1">
+
+                    Öğrencileri yönetme
+                </button>
+            </div>
+            <div class="collapse" id="collapse1" data-parent="#accordion">
+                <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis earum modi delectus fugiat consectetur eaque harum obcaecati, saepe id vitae, dolore aliquam! Quos, doloribus quisquam.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse2">
+
+                    Akademisyenleri yönetme
+                </button>
+            </div>
+            <div class="collapse" id="collapse2" data-parent="#accordion">
+                <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis earum modi delectus fugiat consectetur eaque harum obcaecati, saepe id vitae, dolore aliquam! Quos, doloribus quisquam.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse3">
+
+                    Dersleri Yönetme
+                </button>
+            </div>
+            <div class="collapse" id="collapse3" data-parent="#accordion">
+                <div class="card-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis earum modi delectus fugiat consectetur eaque harum obcaecati, saepe id vitae, dolore aliquam! Quos, doloribus quisquam.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xl-5 mt-5">
+    <div class="card rounded">
+        <div class="card-body">
+            <h5 class="text-muted text-center mb-4">Takvim</h5>
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="card bg-light">
+                        <i class="far fa-calendar-alt fa-8x text-warning d-block m-auto py-3"></i>
+                        <div class="card-body">
+                            <p class="card-text text-center font-weight-bold text-uppercase">26 Haziran Pazartesi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-light">
+                        <i class="far fa-clock fa-8x text-danger d-block m-auto py-3"></i>
+                        <div class="card-body">
+                            <p class="card-text text-center font-weight-bold text-uppercase">3:50 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
