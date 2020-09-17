@@ -88,21 +88,14 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 addStudentViewModel.user.LecturerID = ddlAdvisor;
                 addStudentViewModel.user.Role = "U";
                 //addStudentViewModel.user.Password = addStudentViewModel.user.CitizenshipNo.ToString().Substring(0, 4);
-
                 studentHelper._dbContext.Users.Add(addStudentViewModel.user);
-               
-                
-                
                 studentHelper._dbContext.SaveChanges();
-                
                 TempData["Success"] = "Not Null";
                 return RedirectToAction("List", "ManageStudent");
-             
             }
 
             return RedirectToAction("Form", "ManageStudent");
         }
-
 
         public ActionResult Delete(int UserID)
         {

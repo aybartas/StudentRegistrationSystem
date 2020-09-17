@@ -70,7 +70,8 @@
                                     data-target="#@record.UserID">
                                 Sil
                             </button>
-                            <button type="button" class="btn btn-info btn-sm">Yönet</button>
+                            <a href="@Url.Action("Update","ManageStudent",new{ UserID = record.UserID})" class="btn btn-info btn-sm">Yönet</a>
+                            @*<button type="button" class="btn btn-info btn-sm">Yönet</button>*@
 
                         </div>
 
