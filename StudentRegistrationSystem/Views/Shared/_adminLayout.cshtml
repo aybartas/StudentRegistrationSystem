@@ -181,17 +181,17 @@
 
                     <div class="row ml-1 ">
 
-                      
+
                         @RenderBody()
 
 
-                        
+
 
                     </div>
 
                     <br>
 
-                  
+
                 </div>
             </div>
         </div>
@@ -223,7 +223,33 @@
         //    $('[data-toggle="tooltip"]').tooltip();
         //});
     </script>
-    @RenderSection("Javascript",false) 
+    @RenderSection("Javascript", false)
+    <script src="~/Content/jquery/ajaxuncompressed.js"></script>
+    <script>
+        function GetAdvisor(departmentCode) {
+            var procemessage = "<option value='0'> Please wait...</option>";
+            $("#ddlAdvisor").html(procemessage).show();
+            var url = "/ManageStudent/AddStudentForm/";
+
+            $.ajax({
+                url: url,
+                data: { departmentCode: departmentCode },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='' disabled hidden selected>Danışman Seçiniz</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlAdvisor").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("zıbam : " + reponse);
+                }
+            });
+
+        }
+    </script>
 </body>
 </html>
 
