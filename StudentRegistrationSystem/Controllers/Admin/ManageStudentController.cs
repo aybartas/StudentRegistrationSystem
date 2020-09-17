@@ -96,10 +96,18 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 studentHelper._dbContext.SaveChanges();       
                 return RedirectToAction("List", "ManageStudent");
              
-
             }
 
             return RedirectToAction("Form", "ManageStudent");
+        }
+
+
+        public ActionResult Delete(int UserID)
+        {
+            
+            studentHelper._dbContext.Users.Remove(studentHelper._dbContext.Users.Find(UserID));
+            studentHelper._dbContext.SaveChanges();
+            return RedirectToAction("List", "ManageStudent");
         }
 
 
