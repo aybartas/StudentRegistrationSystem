@@ -77,21 +77,17 @@ namespace StudentRegistrationSystem.Controllers.Admin
         [HttpPost]
         public ActionResult Form(AddStudentViewModel addStudentViewModel,int ddlAdvisor)
         {
-            Lecturer lecturer = lecturerHelper._dbContext.Lecturers.Find(ddlAdvisor);
-
-            System.Diagnostics.Debug.WriteLine(lecturer.LecturerID);
-
-
-            addStudentViewModel.user.Password = "adasdaads02";
-            addStudentViewModel.user.LecturerID = ddlAdvisor;
-            addStudentViewModel.user.Lecturer = lecturer;
+            //System.Diagnostics.Debug.WriteLine(lecturer.LecturerID);
+            //addStudentViewModel.user.Password = "adasdaads02";
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //System.Diagnostics.Debug.WriteLine(errors);
             if (ModelState.IsValid)
             {
-
-            
-                         
+                //Lecturer lecturer = lecturerHelper._dbContext.Lecturers.Find(ddlAdvisor);
+                //addStudentViewModel.user.Lecturer = lecturer;
+                addStudentViewModel.user.LecturerID = ddlAdvisor;
                 addStudentViewModel.user.Role = "U";
-                addStudentViewModel.user.Password = addStudentViewModel.user.CitizenshipNo.ToString().Substring(0, 4);
+                //addStudentViewModel.user.Password = addStudentViewModel.user.CitizenshipNo.ToString().Substring(0, 4);
 
                 studentHelper._dbContext.Users.Add(addStudentViewModel.user);
                

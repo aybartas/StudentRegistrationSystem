@@ -9,7 +9,7 @@ namespace StudentRegistrationSystem.ViewModels
 {
     public class AddStudentViewModel
     {
-        public User user { get; set; }
+        public User user { get; set; }        
         public List<Department> departments { get; set; }
 
         public SelectList lecturers { get; set; }
