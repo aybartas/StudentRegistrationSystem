@@ -143,19 +143,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009101453277_dbcreated.cs" />
-    <Compile Include="Migrations\202009101453277_dbcreated.designer.cs">
-      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009130004533_userPropertiesFixed.cs" />
-    <Compile Include="Migrations\202009130004533_userPropertiesFixed.designer.cs">
-      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009180915412_dbBugFix.cs" />
-    <Compile Include="Migrations\202009180915412_dbBugFix.designer.cs">
-      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
     <Compile Include="Models\Entity\Enrollment.cs" />
@@ -168,6 +155,7 @@
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
+    <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -364,17 +352,7 @@
     <Content Include="Views\Home\Users.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\ManageStudent\Update.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009101453277_dbcreated.resx">
-      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009130004533_userPropertiesFixed.resx">
-      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009180915412_dbBugFix.resx">
-      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\ManageStudent\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
