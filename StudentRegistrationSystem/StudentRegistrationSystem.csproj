@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -143,22 +145,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009101453277_dbcreated.cs" />
-    <Compile Include="Migrations\202009101453277_dbcreated.designer.cs">
-      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009130004533_userPropertiesFixed.cs" />
-    <Compile Include="Migrations\202009130004533_userPropertiesFixed.designer.cs">
-      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009180915412_dbBugFix.cs" />
-    <Compile Include="Migrations\202009180915412_dbBugFix.designer.cs">
-      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
+    <Compile Include="Migrations\202009181935583_InitialCreate.cs" />
+    <Compile Include="Migrations\202009181935583_InitialCreate.designer.cs">
+      <DependentUpon>202009181935583_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
-    <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />
     <Compile Include="Models\Entity\Lecturer.cs" />
     <Compile Include="Models\Entity\Section.cs" />
@@ -366,21 +359,15 @@
     <Content Include="Views\ManageStudent\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009101453277_dbcreated.resx">
-      <DependentUpon>202009101453277_dbcreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009130004533_userPropertiesFixed.resx">
-      <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009180915412_dbBugFix.resx">
-      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009181935583_InitialCreate.resx">
+      <DependentUpon>202009181935583_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

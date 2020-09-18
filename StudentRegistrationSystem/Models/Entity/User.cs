@@ -7,7 +7,7 @@ namespace StudentRegistrationSystem.Models.Entity
 {
     public class User
     {
-        [Key]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = " ")]
         [Range(10000000,99999999,ErrorMessage ="Lütfen geçerli bir kullanıcı adı giriniz")]
@@ -25,15 +25,17 @@ namespace StudentRegistrationSystem.Models.Entity
         [Required(ErrorMessage ="Parola alanı boş bırakılamaz")]
         [StringLength(50,MinimumLength =1,ErrorMessage ="Lütfen geçerli bir şifre giriniz")]
         public string Password { get; set; }
-
-        public string DepartmentCode { get; set; }
+        public string Role { get; set; }
 
         public int LecturerID { get; set; }
-        public string Role { get; set; }
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
-
-        public Department Department { get; set; }
         public Lecturer Lecturer { get; set; }
+
+        public virtual ICollection<Section> Sections { get; set; }
+#nullable enable
+        public string? DepartmentCode { get; set; }
+#nullable disable
+        public Department Department { get; set; }
+
 
 
     }
