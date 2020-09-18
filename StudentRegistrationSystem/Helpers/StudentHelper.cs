@@ -68,6 +68,8 @@ namespace StudentRegistrationSystem.Helpers
             User user = _dbContext.Users.Find(UserID);
             return user;
         }
+
+        /*
         public List<Lecture> GetTranscript(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -82,7 +84,10 @@ namespace StudentRegistrationSystem.Helpers
             List<Lecture> lectures = lectureHelper.GetLecturesOfSections(sections);
             return lectures;
         }
-        public List<Lecture> GetSyllabus(int UserID)
+
+
+
+         public List<Lecture> GetSyllabus(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
             List<Section> sections = new List<Section>();
@@ -96,6 +101,11 @@ namespace StudentRegistrationSystem.Helpers
             List<Lecture> lectures = lectureHelper.GetLecturesOfSections(sections);
             return lectures;
         }
+        
+
+        */
+
+        /*
         public List<Section> GetSyllabusSec(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -109,6 +119,7 @@ namespace StudentRegistrationSystem.Helpers
             }
             return sections;
         }
+
         public List<Enrollment> GetEnrollments(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
@@ -116,5 +127,7 @@ namespace StudentRegistrationSystem.Helpers
 
             return enrollments;
         }
+
+     */
     }
 }

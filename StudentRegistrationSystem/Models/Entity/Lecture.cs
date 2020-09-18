@@ -18,7 +18,8 @@ namespace StudentRegistrationSystem.Models.Entity
 
         public Department Department { get; set; }
 
-        public virtual ICollection<Section> Sections { get; set; }
+        public virtual IEnumerable<Section> Sections { get; set; }
 
     }
+
 }

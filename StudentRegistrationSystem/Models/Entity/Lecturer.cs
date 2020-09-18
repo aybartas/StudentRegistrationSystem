@@ -12,10 +12,13 @@ namespace StudentRegistrationSystem.Models.Entity
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string DepartmentCode { get; set; }
+#nullable enable
+        public string? DepartmentCode { get; set; }
+#nullable disable
         public Department Department { get; set; }
-        public virtual ICollection<User> ConsultedStudents { get; set; }
-        public virtual ICollection<Section> Sections { get; set; }
+
+        public virtual IEnumerable<User> Users { get; set; }
+        public virtual IEnumerable<Section> Sections { get; set; }
        
 
 

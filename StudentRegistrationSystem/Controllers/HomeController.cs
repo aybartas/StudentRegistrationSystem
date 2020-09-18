@@ -8,6 +8,7 @@ using StudentRegistrationSystem.Models.Entity;
 
 using System.Web.Security;
 using StudentRegistrationSystem.Helpers;
+using System.Data.Entity;
 
 namespace StudentRegistrationSystem.Controllers
 {
@@ -66,6 +67,18 @@ namespace StudentRegistrationSystem.Controllers
         public ActionResult Admin()
         {
             //ViewBag.StudentCount = studentHelper.GetOnlyStudents().Count();
+
+            User user = studentHelper.FindUserByID(21225437);
+            User use1r = studentHelper._dbContext.Users.Find(21225437);
+            User user1 = studentHelper._dbContext.Users.Where(m => m.UserID == 21225437).First();
+            User temp = studentHelper._dbContext.Users.
+                Where(b => b.UserID == 21225437).Include(b => b.Lecturer).Include(b => b.Department).SingleOrDefault();
+
+
+
+
+
+
             return View();
         }
 

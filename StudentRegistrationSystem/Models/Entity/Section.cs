@@ -20,13 +20,15 @@ namespace StudentRegistrationSystem.Models.Entity
         public string Building { get; set; }
         public string Classroom { get; set; }
 
-        public int LecturerID { get; set; }
-        public int LectureID { get; set; }
-        public Lecturer Lecturer { get; set; }
-        public Lecture Lecture { get; set; }
-       
 
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public int LecturerID { get; set; }
+        public Lecturer Lecturer { get; set; }
+        
+        public int LectureID { get; set; }
+        public Lecture Lecture { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
+
 
     }
 }

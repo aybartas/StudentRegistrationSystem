@@ -11,13 +11,14 @@ namespace StudentRegistrationSystem.Models.Context
 {
     public class StudentRegistrationContext : DbContext
     {
-        public StudentRegistrationContext() : base("StudentRegistrationContext"){
+        public StudentRegistrationContext() : base("StudentRegistrationContext")
+        {
 
             this.Configuration.LazyLoadingEnabled = true;
         }
         
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
+   
         public DbSet<Lecture> Lectures { get; set; }
         public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Section> Sections { get; set; }
@@ -27,7 +28,18 @@ namespace StudentRegistrationSystem.Models.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+          //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<User>()
+               .HasMany(s => s.Sections)
+               .WithMany(c => c.Users)
+               .Map(cs =>
+               {
+                   cs.MapLeftKey("StudentRefId");
+                   cs.MapRightKey("SectionRefId");
+                   cs.ToTable("Enrollment");
+               });
+            
+
         }
 
 
