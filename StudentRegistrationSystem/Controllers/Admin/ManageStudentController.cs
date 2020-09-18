@@ -3,6 +3,7 @@ using StudentRegistrationSystem.Models.Entity;
 using StudentRegistrationSystem.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -104,7 +105,34 @@ namespace StudentRegistrationSystem.Controllers.Admin
             studentHelper._dbContext.SaveChanges();
             return RedirectToAction("List", "ManageStudent");
         }
-
-
+        
+        public ActionResult Update(int UserID)
+        {
+            User user = studentHelper.FindUserByID(UserID);
+            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user, lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
+            return View(updateStudentViewModel);
+        }
+        [HttpPost]
+        public ActionResult Update(UpdateStudentViewModel updateStudentViewModel)
+        {
+            User user = studentHelper.FindUserByID(updateStudentViewModel.userID);
+            user.Name = updateStudentViewModel.Name;
+            user.LastName = updateStudentViewModel.LastName;
+            user.Gender = updateStudentViewModel.Gender;
+            user.EducationType = updateStudentViewModel.EducationType;
+            user.Phone = updateStudentViewModel.Phone;
+            user.LecturerID = updateStudentViewModel.LecturerID;
+            if (ModelState.IsValid)
+            {
+                TempData["UpdateSuccess"] = "Not Null";
+                studentHelper._dbContext.Users.AddOrUpdate<User>(user);
+                studentHelper._dbContext.SaveChanges();
+                return RedirectToAction("List", "ManageStudent");
+            }
+            else
+            {
+                return RedirectToAction("Update", "ManageStudent");
+            }
+        }
     }
 }

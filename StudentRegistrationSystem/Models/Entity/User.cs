@@ -10,7 +10,7 @@ namespace StudentRegistrationSystem.Models.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = " ")]
-        [Range(10000000,99999999,ErrorMessage ="Lütfen geçerli bir kullanici adi giriniz")]
+        [Range(10000000,99999999,ErrorMessage ="Lütfen geçerli bir kullanıcı adı giriniz")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kullanıcı Adı sadece rakam içerebilir.")]
         public int UserID { get; set; }
         public string Name { get; set; }

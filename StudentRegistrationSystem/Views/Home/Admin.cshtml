@@ -64,7 +64,12 @@
                     <div class="card bg-light">
                         <i class="far fa-calendar-alt fa-8x text-warning d-block m-auto py-3"></i>
                         <div class="card-body">
-                            <p class="card-text text-center font-weight-bold text-uppercase">26 Haziran Pazartesi</p>
+                            <p class="card-text text-center font-weight-bold text-uppercase">
+                                @{DateTime dateTime = DateTime.Now;
+                                                        } @dateTime.ToString("dd MMMM yyyy dddd")
+                                                    </p>
+                            @*@{System.Diagnostics.Debug.WriteLine(dateTime.ToString("dddd, dd MMMM yyyy: HH:mm:ss"));
+                            }*@
                         </div>
                     </div>
                 </div>
@@ -72,7 +77,7 @@
                     <div class="card bg-light">
                         <i class="far fa-clock fa-8x text-danger d-block m-auto py-3"></i>
                         <div class="card-body">
-                            <p class="card-text text-center font-weight-bold text-uppercase">3:50 </p>
+                            <p class="card-text text-center font-weight-bold text-uppercase">@dateTime.ToString("HH:mm") </p>
                         </div>
                     </div>
                 </div>
