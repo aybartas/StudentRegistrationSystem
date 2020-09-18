@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202009130004533_userPropertiesFixed.designer.cs">
       <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009180915412_dbBugFix.cs" />
+    <Compile Include="Migrations\202009180915412_dbBugFix.designer.cs">
+      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009130004533_userPropertiesFixed.resx">
       <DependentUpon>202009130004533_userPropertiesFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009180915412_dbBugFix.resx">
+      <DependentUpon>202009180915412_dbBugFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
