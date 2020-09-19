@@ -32,6 +32,22 @@ namespace StudentRegistrationSystem.Helpers
             }
             return students;
         }
+        public List<Section> GetSyllabusSec(int UserID)
+        {
+            var record = _dbContext..Find(Id, InstanceId).ToList();
+            User user = _dbContext.Users.Find(UserID);
+            user.
+            //List<Enrollment> enrollment = GetEnrollments(UserID);
+            //List<Section> sections = new List<Section>();
+            //foreach (Enrollment x in enrollment)
+            //{
+            //    if (x.Grade == null)
+            //    {
+            //        sections.Add(_dbContext.Sections.Find(x.SectionID));
+            //    }
+            //}
+            //return sections;
+        }
         public List<User> GetUsers()
         {
             return _dbContext.Users.ToList();

@@ -171,9 +171,10 @@
                             </div>
 
                         </div>
-                        <br/>
-                        <br/>
-                        <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
+                        <br />
+                        <br />
+                        <a href="@Url.Action("Courses","ManageStudent",new{ UserID = Model.userID})" class="btn btn-block btn-success">Öğrencinin Dersleri</a>
+                        @*<input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">*@
                     </form>
 
 

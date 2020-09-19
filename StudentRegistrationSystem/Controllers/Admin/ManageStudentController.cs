@@ -15,6 +15,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         StudentHelper studentHelper = new StudentHelper();
         DepartmentHelper departmentHelper = new DepartmentHelper();
         LecturerHelper lecturerHelper = new LecturerHelper();
+        SectionHelper sectionHelper = new SectionHelper();
 
         // GET: ManageStudent
         public ActionResult List()
@@ -133,6 +134,30 @@ namespace StudentRegistrationSystem.Controllers.Admin
             {
                 return RedirectToAction("Update", "ManageStudent");
             }
+        }
+        public ActionResult Courses(int UserID)
+        {
+            UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel();
+           updateStudentCourseViewModel.user = studentHelper.FindUserByID(UserID);
+           updateStudentCourseViewModel.departmentalLectures= studentHelper.GetDeptAll(UserID);
+            updateStudentCourseViewModel.sections = studentHelper.GetSyllabusSec(UserID);
+            return View(updateStudentCourseViewModel);
+        }
+        public ActionResult DeleteSection(int sectionID)
+        {
+            TempData["DeleteSectionSuccess"] = "Not Null";
+            studentHelper._dbContext.Sections.Remove(studentHelper._dbContext.Sections.Find(sectionID));
+            studentHelper._dbContext.SaveChanges();
+            return RedirectToAction("Courses", "ManageStudent");
+        }
+        [HttpPost]
+        public ActionResult GetSectionsFromLectures(int LectureID)
+        {
+
+            List<Section> dropdownSections = sectionHelper.GetSectionsOfLecture(LectureID);
+
+            SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
+            return Json(sections);
         }
     }
 }

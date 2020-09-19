@@ -144,7 +144,7 @@
                                         <div class="text-right text-secondary">
                                             <h5>Dersler</h5>
                                             <h3>@studentHelper._dbContext.Lectures.Count()</h3>
-</div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -227,7 +227,7 @@
     <script src="~/Content/jquery/ajaxuncompressed.js"></script>
     <script>
         function GetAdvisor(departmentCode) {
-            var procemessage = "<option value='0'> Please wait...</option>";
+            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
             $("#ddlAdvisor").html(procemessage).show();
             var url = "/ManageStudent/AddStudentForm/";
 
@@ -242,6 +242,31 @@
                         markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                     }
                     $("#ddlAdvisor").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("zıbam : " + reponse);
+                }
+            });
+
+        }
+    </script>
+    <script>
+        function GetSection(LectureID) {
+            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
+            $("#ddlSection").html(procemessage).show();
+            var url = "/ManageStudent/GetSectionsFromLectures/";
+
+            $.ajax({
+                url: url,
+                data: { LectureID: LectureID },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='' disabled hidden selected>Şube Seçiniz</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlSection").html(markup).show();
                 },
                 error: function (reponse) {
                     alert("zıbam : " + reponse);

@@ -163,6 +163,7 @@
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
+    <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -358,6 +359,7 @@
     <Content Include="Views\Home\Users.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\ManageStudent\Update.cshtml" />
+    <Content Include="Views\ManageStudent\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
