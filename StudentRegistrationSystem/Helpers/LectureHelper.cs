@@ -11,11 +11,11 @@ namespace StudentRegistrationSystem.Helpers
     {
         //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
         public StudentRegistrationContext _dbContext { get; set; }
-        public List<Lecture> GetLecture()
-        {
-            List<User> user = _dbContext.Users.ToList();
-            return _dbContext.Lectures.ToList();
-        }
+        //public List<Lecture> GetLecture()
+        //{
+        //    List<User> user = _dbContext.Users.
+        //    return _dbContext.Lectures.ToList();
+        //}
         public int AddLecture(Lecture lecture)
         {
             _dbContext.Lectures.Add(lecture);

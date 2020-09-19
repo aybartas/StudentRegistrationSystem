@@ -34,30 +34,24 @@ namespace StudentRegistrationSystem.Helpers
         }
         public List<Section> GetSyllabusSec(int UserID)
         {
-            var record = _dbContext..Find(Id, InstanceId).ToList();
-            User user = _dbContext.Users.Find(UserID);
-            user.
-            //List<Enrollment> enrollment = GetEnrollments(UserID);
-            //List<Section> sections = new List<Section>();
-            //foreach (Enrollment x in enrollment)
-            //{
-            //    if (x.Grade == null)
-            //    {
-            //        sections.Add(_dbContext.Sections.Find(x.SectionID));
-            //    }
-            //}
-            //return sections;
+
+            List<Enrollment> enrollment = GetEnrollments(UserID);
+            List<Section> sections = new List<Section>();
+            foreach (Enrollment x in enrollment)
+            {
+                if (x.Grade == null)
+                {
+                    sections.Add(_dbContext.Sections.Find(x.SectionID));
+                }
+            }
+            return sections;
         }
         public List<User> GetUsers()
         {
             return _dbContext.Users.ToList();
         }
-        public int AddUser(User user)
-        {
-            _dbContext.Users.Add(user);
-            _dbContext.SaveChanges();
-            return user.UserID;
-        }
+       
+
         public Lecturer GetAdvisor(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
@@ -68,7 +62,7 @@ namespace StudentRegistrationSystem.Helpers
         public List<Lecture> GetDeptAll(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
-            List<Lecture> lectures = lectureHelper.GetLecture();
+            List<Lecture> lectures = lectureHelper._dbContext.Lectures.ToList();
             List<Lecture> rlectures = new List<Lecture>();
             foreach (Lecture l in lectures)
             {
@@ -85,7 +79,7 @@ namespace StudentRegistrationSystem.Helpers
             return user;
         }
 
-        /*
+        
         public List<Lecture> GetTranscript(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -118,24 +112,6 @@ namespace StudentRegistrationSystem.Helpers
             return lectures;
         }
         
-
-        */
-
-        /*
-        public List<Section> GetSyllabusSec(int UserID)
-        {
-            List<Enrollment> enrollment = GetEnrollments(UserID);
-            List<Section> sections = new List<Section>();
-            foreach (Enrollment x in enrollment)
-            {
-                if (x.Grade == null)
-                {
-                    sections.Add(_dbContext.Sections.Find(x.SectionID));
-                }
-            }
-            return sections;
-        }
-
         public List<Enrollment> GetEnrollments(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
@@ -144,6 +120,6 @@ namespace StudentRegistrationSystem.Helpers
             return enrollments;
         }
 
-     */
+     
     }
 }
