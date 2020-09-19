@@ -27,7 +27,7 @@ namespace StudentRegistrationSystem.Models.Entity
         public int LectureID { get; set; }
         public Lecture Lecture { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
 
 
     }

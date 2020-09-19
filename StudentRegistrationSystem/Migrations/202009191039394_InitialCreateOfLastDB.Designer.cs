@@ -7,13 +7,13 @@ namespace StudentRegistrationSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialCreateOfLastDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreateOfLastDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009181935583_InitialCreate"; }
+            get { return "202009191039394_InitialCreateOfLastDB"; }
         }
         
         string IMigrationMetadata.Source

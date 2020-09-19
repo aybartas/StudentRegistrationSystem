@@ -145,13 +145,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009181935583_InitialCreate.cs" />
-    <Compile Include="Migrations\202009181935583_InitialCreate.designer.cs">
-      <DependentUpon>202009181935583_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202009191039394_InitialCreateOfLastDB.cs" />
+    <Compile Include="Migrations\202009191039394_InitialCreateOfLastDB.designer.cs">
+      <DependentUpon>202009191039394_InitialCreateOfLastDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
+    <Compile Include="Models\Entity\Enrollment.cs" />
     <Compile Include="Models\Entity\Lecture.cs" />
     <Compile Include="Models\Entity\Lecturer.cs" />
     <Compile Include="Models\Entity\Section.cs" />
@@ -365,8 +366,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009181935583_InitialCreate.resx">
-      <DependentUpon>202009181935583_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009191039394_InitialCreateOfLastDB.resx">
+      <DependentUpon>202009191039394_InitialCreateOfLastDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

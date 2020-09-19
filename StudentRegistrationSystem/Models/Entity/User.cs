@@ -30,7 +30,7 @@ namespace StudentRegistrationSystem.Models.Entity
         public int LecturerID { get; set; }
         public Lecturer Lecturer { get; set; }
 
-        public virtual ICollection<Section> Sections { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
 #nullable enable
         public string? DepartmentCode { get; set; }
 #nullable disable
