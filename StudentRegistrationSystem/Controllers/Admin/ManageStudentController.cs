@@ -7,6 +7,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace StudentRegistrationSystem.Controllers.Admin
 {
@@ -146,21 +147,24 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
 
 
-        public ActionResult DeleteSection(int UserID,int SectionID)
+        public ActionResult DeleteSection(int UserID,int ddlSection)
         {
             TempData["DeleteSectionSuccess"] = "Not Null";
 
-            enrollmentHelper.DeleteEnrollment(UserID, SectionID);
-           // studentHelper._dbContext.Sections.Remove();
-            return RedirectToAction("Courses", "ManageStudent");
+            enrollmentHelper.DeleteEnrollment(UserID, ddlSection);
+
+            //return RedirectToAction("Courses", "ManageStudent", new { UserID });
+            return RedirectToAction("Courses", new RouteValueDictionary(
+             new { controller = "ManageStudent", action = "Courses", UserID = UserID }));
         }
 
+
         [HttpPost]
-        public ActionResult AddSection(int UserID, int SectionID)
+        public ActionResult AddSection(int UserID)
         {
             TempData["DeleteSectionSuccess"] = "Not Null";
 
-            Enrollment enrollment = enrollmentHelper.GetEnrollment(UserID, SectionID);
+            //Enrollment enrollment = enrollmentHelper.GetEnrollment(UserID, SectionID);
 
             // kontrolleri yapılacak şimdilik deneme bu 
             enrollmentHelper.AddEnrollment(enrollment);

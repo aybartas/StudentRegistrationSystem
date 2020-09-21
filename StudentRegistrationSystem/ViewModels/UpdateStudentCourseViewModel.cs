@@ -10,7 +10,6 @@ namespace StudentRegistrationSystem.ViewModels
     {
         public User user { get; set; }
         public List<Section> sections { get; set; }
-        public int sectionNumber { get; set; }
         public int LectureID { get; set; }
         public List<Lecture> departmentalLectures { get; set; }
     

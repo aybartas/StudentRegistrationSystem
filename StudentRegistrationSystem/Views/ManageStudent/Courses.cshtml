@@ -105,7 +105,7 @@
             <div class="col mt-4">
 
 
-                @using (Html.BeginForm("AddSection","ManageStudent"))
+                @using (Html.BeginForm("AddSection","ManageStudent",new {UserID = Model.user.UserID}))
                 {
                     <div class="contact-form">
 
