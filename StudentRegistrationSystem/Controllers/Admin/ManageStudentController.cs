@@ -147,29 +147,58 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
 
 
-        public ActionResult DeleteSection(int UserID,int ddlSection)
+        public ActionResult DeleteSection(int UserID,int SectionID)
         {
             TempData["DeleteSectionSuccess"] = "Not Null";
 
-            enrollmentHelper.DeleteEnrollment(UserID, ddlSection);
+            enrollmentHelper.DeleteEnrollment(UserID, SectionID);
 
-            //return RedirectToAction("Courses", "ManageStudent", new { UserID });
-            return RedirectToAction("Courses", new RouteValueDictionary(
-             new { controller = "ManageStudent", action = "Courses", UserID = UserID }));
+            return RedirectToAction("Courses", "ManageStudent", new { UserID });
+           
         }
 
 
         [HttpPost]
-        public ActionResult AddSection(int UserID)
+        public ActionResult UpdatePassword(UpdateStudentCourseViewModel updateStudentCourseViewModel)
         {
-            TempData["DeleteSectionSuccess"] = "Not Null";
 
-            //Enrollment enrollment = enrollmentHelper.GetEnrollment(UserID, SectionID);
+            User user = studentHelper.FindUserByID(updateStudentCourseViewModel.user.UserID);
+            user.Password = updateStudentCourseViewModel.user.Password;
+
+            if (ModelState.IsValid)
+            {
+                TempData["PasswordSuccess"] = "Not Null";
+                studentHelper._dbContext.Users.AddOrUpdate<User>(user);
+                studentHelper._dbContext.SaveChanges();
+                return RedirectToAction("Update", "ManageStudent",new {user.UserID });
+            }
+            else
+            {
+                return RedirectToAction("Update", "ManageStudent",new { user.UserID});
+            }
+            
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult AddSection(int UserID, int ddlSection)
+        {
+           
+
+            Enrollment enrollment = new Enrollment();
+            enrollment.SectionID = ddlSection;
+            enrollment.UserID = UserID;
+            
 
             // kontrolleri yapılacak şimdilik deneme bu 
+
             enrollmentHelper.AddEnrollment(enrollment);
 
-            return RedirectToAction("Courses", "ManageStudent",new { UserID });
+            TempData["AddSectionSuccess"] = "Not Null";
+            return RedirectToAction("Courses", "ManageStudent", new { UserID });
         }
 
 

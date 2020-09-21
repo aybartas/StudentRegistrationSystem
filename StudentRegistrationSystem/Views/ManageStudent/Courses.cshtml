@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
-                                        <a href="@Url.Action("DeleteSection","ManageStudent",new{ sectionID = s.SectionID,UserID = Model.user.UserID})" class="btn btn-success btn-sm">Evet </a>
+                                        <a href="@Url.Action("DeleteSection","ManageStudent",new{UserID = Model.user.UserID , SectionID = s.SectionID})" class="btn btn-success btn-sm">Evet </a>
                                     </div>
                                 </div>
                             </div>
@@ -107,33 +107,37 @@
 
                 @using (Html.BeginForm("AddSection","ManageStudent",new {UserID = Model.user.UserID}))
                 {
-                    <div class="contact-form">
+                <div class="contact-form">
+                    @{
+                        Lecture dummyLecture = new Lecture();
+                        dummyLecture.Name = "Ders Seçiniz";
+                        Model.departmentalLectures.Insert(0, dummyLecture);
+                    }
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Ders</label>
+                        <div class="col-sm-8">
+                            @*@{List<Lecture> lectures = studentHelper.GetDeptAll(Model.UserID);*@
+                            @Html.DropDownListFor(m => m.LectureID, new SelectList(Model.departmentalLectures, "LectureID", "Name"), new { @class = "form-control", required = "required", @id = "ddlLecture", @onchange = "javascript:GetSection(this.value);" })
 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Ders</label>
-                            <div class="col-sm-8">
-                                @*@{List<Lecture> lectures = studentHelper.GetDeptAll(Model.UserID);*@
-                                @Html.DropDownListFor(m => m.LectureID, new SelectList(Model.departmentalLectures, "LectureID", "Name"), new { @class = "form-control", required = "required", @id = "ddlLecture", @onchange = "javascript:GetSection(this.value);" })
-
-                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Şube</label>
-                            <div class="col-sm-8">
-
-                                <select id="ddlSection" name="ddlSection" class="form-control" required="required">
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group ">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success ml-5  "> Ders Ekle</button>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Şube</label>
+                        <div class="col-sm-8">
+
+                            <select id="ddlSection" name="ddlSection" class="form-control" required="required">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success ml-5  "> Ders Ekle</button>
+                        </div>
+                    </div>
+
+                </div>
 
                 }
 

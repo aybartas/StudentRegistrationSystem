@@ -36,7 +36,8 @@ namespace StudentRegistrationSystem.Helpers
 
         public Enrollment GetEnrollment(int UserID, int SectionID)
         {
-            return  _dbContext.Enrollments.FirstOrDefault(m => m.UserID == UserID && m.SectionID == SectionID); ;
+            
+            return  _dbContext.Enrollments.FirstOrDefault(m => m.UserID == UserID && m.SectionID == SectionID);
         }
 
 
