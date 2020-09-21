@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\ManageLecturerController.cs" />
     <Compile Include="Controllers\Admin\ManageStudentController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\EnrollmentHelper.cs" />
@@ -150,6 +151,10 @@
     <Compile Include="Migrations\202009191039394_InitialCreateOfLastDB.designer.cs">
       <DependentUpon>202009191039394_InitialCreateOfLastDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009211958301_Emailcheck.cs" />
+    <Compile Include="Migrations\202009211958301_Emailcheck.designer.cs">
+      <DependentUpon>202009211958301_Emailcheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
@@ -161,6 +166,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddStudentViewModel.cs" />
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
+    <Compile Include="ViewModels\LecturerListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
@@ -362,6 +368,7 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\ManageStudent\Update.cshtml" />
     <Content Include="Views\ManageStudent\Courses.cshtml" />
+    <Content Include="Views\ManageLecturer\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -372,6 +379,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009191039394_InitialCreateOfLastDB.resx">
       <DependentUpon>202009191039394_InitialCreateOfLastDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009211958301_Emailcheck.resx">
+      <DependentUpon>202009211958301_Emailcheck.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

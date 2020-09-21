@@ -1,0 +1,197 @@
+﻿@model StudentRegistrationSystem.ViewModels.LecturerListViewModel
+@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Akademisyenler</h3>
+    @if (@TempData["LecturerAddSuccess"] == null)
+    {
+
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p>Akademisyen veritabanına eklendi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@TempData["LecturerDeleteSuccess"] == null)
+    {
+
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p>Akademisyen veritabanından silindi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <table class="table table-striped bg-light text-center">
+        <thead>
+            <tr class="text-muted">
+
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Bölüm</th>
+                <th>Telefon</th>
+                <th>Email</th>
+
+                <th><a class="btn btn-success btn-sm" href="#addLecturerForm">Akademisyen Ekle</a></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{DepartmentHelper departmentHelper = new DepartmentHelper();
+            }
+            @foreach (Lecturer l in Model.lecturerlist)
+            {
+                <tr>
+
+                    <th>@l.Name</th>
+                    <th>@l.LastName</th>
+                    <th>@departmentHelper.DepNameFinder(l.DepartmentCode)</th>
+                    <th>@l.Phone</th>
+                    <th>@l.Email</th>
+
+
+
+                    <th>
+                        <div class="bnt-group">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@l.LecturerID">
+                                Sil
+                            </button>
+                            <a href="@Url.Action("Update", "ManageLecturer", new { LecturerID = l.LecturerID })" class="btn btn-info btn-sm">Yönet</a>
+
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@l.LecturerID" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Seçilen akademisyeni silmek istediğinizden emin misiniz?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
+                                        <a href="@Url.Action("Delete", "ManageLecturer", new { LecturerID = l.LecturerID })" class="btn btn-success btn-sm">Evet </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <!-- end of pagination -->
+
+</div>
+
+
+    <div class="container">
+        <h3 class="text-muted text-center mb-3">Akademisyen Ekleme</h3>
+    </div>
+
+
+    <div class="container contact w-75">
+        <div class="row bg-light">
+
+            <div class="col-md-3" id="addLecturerForm">
+                <div class="contact-info mt-4 ml-3">
+                    <i class="fas fa-plus fa-3x" style="color: green;"></i>
+
+
+                </div>
+            </div>
+
+            <div class="col mt-4">
+
+
+                @using (Html.BeginForm("AddLecturer", "ManageLecturer"))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="contact-form">
+
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">İsim:</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(n => n.Name, new { @class = "form-control", placeholder = "İsim", required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Soyisim:</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(n => n.LastName, new { @class = "form-control", placeholder = "İsim", required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Telefon:</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(n => n.Phone, new { @class = "form-control", pattern = "[0-9]+", placeholder = "Telefon Numarası", required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Email:</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(n => n.Email, new { @class = "form-control", placeholder = "Email", required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bölüm</label>
+                        <div class="col-sm-8">
+
+                            @{
+                                Department dummyDepartment = new Department();
+                                dummyDepartment.Name = "Bölüm Seçiniz";
+                                Model.departmentList.Insert(0, dummyDepartment);
+                            }
+                            @Html.DropDownListFor(m => m.DepartmentCode, new SelectList(Model.departmentList, "DepartmentCode", "Name"), new { @class = "form-control", required = "required", @id = "ddlDepartment" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success ml-5  "> Akademisyen Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
