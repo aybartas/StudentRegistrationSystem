@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
-                                        <a href="@Url.Action("DeleteCourse","ManageStudent",new{ sectionID = s.SectionID})" class="btn btn-success btn-sm">Evet </a>
+                                        <a href="@Url.Action("DeleteSection","ManageStudent",new{ sectionID = s.SectionID,UserID = Model.user.UserID})" class="btn btn-success btn-sm">Evet </a>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +87,7 @@
 
 </div>
 
+
 <div class="container ">
     <h3 class="text-muted text-center mb-3">Öğrenciye Ders Ekle</h3>
 
@@ -104,7 +105,7 @@
             <div class="col mt-4">
 
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("AddSection","ManageStudent"))
                 {
                     <div class="contact-form">
 

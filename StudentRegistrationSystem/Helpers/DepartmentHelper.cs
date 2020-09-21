@@ -21,16 +21,18 @@ namespace StudentRegistrationSystem.Helpers
         {
             return _dbContext.Departments.ToList();
         }
-        public string AddDepartment(Department department)
+        public void AddDepartment(Department department)
         {
             _dbContext.Departments.Add(department);
             _dbContext.SaveChanges();
-            return department.DepartmentCode;
+            
         }
         public string DepNameFinder(string DepartmentCode)
         {
             Department dep = _dbContext.Departments.Find(DepartmentCode);
             return dep.Name;
         }
+
+
     }
 }

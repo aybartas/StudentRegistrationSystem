@@ -16,6 +16,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         DepartmentHelper departmentHelper = new DepartmentHelper();
         LecturerHelper lecturerHelper = new LecturerHelper();
         SectionHelper sectionHelper = new SectionHelper();
+        EnrollmentHelper enrollmentHelper = new EnrollmentHelper();
 
         // GET: ManageStudent
         public ActionResult List()
@@ -23,7 +24,6 @@ namespace StudentRegistrationSystem.Controllers.Admin
             List<User> students = studentHelper.GetOnlyStudents();
             List<StudentRecordViewModel> studentRecords = new List<StudentRecordViewModel>();
           
-
             foreach(User user in students)
             {
 
@@ -32,7 +32,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     user.Name,
                     user.LastName,
                     user.EducationType,
-                    departmentHelper.DepNameFinder(user.DepartmentCode),
+                    departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
                     studentHelper.GetAdvisor(user.UserID).Name +" "+ studentHelper.GetAdvisor(user.UserID).LastName);
 
                 studentRecords.Add(studentRecord);
@@ -57,7 +57,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         public ActionResult AddStudentForm(string departmentCode)
         {
 
-            List<Lecturer> templecturers = lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
+            List<Lecturer> templecturers = lecturerHelper.GetLecturers().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
 
             List<DropdownAdvisorViewModel> dropdownAdvisors = new List<DropdownAdvisorViewModel>();
 
@@ -109,8 +109,8 @@ namespace StudentRegistrationSystem.Controllers.Admin
         
         public ActionResult Update(int UserID)
         {
-            User user = studentHelper.FindUserByID(UserID);
-            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user, lecturerHelper.GetLecturer().Where(x => x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
+            User user = studentHelper._dbContext.Users.Find(UserID);
+            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user, lecturerHelper.GetLecturers().Where(x => x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
             return View(updateStudentViewModel);
         }
         [HttpPost]
@@ -137,19 +137,38 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
         public ActionResult Courses(int UserID)
         {
-            UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel();
-           updateStudentCourseViewModel.user = studentHelper.FindUserByID(UserID);
-           updateStudentCourseViewModel.departmentalLectures= studentHelper.GetDeptAll(UserID);
-            updateStudentCourseViewModel.sections = studentHelper.GetSyllabusSec(UserID);
+            
+           UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel();
+           updateStudentCourseViewModel.user = studentHelper._dbContext.Users.Find(UserID);
+           updateStudentCourseViewModel.departmentalLectures= studentHelper.GetAllLecturesOfUsersDepartment(UserID);
+           updateStudentCourseViewModel.sections = studentHelper.GetSyllabusSec(UserID);
             return View(updateStudentCourseViewModel);
         }
-        public ActionResult DeleteSection(int sectionID)
+
+
+        public ActionResult DeleteSection(int UserID,int SectionID)
         {
             TempData["DeleteSectionSuccess"] = "Not Null";
-            studentHelper._dbContext.Sections.Remove(studentHelper._dbContext.Sections.Find(sectionID));
-            studentHelper._dbContext.SaveChanges();
+
+            enrollmentHelper.DeleteEnrollment(UserID, SectionID);
+           // studentHelper._dbContext.Sections.Remove();
             return RedirectToAction("Courses", "ManageStudent");
         }
+
+        [HttpPost]
+        public ActionResult AddSection(int UserID, int SectionID)
+        {
+            TempData["DeleteSectionSuccess"] = "Not Null";
+
+            Enrollment enrollment = enrollmentHelper.GetEnrollment(UserID, SectionID);
+
+            // kontrolleri yapılacak şimdilik deneme bu 
+            enrollmentHelper.AddEnrollment(enrollment);
+
+            return RedirectToAction("Courses", "ManageStudent",new { UserID });
+        }
+
+
         [HttpPost]
         public ActionResult GetSectionsFromLectures(int LectureID)
         {
@@ -159,5 +178,6 @@ namespace StudentRegistrationSystem.Controllers.Admin
             SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
             return Json(sections);
         }
+
     }
 }

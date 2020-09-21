@@ -21,15 +21,9 @@ namespace StudentRegistrationSystem.Helpers
 
         public List<User> GetOnlyStudents()
         {
-            List<User> students = new List<User>();
-            List<User> all = GetUsers();
-            foreach(User u in all)
-            {
-                if (u.Role.Equals("U"))
-                {
-                    students.Add(u);
-                }
-            }
+            
+            List<User> students = _dbContext.Users.Where(m => m.Role.Equals("U")).ToList();
+            
             return students;
         }
         public List<Section> GetSyllabusSec(int UserID)
@@ -46,10 +40,7 @@ namespace StudentRegistrationSystem.Helpers
             }
             return sections;
         }
-        public List<User> GetUsers()
-        {
-            return _dbContext.Users.ToList();
-        }
+       
        
 
         public Lecturer GetAdvisor(int UserID)
@@ -59,10 +50,12 @@ namespace StudentRegistrationSystem.Helpers
             Lecturer lecturer = _dbContext.Lecturers.Find(lecID);
             return lecturer;
         }
-        public List<Lecture> GetDeptAll(int UserID)
+
+        // get all lectures from department of the user
+        public List<Lecture> GetAllLecturesOfUsersDepartment(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
-            List<Lecture> lectures = lectureHelper._dbContext.Lectures.ToList();
+            List<Lecture> lectures = _dbContext.Lectures.ToList();
             List<Lecture> rlectures = new List<Lecture>();
             foreach (Lecture l in lectures)
             {
@@ -79,7 +72,7 @@ namespace StudentRegistrationSystem.Helpers
             return user;
         }
 
-        
+        // get previous lectures of student
         public List<Lecture> GetTranscript(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);
@@ -96,7 +89,7 @@ namespace StudentRegistrationSystem.Helpers
         }
 
 
-
+        // get current lectures of given student
          public List<Lecture> GetSyllabus(int UserID)
         {
             List<Enrollment> enrollment = GetEnrollments(UserID);

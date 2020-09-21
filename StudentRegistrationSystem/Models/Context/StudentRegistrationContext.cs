@@ -14,7 +14,7 @@ namespace StudentRegistrationSystem.Models.Context
         public StudentRegistrationContext() : base("StudentRegistrationContext")
         {
 
-            this.Configuration.LazyLoadingEnabled = true;
+            Configuration.LazyLoadingEnabled = true;
         }
         
         public DbSet<Department> Departments { get; set; }

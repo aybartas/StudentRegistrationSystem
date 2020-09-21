@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\ManageStudentController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
+    <Compile Include="Helpers\EnrollmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />
     <Compile Include="Helpers\LecturerHelper.cs" />
     <Compile Include="Helpers\SectionHelper.cs" />

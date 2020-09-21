@@ -11,20 +11,26 @@ namespace StudentRegistrationSystem.Helpers
     {
         //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
         public StudentRegistrationContext _dbContext { get; set; }
-        public List<Section> GetSection()
+
+        public SectionHelper()
+        {
+            _dbContext = new StudentRegistrationContext();
+        }
+
+        public List<Section> GetAllSections()
         {
             return _dbContext.Sections.ToList();
         }
-        public int AddSection(Section section)
+        public void AddSection(Section section)
         {
             _dbContext.Sections.Add(section);
             _dbContext.SaveChanges();
-            return section.SectionID;
+            
         }
         public List<Section> GetSectionsOfLecture(int LectureID)
         {
             List<Section> sections = new List<Section>();
-            List<Section> allsections = GetSection();
+            List<Section> allsections = GetAllSections();
             foreach (Section s in allsections)
             {
                 if (s.LectureID == LectureID)
