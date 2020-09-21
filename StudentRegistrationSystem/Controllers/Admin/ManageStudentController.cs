@@ -138,11 +138,13 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
         public ActionResult Courses(int UserID)
         {
-            
-           UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel();
-           updateStudentCourseViewModel.user = studentHelper._dbContext.Users.Find(UserID);
-           updateStudentCourseViewModel.departmentalLectures= studentHelper.GetAllLecturesOfUsersDepartment(UserID);
-           updateStudentCourseViewModel.sections = studentHelper.GetSyllabusSec(UserID);
+
+            UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel
+            {
+                user = studentHelper._dbContext.Users.Find(UserID),
+                departmentalLectures = studentHelper.GetAllLecturesOfUsersDepartment(UserID),
+                sections = studentHelper.GetSyllabusSec(UserID)
+            };
             return View(updateStudentCourseViewModel);
         }
 
@@ -159,11 +161,11 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
 
         [HttpPost]
-        public ActionResult UpdatePassword(UpdateStudentCourseViewModel updateStudentCourseViewModel)
+        public ActionResult UpdatePassword(UpdateStudentViewModel updateStudentViewModel)
         {
 
-            User user = studentHelper.FindUserByID(updateStudentCourseViewModel.user.UserID);
-            user.Password = updateStudentCourseViewModel.user.Password;
+            User user = studentHelper.FindUserByID(updateStudentViewModel.user.UserID);
+            user.Password = updateStudentViewModel.user.Password;
 
             if (ModelState.IsValid)
             {
@@ -186,12 +188,14 @@ namespace StudentRegistrationSystem.Controllers.Admin
         [HttpPost]
         public ActionResult AddSection(int UserID, int ddlSection)
         {
-           
 
-            Enrollment enrollment = new Enrollment();
-            enrollment.SectionID = ddlSection;
-            enrollment.UserID = UserID;
-            
+
+            Enrollment enrollment = new Enrollment
+            {
+                SectionID = ddlSection,
+                UserID = UserID
+            };
+
 
             // kontrolleri yapılacak şimdilik deneme bu 
 

@@ -163,6 +163,7 @@
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
+    <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
   </ItemGroup>

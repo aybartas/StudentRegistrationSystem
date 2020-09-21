@@ -17,6 +17,7 @@
             </div>
         </div>
         <div class="col-md-5 border-right">
+            
             @{Model.userID = Model.user.UserID;}
             @using (Html.BeginForm())
             {
@@ -117,7 +118,7 @@
             <div class="p-3 py-5">
                 <div class="row justify-content-center">
 
-                    <form>
+                    
                         <div class="card  rounded-0">
                             <div class="card-header p-0 bg-dark ">
                                 <div class=" text-white text-center py-2">
@@ -128,19 +129,20 @@
 
                             @using (Html.BeginForm("UpdatePassword", "ManageStudent", FormMethod.Post))
                             {
-
+                                
+                                
                                 <div class="card-body p-3">
 
                                     <!--Body-->
 
-
+                                    
                                     <div class="form-group">
                                         <h6 class="text-center">Yeni Parola</h6>
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
                                             </div>
-                                            @Html.PasswordFor(n=>n.Password, new { @class = "form-control", placeholder = "Yeni Parola", required = "required", @id = "password" })
+                                            @Html.PasswordFor(n => n.Password, new { @class = "form-control", placeholder = "Yeni Parola", required = "required", @id = "password" })
                                         </div>
                                     </div>
 
@@ -161,6 +163,8 @@
                                         <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
                                     </div>
                                 </div>
+                                User a = Model.user;
+                                
 
                             }
 
@@ -169,9 +173,10 @@
                         <br />
                         <br />
                         <br />
+                    
                         <a href="@Url.Action("Courses","ManageStudent",new{ UserID = Model.userID})" class="btn btn-block btn-info">Alınan Dersler</a>
                         @*<input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">*@
-                    </form>
+                    
 
 
                 </div>
