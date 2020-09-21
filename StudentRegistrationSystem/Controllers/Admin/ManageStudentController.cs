@@ -142,7 +142,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
             UpdateStudentCourseViewModel updateStudentCourseViewModel = new UpdateStudentCourseViewModel
             {
                 user = studentHelper._dbContext.Users.Find(UserID),
-                departmentalLectures = studentHelper.GetAllLecturesOfUsersDepartment(UserID),
+                departmentalLectures = studentHelper.GetAllLecturesOfUsersDepartmentDependingOnEducationType(UserID),
                 sections = studentHelper.GetSyllabusSec(UserID)
             };
             return View(updateStudentCourseViewModel);

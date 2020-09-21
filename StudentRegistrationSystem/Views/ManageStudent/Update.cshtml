@@ -4,21 +4,36 @@
     ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+@if (@TempData["PasswordSuccess"] == null)
+{
 
-<div class="container rounded bg-white mt-5 ">
+}
+else
+{
+    <div class="container rounded mt-1 alert alert-success alert-dismissible fade show" role="alert">
+        <h5 class="alert-heading"><b>Başarılı!</b></h5>
+        <p>Öğrencinin parolası resetlendi.</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<div class="container rounded bg-white mt-3 ">
     <div class="row">
+        @{Model.userID = Model.user.UserID;}
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img src="https://media.istockphoto.com/vectors/student-icon-isolated-vector-id578555190?k=6&m=578555190&s=170667a&w=0&h=JzLVMnG_ioZRjXQ5zFuQsAL2UzBSA7tfQ2HYTkz4jrA="
                      alt="Admin" class="rounded-circle" style="width: 80%;">
                 <span class="font-weight-bold">@Model.user.Name @Model.user.LastName</span>
                 <span class="text-black-50">Öğrenci</span>
-                <span> </span>
+                <br />
+                <span><a href="@Url.Action("Courses","ManageStudent",new{ UserID = Model.userID})" class="btn btn-block btn-info">Alınan Dersler</a></span>
             </div>
         </div>
         <div class="col-md-5 border-right">
-            
-            @{Model.userID = Model.user.UserID;}
+
+
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -118,65 +133,60 @@
             <div class="p-3 py-5">
                 <div class="row justify-content-center">
 
-                    
-                        <div class="card  rounded-0">
-                            <div class="card-header p-0 bg-dark ">
-                                <div class=" text-white text-center py-2">
-                                    <h3><i class="fas fa-pen-square"></i> Güvenlik</h3>
-                                    <h8>Öğrenci Parolası Değiştir </h8>
+
+                    <div class="card  rounded-0">
+                        <div class="card-header p-0 bg-dark ">
+                            <div class=" text-white text-center py-2">
+                                <h3><i class="fas fa-pen-square"></i> Güvenlik</h3>
+                                <h8>Öğrenci Parolası Değiştir </h8>
+                            </div>
+                        </div>
+
+                        @using (Html.BeginForm("UpdatePassword", "ManageStudent", new { UserID = Model.user.UserID }, FormMethod.Post))
+                        {
+
+
+                            <div class="card-body p-3">
+
+                                <!--Body-->
+
+
+                                <div class="form-group">
+                                    <h6 class="text-center">Yeni Parola</h6>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                        </div>
+                                        @Html.PasswordFor(n => n.Password, new { @class = "form-control", placeholder = "Yeni Parola", required = "required", @id = "password" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h6 class="text-center">Yeni Parola Doğrula</h6>
+                                    <div class="input-group mb-2">
+
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                        </div>
+
+                                        <input type="password" class="form-control" id="confirm_password"
+                                               placeholder="Yeni Parola Doğrula" required>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="text-center">
+                                    <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
                                 </div>
                             </div>
 
-                            @using (Html.BeginForm("UpdatePassword", "ManageStudent",new { UserID = Model.user.UserID}, FormMethod.Post))
-                            {
 
 
-                                <div class="card-body p-3">
+                        }
 
-                                    <!--Body-->
+                    </div>
+                    @*<a href="@Url.Action("Courses","ManageStudent",new{ UserID = Model.userID})" class="btn btn-block btn-info">Alınan Dersler</a>*@
+                    @*<input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">*@
 
-                                    
-                                    <div class="form-group">
-                                        <h6 class="text-center">Yeni Parola</h6>
-                                        <div class="input-group mb-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
-                                            </div>
-                                            @Html.PasswordFor(n => n.Password, new { @class = "form-control", placeholder = "Yeni Parola", required = "required", @id = "password" })
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <h6 class="text-center">Yeni Parola Doğrula</h6>
-                                        <div class="input-group mb-2">
-
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
-                                            </div>
-
-                                            <input type="password" class="form-control" id="confirm_password"
-                                                   placeholder="Yeni Parola Doğrula" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
-                                    </div>
-                                </div>
-                                
-                                
-
-                            }
-
-                        </div>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                    
-                        <a href="@Url.Action("Courses","ManageStudent",new{ UserID = Model.userID})" class="btn btn-block btn-info">Alınan Dersler</a>
-                        @*<input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">*@
-                    
 
 
                 </div>
@@ -204,7 +214,7 @@
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
 
-       
+
     </script>
 
 }

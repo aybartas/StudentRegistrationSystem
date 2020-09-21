@@ -66,6 +66,21 @@ namespace StudentRegistrationSystem.Helpers
             }
             return rlectures;
         }
+        // get all lectures from department of the user depending on user's education type
+        public List<Lecture> GetAllLecturesOfUsersDepartmentDependingOnEducationType(int UserID)
+        {
+            User user = _dbContext.Users.Find(UserID);
+            List<Lecture> lectures = _dbContext.Lectures.ToList();
+            List<Lecture> rlectures = new List<Lecture>();
+            foreach (Lecture l in lectures)
+            {
+                if (l.DepartmentCode == user.DepartmentCode && l.EducationType == user.EducationType)
+                {
+                    rlectures.Add(l);
+                }
+            }
+            return rlectures;
+        }
         public User FindUserByID(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
