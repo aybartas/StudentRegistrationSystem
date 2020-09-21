@@ -161,11 +161,11 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
 
         [HttpPost]
-        public ActionResult UpdatePassword(UpdateStudentViewModel updateStudentViewModel)
+        public ActionResult UpdatePassword(UpdateStudentViewModel updateStudentViewModel,int UserID)
         {
 
-            User user = studentHelper.FindUserByID(updateStudentViewModel.user.UserID);
-            user.Password = updateStudentViewModel.user.Password;
+            User user = studentHelper.FindUserByID(UserID);
+            user.Password = updateStudentViewModel.Password;
 
             if (ModelState.IsValid)
             {
