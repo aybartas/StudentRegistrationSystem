@@ -1,0 +1,196 @@
+﻿@model StudentRegistrationSystem.ViewModels.UpdateLecturerViewModel
+@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "Courses";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container ">
+    <h3 class="text-muted text-center mb-3">Verdiği Dersler</h3>
+    <table class="table table-striped bg-light text-center">
+        <thead>
+            <tr class="text-muted">
+                <th> Ders Kodu</th>
+                <th>Ders Adı</th>
+                <th>Şubesi</th>
+                <th>Gün</th>
+                <th>Başlangıç</th>
+                <th>Bitiş</th>
+                <th>Bina</th>
+                <th>Sınıf</th>
+
+                <th><a class="btn btn-success btn-sm" href="#addCourseForm">Ders Ekle</a></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{ LectureHelper lectureHelper = new LectureHelper();}
+            @foreach (Section s in Model.sectionsGiven)
+            {
+
+
+                <tr>
+                    <th>@lectureHelper._dbContext.Lectures.Find(s.LectureID).LectureCode</th>
+                    <th>@lectureHelper._dbContext.Lectures.Find(s.LectureID).Name</th>
+                    <th>@s.Number</th>
+                    <th>@s.Day</th>
+                    <th>@s.Time</th>
+                    <th>@s.EndTime</th>
+                    <th>@s.Building</th>
+                    <th>@s.Classroom</th>
+                    <th>
+                        <div class="bnt-group">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@s.SectionID">
+                                Sil
+                            </button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@s.SectionID" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
+                                        <a href="@Url.Action("DeleteSection","ManageLecturer",new{LecturerID = Model.lecturer.LecturerID , SectionID = s.SectionID})" class="btn btn-success btn-sm">Evet </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <!-- end of pagination -->
+
+</div>
+<div class="container ">
+    <h3 class="text-muted text-center mb-3">Akademisyene Ders Ekle</h3>
+
+    <div class="container contact w-75">
+        <div class="row bg-light">
+
+            <div class="col-md-3" id="addCourseForm">
+                <div class="contact-info mt-4 ml-3">
+                    <i class="fas fa-plus fa-3x" style="color: green;"></i>
+
+
+                </div>
+            </div>
+
+            <div class="col mt-4">
+
+                @using (Html.BeginForm("AddSection", "ManageLecturer", new { LecturerID = Model.lecturer.LecturerID }))
+                {
+                    <div class="contact-form">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Öğretim Tipi</label>
+                            <div class="col-sm-8">
+                                @{
+                                    List<SelectListItem> items = new List<SelectListItem>();
+
+                                    items.Add(new SelectListItem { Text = "Öğretim Tipini Seçiniz", Value = "0", Selected = true, Disabled = true });
+
+                                    items.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim" });
+
+                                    items.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim" });
+                                }
+                                @Html.DropDownListFor(m => m.educationType, items, new { @class = "form-control", required = "required", @id = "ddlLecture", @onchange = "javascript:GetSection(this.value);" })
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Ders Adı</label>
+                            <div class="col-sm-8">
+                                @Html.DropDownListFor(m => m.LectureID, new SelectList(Model.allDepartmentalLectures, "LectureID", "Name"), new { @class = "form-control", required = "required", @id = "ddlLecture2", @onchange = "javascript:GetSection2(this.value);" })
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Şube</label>
+                            <div class="col-sm-8">
+
+                                <select id="ddlSection" name="ddlSection" class="form-control" required="required">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success ml-5  "> Ders Ekle</button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section Javascript {
+    <script src="~/Content/jquery/ajaxuncompressed.js"></script>
+    <script>
+        function GetSection2(LectureID) {
+            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
+            $("#ddlSection2").html(procemessage).show();
+            var url = "/ManageLecturer/GetSectionsFromLecturesForLecturer/";
+
+            $.ajax({
+                url: url,
+                data: { LectureID: LectureID },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='' disabled hidden selected>Şube Seçiniz</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlSection2").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("zıbam2 : " + reponse);
+                }
+            });
+
+        }
+    </script>
+
+
+}
+
+

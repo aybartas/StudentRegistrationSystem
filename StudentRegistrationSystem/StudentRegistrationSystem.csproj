@@ -169,6 +169,7 @@
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
+    <Compile Include="ViewModels\UpdateLecturerViewModel.cs" />
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
@@ -369,6 +370,9 @@
     <Content Include="Views\ManageStudent\Update.cshtml" />
     <Content Include="Views\ManageStudent\Courses.cshtml" />
     <Content Include="Views\ManageLecturer\List.cshtml" />
+    <Content Include="Views\ManageLecturer\Update.cshtml" />
+    <Content Include="Views\ManageLecturer\Form.cshtml" />
+    <Content Include="Views\ManageLecturer\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -33,5 +33,19 @@ namespace StudentRegistrationSystem.Helpers
             Lecturer lecturer = _dbContext.Lecturers.Find(section.LecturerID);
             return lecturer;
         }
+        public List<Lecture> GetAllLecturesOfLecturersDepartment(int LecturerID)
+        {
+            Lecturer lecturer = _dbContext.Lecturers.Find(LecturerID);
+            List<Lecture> lectures = _dbContext.Lectures.ToList();
+            List<Lecture> rlectures = new List<Lecture>();
+            foreach (Lecture l in lectures)
+            {
+                if (l.DepartmentCode == lecturer.DepartmentCode)
+                {
+                    rlectures.Add(l);
+                }
+            }
+            return rlectures;
+        }
     }
 }

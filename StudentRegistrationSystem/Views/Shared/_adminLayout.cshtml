@@ -40,7 +40,7 @@
                             <li class="nav-item"><a href="@Url.Action("Admin","Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
                             <li class="nav-item"><a href="@Url.Action("List","ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
-                            <li class="nav-item"><a href="@Url.Action("List","ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğretmenler</a></li>
+                            <li class="nav-item"><a href="@Url.Action("List","ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
                         </ul>
                     </div>
@@ -270,6 +270,31 @@
                 },
                 error: function (reponse) {
                     alert("zıbam : " + reponse);
+                }
+            });
+
+        }
+    </script>
+    <script>
+        function GetSection2(LectureID) {
+            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
+            $("#ddlSection2").html(procemessage).show();
+            var url = "/ManageLecturer/GetSectionsFromLecturesForLecturer/";
+
+            $.ajax({
+                url: url,
+                data: { LectureID: LectureID },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='' disabled hidden selected>Şube Seçiniz</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlSection2").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("zıbam2 : " + reponse);
                 }
             });
 
