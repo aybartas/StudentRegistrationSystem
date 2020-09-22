@@ -40,5 +40,17 @@ namespace StudentRegistrationSystem.Helpers
             }
             return sections;
         }
+
+        public List<Section> GetSectionsOfEnrollemnts(List<Enrollment> enrollments)
+        {
+            List<Section> sections = new List<Section>();
+            foreach(Enrollment enrollment in enrollments)
+            {
+                Section section = _dbContext.Sections.Find(enrollment.SectionID);
+                sections.Add(section);
+            }
+            return sections;
+        }
+     
     }
 }

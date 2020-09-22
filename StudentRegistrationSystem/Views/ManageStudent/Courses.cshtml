@@ -22,20 +22,55 @@
             </button>
         </div>
     }
-    @if (@TempData["AddSectionSuccess"] == null)
-    {
 
-    }
-    else
+    @if (@TempData["EnrollmentStatus"] == null)
     {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h5 class="alert-heading"><b>Başarılı!</b></h5>
-            <p>Ders başarıyla eklendi.</p>
+        
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("SameSectionSameNumber"))
+    {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+        <p>Seçilen ders ve şube öğrenciye zaten tanımlanmış</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("DifferentSectionSameLesson"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+            <br />
+            <p>Seçilen dersin başka bir şubesi öğrenciye zaten tanımlanmış</p>
+            <p>Lütfen önce tanımlı olan şubeyi silerek tekrar deneyiniz</p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     }
+    else if (@TempData["EnrollmentStatus"].Equals("DifferentLessonSameTime"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+            <p>Seçilen şube öğrencinin aldığı diğer şubelerle çakışıyor</p>
+            <p>Eş zamanlı ders eklenemez</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p>Şube öğrenciye başarıyla eklendi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
     <table class="table table-striped bg-light text-center">
         <thead>
             <tr class="text-muted">

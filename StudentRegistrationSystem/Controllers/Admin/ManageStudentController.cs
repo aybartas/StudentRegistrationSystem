@@ -182,27 +182,69 @@ namespace StudentRegistrationSystem.Controllers.Admin
         }
 
 
-
-
-
         [HttpPost]
         public ActionResult AddSection(int UserID, int ddlSection)
         {
 
-
+            // new enrollment
             Enrollment enrollment = new Enrollment
             {
                 SectionID = ddlSection,
                 UserID = UserID
             };
 
+            Section currentSelectedSection = sectionHelper._dbContext.Sections.Find(enrollment.SectionID);
 
-            // kontrolleri yapılacak şimdilik deneme bu 
+            List<Enrollment> currentEnrollmentsOfStudent = enrollmentHelper.GetEnrollments().Where(m => m.UserID == UserID).ToList();
+            List<Section> currentSectionsOfStudent = sectionHelper.GetSectionsOfEnrollemnts(currentEnrollmentsOfStudent);
+
+            foreach(Enrollment e in currentEnrollmentsOfStudent)
+            {
+                if(e.SectionID == enrollment.SectionID)
+                {
+                    // aynı ders aynı şube
+                    TempData["EnrollmentStatus"] = "SameSectionSameNumber";
+                    return RedirectToAction("Courses", "ManageStudent", new { UserID });
+                }
+
+            }
+
+            foreach(Section section in currentSectionsOfStudent)
+            {
+                if(section.LectureID == currentSelectedSection.LectureID)
+                {
+                    // ders zaten seçilmiş
+                    TempData["EnrollmentStatus"] = "DifferentSectionSameLesson";
+                    return RedirectToAction("Courses", "ManageStudent", new { UserID });
+                }
+            }
+
+            // derslerde çakışma var mı ?
+            // tüm enrollmentların sectionını al , sectionından gün ve başlangıç - bitiş zamanlarına eriş, birinin başlangıç zamanı diğerinin içinde mi kontrol et 
+            
+            foreach(Section tempSection in currentSectionsOfStudent)
+            {
+                if (tempSection.Day.Equals(currentSelectedSection.Day))
+                {
+                    double startTimeOfExistingSection = Convert.ToDouble(tempSection.Time.Replace(".", ","));
+                    double endTimeOfExistingSection = Convert.ToDouble(tempSection.EndTime.Replace(".", ","));
+                    double startTimeOfNewSection = Convert.ToDouble(currentSelectedSection.Time.Replace(".", ","));
+                    double endTimeOfNewSection = Convert.ToDouble(currentSelectedSection.EndTime.Replace(".",","));
+                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1 ) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                    {
+                        // sıkıntı var çakışma oldu
+
+                        TempData["EnrollmentStatus"] = "DifferentLessonSameTime";
+                        return RedirectToAction("Courses", "ManageStudent", new { UserID });
+
+                    }       
+                }        
+            }
 
             enrollmentHelper.AddEnrollment(enrollment);
-
-            TempData["AddSectionSuccess"] = "Not Null";
+            TempData["EnrollmentStatus"] = "EnrollmentSuccessful";
             return RedirectToAction("Courses", "ManageStudent", new { UserID });
+                
         }
 
 
