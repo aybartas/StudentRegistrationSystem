@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin\ManageLecturerController.cs" />
     <Compile Include="Controllers\Admin\ManageStudentController.cs" />
+    <Compile Include="Controllers\Admin\ManageLectureController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\EnrollmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
+	<Compile Include="ViewModels\ListLecturesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -373,6 +375,9 @@
     <Content Include="Views\ManageLecturer\Update.cshtml" />
     <Content Include="Views\ManageLecturer\Form.cshtml" />
     <Content Include="Views\ManageLecturer\Courses.cshtml" />
+	<Content Include="Views\ManageLecture\List.cshtml" />
+    <Content Include="Views\ManageLecture\AddLecture.cshtml" />
+	<Content Include="Views\ManageLecture\AddSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
