@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/Content/layoutstyle.css">
+   
+    <link href="~/Content/jquery/DataTables/datatables.css" rel="stylesheet" />
+
 
     <title>Yönetici Paneli</title>
 </head>
@@ -37,7 +40,7 @@
 
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
-                            <li class="nav-item"><a href="@Url.Action("Admin","Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                            <li class="nav-item "><a href="@Url.Action("Admin","Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
                             <li class="nav-item"><a href="@Url.Action("List","ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                             <li class="nav-item"><a href="@Url.Action("List","ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
@@ -218,13 +221,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script>
-        //$(document).ready(function () {
-        //    $('[data-toggle="tooltip"]').tooltip();
-        //});
-    </script>
+    
     @RenderSection("Javascript", false)
     <script src="~/Content/jquery/ajaxuncompressed.js"></script>
+    <script src="~/Content/jquery/DataTables/datatables.js"></script>
     <script>
         function GetAdvisor(departmentCode) {
             var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
@@ -251,6 +251,13 @@
         }
     </script>
     <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+
+    </script>
+
+    <script>
         function GetSection(LectureID) {
             var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
             $("#ddlSection").html(procemessage).show();
@@ -274,7 +281,11 @@
             });
 
         }
+
     </script>
+
+
+
 </body>
 </html>
 

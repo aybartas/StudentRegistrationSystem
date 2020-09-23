@@ -34,5 +34,10 @@ namespace StudentRegistrationSystem.Helpers
             }
             return lectures;
         }
+        public List<Lecture> GetLectures()
+        {
+            return _dbContext.Lectures.ToList();
+        }
+
     }
 }
