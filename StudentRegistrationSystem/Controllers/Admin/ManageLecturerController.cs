@@ -16,6 +16,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         LecturerHelper lecturerHelper = new LecturerHelper();
         DepartmentHelper departmentHelper = new DepartmentHelper();
         SectionHelper sectionHelper = new SectionHelper();
+        StudentHelper studentHelper = new StudentHelper();
         public ActionResult List()
         {
             LecturerListViewModel lecturerListViewModel = new LecturerListViewModel();
@@ -58,6 +59,14 @@ namespace StudentRegistrationSystem.Controllers.Admin
         public ActionResult Delete(int LecturerID)
         {
             TempData["LecturerDeleteSuccess"] = "Not Null";
+            foreach(User s in studentHelper.GetOnlyStudents())
+            {
+                if(s.LecturerID == LecturerID)
+                {
+                    TempData["DeleteStatus"] = "Lecturer is Advisor";
+                    s.LecturerID = 0;
+                }
+            }
             lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
             lecturerHelper._dbContext.SaveChanges();
             return RedirectToAction("List", "ManageLecturer");

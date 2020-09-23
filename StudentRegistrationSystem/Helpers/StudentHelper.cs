@@ -46,7 +46,7 @@ namespace StudentRegistrationSystem.Helpers
         public Lecturer GetAdvisor(int UserID)
         {
             User user = _dbContext.Users.Find(UserID);
-            int lecID = user.LecturerID;
+            int? lecID = user.LecturerID;
             Lecturer lecturer = _dbContext.Lecturers.Find(lecID);
             return lecturer;
         }

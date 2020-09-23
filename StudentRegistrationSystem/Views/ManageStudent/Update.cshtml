@@ -104,6 +104,7 @@ else
                         <div class="col-md-12">
                             <label class="labels">Danışman:</label>
                             @{ List<SelectListItem> advisors = new List<SelectListItem>();}
+                            @if(Model.user.)
                             @foreach (Lecturer l in Model.departmentLecturers)
                             {
                                 if (Model.user.LecturerID == l.LecturerID)

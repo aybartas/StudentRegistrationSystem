@@ -27,7 +27,9 @@ namespace StudentRegistrationSystem.Models.Entity
         public string Password { get; set; }
         public string Role { get; set; }
 
-        public int LecturerID { get; set; }
+#nullable enable
+        public int? LecturerID { get; set; }
+#nullable disable
         public Lecturer Lecturer { get; set; }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }

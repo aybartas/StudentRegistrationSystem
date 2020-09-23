@@ -27,16 +27,30 @@ namespace StudentRegistrationSystem.Controllers.Admin
           
             foreach(User user in students)
             {
-
-                StudentRecordViewModel studentRecord = new StudentRecordViewModel(
+                if (user.LecturerID == null)
+                {
+                    StudentRecordViewModel studentRecord = new StudentRecordViewModel(
                     user.UserID,
                     user.Name,
                     user.LastName,
                     user.EducationType,
                     departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
-                    studentHelper.GetAdvisor(user.UserID).Name +" "+ studentHelper.GetAdvisor(user.UserID).LastName);
+                    "Öğrencinin Danışmanı Yok");
+                    
+                    studentRecords.Add(studentRecord);
+                }
+                else
+                {
+                    StudentRecordViewModel studentRecord = new StudentRecordViewModel(
+                    user.UserID,
+                    user.Name,
+                    user.LastName,
+                    user.EducationType,
+                    departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
+                    studentHelper.GetAdvisor(user.UserID).Name + " " + studentHelper.GetAdvisor(user.UserID).LastName);
 
-                studentRecords.Add(studentRecord);
+                    studentRecords.Add(studentRecord);
+                }
             }
 
             StudentListViewModel studentListViewModel = new StudentListViewModel(studentRecords);

@@ -156,6 +156,10 @@
     <Compile Include="Migrations\202009211958301_Emailcheck.designer.cs">
       <DependentUpon>202009211958301_Emailcheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009231047510_NullableLecID.cs" />
+    <Compile Include="Migrations\202009231047510_NullableLecID.designer.cs">
+      <DependentUpon>202009231047510_NullableLecID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\StudentRegistrationContext.cs" />
     <Compile Include="Models\Entity\Department.cs" />
@@ -174,7 +178,7 @@
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
-	<Compile Include="ViewModels\ListLecturesViewModel.cs" />
+    <Compile Include="ViewModels\ListLecturesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -375,9 +379,9 @@
     <Content Include="Views\ManageLecturer\Update.cshtml" />
     <Content Include="Views\ManageLecturer\Form.cshtml" />
     <Content Include="Views\ManageLecturer\Courses.cshtml" />
-	<Content Include="Views\ManageLecture\List.cshtml" />
+    <Content Include="Views\ManageLecture\List.cshtml" />
     <Content Include="Views\ManageLecture\AddLecture.cshtml" />
-	<Content Include="Views\ManageLecture\AddSection.cshtml" />
+    <Content Include="Views\ManageLecture\AddSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -391,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009211958301_Emailcheck.resx">
       <DependentUpon>202009211958301_Emailcheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009231047510_NullableLecID.resx">
+      <DependentUpon>202009231047510_NullableLecID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
