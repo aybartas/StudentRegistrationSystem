@@ -40,11 +40,40 @@
 
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
-                            <li class="nav-item "><a href="@Url.Action("Admin","Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
-                            <li class="nav-item"><a href="@Url.Action("List","ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
-                            <li class="nav-item"><a href="@Url.Action("List","ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
-                            <li class="nav-item"><a href="@Url.Action("List","ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
+                            @{string absolutepath = HttpContext.Current.Request.Url.AbsolutePath;
+                                string currentDecider = absolutepath.Split('/')[1];},
+                            @if (currentDecider.Equals("Home"))
+                            {
+                                <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
+                            }
+                            @if (currentDecider.Equals("ManageStudent"))
+                            {
+                                <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
+                            }
+                            @if (currentDecider.Equals("ManageLecturer"))
+                            {
+                                <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
+                            }
+                            @if (currentDecider.Equals("ManageLecture"))
+                            {
+                                <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Akademisyenler</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Dersler</a></li>
+                            }
                         </ul>
                     </div>
                     <!-- end of sidebar -->
@@ -107,52 +136,38 @@
 
                         <div class="col-xl-3 col-sm-6 p-2">
                             <div class="card card-common">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <i class="fas fa-user-graduate fa-3x text-secondary "></i>
-                                        <div class="text-right text-secondary">
-                                            <h5>Öğrenciler</h5>
-                                            <h3>@studentHelper.GetOnlyStudents().Count()</h3>
+                                <a href="@Url.Action("List","ManageStudent")">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <i class="fas fa-user-graduate fa-3x text-secondary "></i>
+                                            <div class="text-right text-secondary">
+                                                <h5>Öğrenciler</h5>
+                                                <h3>@studentHelper.GetOnlyStudents().Count()</h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </a>
                             </div>
                         </div>
-
-
-                        <div class="col-xl-3 col-sm-6 p-2">
-                            <div class="card card-common">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <i class="fas fa-user-tie fa-3x text-secondary"></i>
-                                        <div class="text-right text-secondary">
-                                            <h5>Akademisyenler</h5>
-                                            <h3>@studentHelper._dbContext.Lecturers.Count()</h3>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
 
 
 
                         <div class="col-xl-3 col-sm-6 p-2">
                             <div class="card card-common">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <i class="fas fa-university fa-3x text-secondary"></i>
-                                        <div class="text-right text-secondary">
-                                            <h5>Dersler</h5>
-                                            <h3>@studentHelper._dbContext.Lectures.Count()</h3>
+                                <a href="@Url.Action("List","ManageLecturer")">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <i class="fas fa-user-tie fa-3x text-secondary"></i>
+                                            <div class="text-right text-secondary">
+                                                <h5>Akademisyenler</h5>
+                                                <h3>@studentHelper._dbContext.Lecturers.Count()</h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </a>
                             </div>
                         </div>
+
 
                         <div class="col-xl-3 col-sm-6 p-2">
                             <div class="card card-common">
@@ -160,8 +175,8 @@
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-school fa-3x text-secondary"></i>
                                         <div class="text-right text-secondary">
-                                            <h5>Şubeler</h5>
-                                            <h3>@studentHelper._dbContext.Sections.Count()</h3>
+                                            <h5>Bölümler</h5>
+                                            <h3>@studentHelper._dbContext.Departments.Count()</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -169,6 +184,22 @@
                             </div>
                         </div>
 
+
+                        <div class="col-xl-3 col-sm-6 p-2">
+                            <div class="card card-common">
+                                <a href="@Url.Action("List","ManageLecture")">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <i class="fas fa-university fa-3x text-secondary"></i>
+                                            <div class="text-right text-secondary">
+                                                <h5>Dersler</h5>
+                                                <h3>@studentHelper._dbContext.Lectures.Count()</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
