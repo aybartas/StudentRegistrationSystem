@@ -9,7 +9,7 @@
 <div class="container rounded bg-white mt-5 ">
     <div class="row">
         @{ Model.LecturerID = Model.lecturer.LecturerID;}
-        <div class="col-md-3 border-right">
+        <div class="col-md-4 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img src="data:image/png;base64,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"
                      alt="Admin" class="rounded-circle" style="width: 80%;">
@@ -19,7 +19,7 @@
                 <span> <a href="@Url.Action("Courses","ManageLecturer",new{ LecturerID = Model.LecturerID})" class="btn btn-block btn-info">Verilen Dersler</a></span>
             </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col">
 
             @using (Html.BeginForm())
             {
@@ -82,14 +82,5 @@
                 </div>
             }
             </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="row justify-content-center">
-
-                    
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
