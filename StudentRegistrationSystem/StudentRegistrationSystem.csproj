@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\ManageLectureController.cs" />
     <Compile Include="Controllers\Admin\ManageLecturerController.cs" />
     <Compile Include="Controllers\Admin\ManageStudentController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="ViewModels\AddStudentViewModel.cs" />
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
+    <Compile Include="ViewModels\ListLecturesViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
@@ -369,6 +371,9 @@
     <Content Include="Views\ManageStudent\Update.cshtml" />
     <Content Include="Views\ManageStudent\Courses.cshtml" />
     <Content Include="Views\ManageLecturer\List.cshtml" />
+    <Content Include="Views\ManageLecture\List.cshtml" />
+    <Content Include="Views\ManageLecture\AddLecture.cshtml" />
+    <Content Include="Views\ManageLecture\AddSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

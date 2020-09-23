@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "AddSection";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Şube Ekleme</h3>
+</div>
+
+
+<div class="container contact w-75">
+    <div class="row bg-light">
+
+        <div class="col-md-3">
+            <div class="contact-info mt-4 ml-3">
+                <i class="fas fa-plus fa-3x" style="color: green;"></i>
+
+
+            </div>
+        </div>
+
+        <div class="col mt-4">
+
+            <form action="">
+
+                <div class="contact-form">
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bölüm</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Bilgisayar Mühendisliği</option>
+                                <option>Yönetim Bilişim Sİstemleri</option>
+                                <option>Elektrik Elektronik Mühendisliği</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Ders</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Veri Yapıları</option>
+                                <option>Nesne Tabanlı Programlama</option>
+                                <option>İşletim Sistemleri</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Akademisyen</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>Selçuk Yıldırım</option>
+                                <option>Burak Köksal</option>
+                                <option>Recep Akdeniz</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="fname">Şube Numarası</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" pattern="[0-9]+"
+                                   placeholder="Ders adı giriniz" name="fname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Gün</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+
+                                <option>Pazartesi</option>
+                                <option>Salı</option>
+                                <option>Çarşamba</option>
+                                <option>Perşembe</option>
+                                <option>Cuma</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Başlangıç Saati</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                <option>11:00</option>
+                                <option>12:00</option>
+                                <option>13:00</option>
+                                <option>14:00</option>
+                                <option>15:00</option>
+                                <option>16:00</option>
+                                <option>17:00</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bitiş Saati</label>
+                        <div class="col-sm-8">
+
+                            <select class="form-control " id="exampleFormControlSelect1">
+
+                                <option>10:00</option>
+                                <option>11:00</option>
+                                <option>12:00</option>
+                                <option>13:00</option>
+                                <option>14:00</option>
+                                <option>15:00</option>
+                                <option>16:00</option>
+                                <option>17:00</option>
+                                <option>18:00</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Kota</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" pattern="[0-9]+"
+                                   placeholder="Ders adı giriniz" name="fname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Bina</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" placeholder="Ders adı giriniz" name="fname"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="fname">Sınıf</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fname" placeholder="Ders adı giriniz" name="fname"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success  ">Şube Ekle</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

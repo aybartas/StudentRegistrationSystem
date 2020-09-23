@@ -1,0 +1,399 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Aktif Dersler</h3>
+</div>
+
+
+<div class="container">
+
+
+    <!--Accordion wrapper-->
+    <div class="accordion md-accordion accordion-blocks" id="accordion1" role="tablist"
+         aria-multiselectable="true">
+
+        <!-- Accordion card -->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingUnfiled">
+
+
+
+                <!-- Heading -->
+                <a data-toggle="collapse" data-parent="#accordionEx78" href="#collapseUnfiled" aria-expanded="true"
+                   aria-controls="collapseUnfiled">
+
+                    <button class="btn btn-secondary">
+
+                        Bilgisayar Mühendisliği
+                        <i class="fas fa-angle-down "></i>
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseUnfiled" class="collapse" role="tabpanel" aria-labelledby="headingUnfiled"
+                 data-parent="#accordionEx78">
+                <div class="card-body">
+
+                    <!-- Table responsive wrapper -->
+                    <div class="table-responsive mx-3">
+                        <!--Table-->
+
+                        <table class="table table-striped bg-light text-center table-hover mb-0">
+                            <thead>
+                                <tr class="text-muted">
+                                    <th> Ders ID</th>
+                                    <th>Kod</th>
+                                    <th>İsim</th>
+                                    <th>Öğretim Tipi</th>
+                                    <th>Kredi</th>
+                                    <th>Bölüm</th>
+                                    <th><a href=" @Url.Action("AddLecture", "ManageLecture")" class="btn btn-success btn-sm">Ders Ekle</a></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>5</th>
+                                    <th>201</th>
+                                    <th>Veri Yapıları</th>
+                                    <th>Birinci Öğretim</th>
+                                    <th>5</th>
+                                    <th>Bilgisayar Müh </th>
+
+                                    <th>
+                                        <div class="bnt-group">
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                    data-target="#ogrencisil">
+                                                Sil
+                                            </button>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                                    data-target="#ogrenciyonet">
+                                                Düzenle
+                                            </button>
+
+                                        </div>
+
+                                        <!--Delete Modal -->
+                                        <div class="modal fade" id="ogrencisil" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Hayır
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Evet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Update Modal-->
+                                        <div class="modal fade" id="ogrenciyonet" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                                            Öğrenci Bilgisi Güncelleme
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!--form -->
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Kapat
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Kaydet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <th>202</th>
+                                    <th>Nesne Tabanlı Prgramlama</th>
+                                    <th>Birinci Öğretim</th>
+                                    <th>6</th>
+                                    <th>Bilgisayar Müh </th>
+
+                                    <th>
+                                        <div class="bnt-group">
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                    data-target="#ogrencisil">
+                                                Sil
+                                            </button>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                                    data-target="#ogrenciyonet">
+                                                Düzenle
+                                            </button>
+
+                                        </div>
+
+                                        <!--Delete Modal -->
+                                        <div class="modal fade" id="ogrencisil" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Hayır
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Evet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Update Modal-->
+                                        <div class="modal fade" id="ogrenciyonet" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                                            Öğrenci Bilgisi Güncelleme
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!--form -->
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Kapat
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Kaydet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <!--Table-->
+                    </div>
+                    <!-- Table responsive wrapper -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Accordion card -->
+    </div>
+    <!--/.Accordion wrapper-->
+</div>
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Aktif Şubeler</h3>
+</div>
+
+
+<div class="container">
+
+
+    <!--Accordion wrapper-->
+    <div class="accordion md-accordion accordion-blocks" id="accordion1" role="tablist"
+         aria-multiselectable="true">
+
+        <!-- Accordion card -->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingUnfiled">
+
+
+
+                <!-- Heading -->
+                <a data-toggle="collapse" data-parent="#accordionEx78" href="#collapse1" aria-expanded="true"
+                   aria-controls="collapseUnfiled">
+
+                    <button class="btn btn-secondary">
+
+                        Yönetim Bilişim Sistemleri
+                        <i class="fas fa-angle-down "></i>
+
+                    </button>
+
+                </a>
+
+            </div>
+            <!-- AKIŞKANLIGI SAGLAYAN COLLAPSE1-->
+            <!-- Card body -->
+            <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="headingUnfiled"
+                 data-parent="#accordionEx78">
+                <div class="card-body">
+
+                    <!-- Table responsive wrapper -->
+                    <div class="table-responsive mx-3">
+                        <!--Table-->
+
+                        <table class="table table-striped bg-light text-center table-hover mb-0">
+                            <thead>
+                                <tr class="text-muted">
+                                    <th> Ders</th>
+                                    <th>Şube No</th>
+                                    <th>Gün</th>
+                                    <th>Başlangıç</th>
+                                    <th>Bitiş</th>
+                                    <th>Bina</th>
+                                    <th>Sınıf</th>
+                                    <th>Eğitmen</th>
+                                    <th><a  href="@Url.Action("AddSection", "ManageLecture")" class="btn btn-success btn-sm">Şube Ekle</a></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Nesne Tabanlı Programlama</th>
+                                    <th>1</th>
+                                    <th>Pazartesi</th>
+                                    <th>09.00</th>
+                                    <th>10.00</th>
+                                    <th>Yıldız Amfi </th>
+                                    <th>D5 </th>
+                                    <th>Murat Esen </th>
+                                    <th>
+                                        <div class="bnt-group">
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                    data-target="#ogrencisil">
+                                                Sil
+                                            </button>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                                    data-target="#ogrenciyonet">
+                                                Düzenle
+                                            </button>
+
+                                        </div>
+
+                                        <!--Delete Modal -->
+                                        <div class="modal fade" id="ogrencisil" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Hayır
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Evet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Update Modal-->
+                                        <div class="modal fade" id="ogrenciyonet" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">
+                                                            Öğrenci Bilgisi Güncelleme
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!--form -->
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Kapat
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">Kaydet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+
+                        <!--Table-->
+                    </div>
+                    <!-- Table responsive wrapper -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Accordion card -->
+    </div>
+    <!--/.Accordion wrapper-->
+</div>
+
+
+
+
+
+
