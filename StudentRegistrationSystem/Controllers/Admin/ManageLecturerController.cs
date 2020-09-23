@@ -24,8 +24,9 @@ namespace StudentRegistrationSystem.Controllers.Admin
             return View(lecturerListViewModel);
         }
         [HttpPost]
-        public ActionResult AddLecturer(LecturerListViewModel lecturerListViewModel)
+        public ActionResult Form(LecturerListViewModel lecturerListViewModel)
         {
+            lecturerListViewModel.departmentList = departmentHelper.GetDepartments();
             if (ModelState.IsValid)
             {
 
@@ -43,7 +44,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 return RedirectToAction("List", "ManageLecturer");
             }
 
-            return RedirectToAction("List", "ManageLecturer");
+            return View(lecturerListViewModel);
         }
         public ActionResult Form()
         {
@@ -82,6 +83,8 @@ namespace StudentRegistrationSystem.Controllers.Admin
             lecturer.DepartmentCode = updateLecturerViewModel.DepartmentCode;
             lecturer.Phone = updateLecturerViewModel.Phone;
             lecturer.LecturerID = updateLecturerViewModel.LecturerID;
+            updateLecturerViewModel.lecturer = lecturer;
+            updateLecturerViewModel.departmentList = departmentHelper.GetDepartments();
             if (ModelState.IsValid)
             {
                 TempData["LecturerUpdateSuccess"] = "Not Null";
@@ -91,7 +94,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
             }
             else
             {
-                return RedirectToAction("Update", "ManageLecturer");
+                return View(updateLecturerViewModel);
             }
         }
         public ActionResult Courses(int LecturerID)
@@ -99,8 +102,9 @@ namespace StudentRegistrationSystem.Controllers.Admin
             UpdateLecturerViewModel updateLecturerViewModel = new UpdateLecturerViewModel();
             List<Section> sectionList = sectionHelper.GetAllSections();
             List<Section> lecturersSectionList = new List<Section>();
-            foreach (Section s in sectionList){
-                if(s.LecturerID == LecturerID)
+            foreach (Section s in sectionList)
+            {
+                if (s.LecturerID == LecturerID)
                 {
                     lecturersSectionList.Add(s);
                 }
@@ -110,14 +114,23 @@ namespace StudentRegistrationSystem.Controllers.Admin
             updateLecturerViewModel.allDepartmentalLectures = lecturerHelper.GetAllLecturesOfLecturersDepartment(LecturerID);
             return View(updateLecturerViewModel);
         }
-        [HttpPost]
-        public ActionResult GetSectionsFromLecturesForLecturer(int LectureID)
-        {
+        //[HttpPost]
+        //public ActionResult GetSectionsFromLecturesForLecturer(int LectureID)
+        //{
 
-            List<Section> dropdownSections = sectionHelper.GetSectionsOfLecture(LectureID);
+        //    List<Section> dropdownSections = sectionHelper.GetSectionsOfLecture(LectureID);
 
-            SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
-            return Json(sections);
-        }
+        //    SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
+        //    return Json(sections);
+        //}
+        //public ActionResult AddSection(int LecturerID, int ddlSection)
+        //{
+        //    Section section = sectionHelper._dbContext.Sections.Find(ddlSection);
+
+        //    if (section.LecturerID == null)
+        //    {
+
+        //    }
+        //}
     }
 }

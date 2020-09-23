@@ -20,7 +20,7 @@
                 <th>Bina</th>
                 <th>Sınıf</th>
 
-                <th><a class="btn btn-success btn-sm" href="#addCourseForm">Ders Ekle</a></th>
+                @*<th><a class="btn btn-success btn-sm" href="#addCourseForm">Ders Ekle</a></th>*@
 
             </tr>
         </thead>
@@ -58,7 +58,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                        Seçilen şubeyi silmek istediğinizden emin misiniz?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
@@ -88,7 +88,7 @@
     <!-- end of pagination -->
 
 </div>
-<div class="container ">
+@*<div class="container ">
     <h3 class="text-muted text-center mb-3">Akademisyene Ders Ekle</h3>
 
     <div class="container contact w-75">
@@ -120,7 +120,7 @@
 
                                     items.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim" });
                                 }
-                                @Html.DropDownListFor(m => m.educationType, items, new { @class = "form-control", required = "required", @id = "ddlLecture", @onchange = "javascript:GetSection(this.value);" })
+                                @Html.DropDownListFor(m => m.educationType, items, new { @class = "form-control", required = "required"})
 
 
                             </div>
@@ -140,7 +140,7 @@
                             <label for="exampleFormControlSelect1">Şube</label>
                             <div class="col-sm-8">
 
-                                <select id="ddlSection" name="ddlSection" class="form-control" required="required">
+                                <select id="ddlSection2" name="ddlSection2" class="form-control" required="required">
                                 </select>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
             });
 
         }
-    </script>
+    </script>*@
 
 
 }

@@ -24,7 +24,7 @@
         <div class="col mt-4">
 
 
-            @using (Html.BeginForm("AddLecturer", "ManageLecturer"))
+            @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
                 <div class="contact-form">
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="control-label " for="fname">Soyisim:</label>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(n => n.LastName, new { @class = "form-control", placeholder = "İsim", required = "required" })
+                            @Html.TextBoxFor(n => n.LastName, new { @class = "form-control", placeholder = "Soyisim", required = "required" })
                         </div>
                     </div>
 
@@ -55,7 +55,9 @@
                         <label class="control-label " for="fname">Email:</label>
                         <div class="col-sm-8">
                             @Html.TextBoxFor(n => n.Email, new { @class = "form-control", placeholder = "Email", required = "required" })
+                            @Html.ValidationMessageFor(n => n.Email, "", new { @class = "text-danger" })
                         </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
