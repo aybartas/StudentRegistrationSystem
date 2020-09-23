@@ -28,8 +28,9 @@ namespace StudentRegistrationSystem.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(User user)
+        public ActionResult Login(int UserID)
         {
+            User user = studentHelper.FindUserByID(UserID);
             User userInDb = studentHelper.FindUserByID(user.UserID);
             if (userInDb != null && user.UserID == userInDb.UserID && user.Password == userInDb.Password && user.Role == userInDb.Role)
             {
@@ -37,12 +38,12 @@ namespace StudentRegistrationSystem.Controllers
                 {
                     FormsAuthentication.SetAuthCookie((userInDb.UserID.ToString() + "," + userInDb.Name), false);
                     
-                    return RedirectToAction("Users", "Home", userInDb);
+                    return RedirectToAction("Users", "Home", userInDb.UserID);
                 }
                 else
                 {
                     FormsAuthentication.SetAuthCookie((userInDb.UserID.ToString() + "," + userInDb.Name), false);
-                    return RedirectToAction("Admin", "Home", userInDb);
+                    return RedirectToAction("Admin", "Home", userInDb.UserID);
                 }
                 
             }
