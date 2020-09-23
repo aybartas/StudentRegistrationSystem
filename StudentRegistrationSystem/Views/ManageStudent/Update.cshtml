@@ -104,17 +104,22 @@ else
                         <div class="col-md-12">
                             <label class="labels">Danışman:</label>
                             @{ List<SelectListItem> advisors = new List<SelectListItem>();}
-                            @if(Model.user.)
+                            @if(Model.user.LecturerID == null)
+                            {
+                                advisors.Add(new SelectListItem { Text= "Öğrencinin Danışmanı Yok", Value = null, Selected = true});
+                            }
                             @foreach (Lecturer l in Model.departmentLecturers)
                             {
-                                if (Model.user.LecturerID == l.LecturerID)
-                                {
-                                    advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString(), Selected = true });
-                                }
-                                else
-                                {
-                                    advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString() });
-                                }
+                                
+                                    if (Model.user.LecturerID == l.LecturerID)
+                                    {
+                                        advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString(), Selected = true });
+                                    }
+                                    else
+                                    {
+                                        advisors.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString() });
+                                    }
+                                
                             }
                             @Html.DropDownListFor(n => n.LecturerID, advisors, new { @class = "form-control" })
                         </div>

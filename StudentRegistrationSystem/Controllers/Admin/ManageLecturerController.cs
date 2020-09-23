@@ -11,6 +11,7 @@ using System.Web.Routing;
 
 namespace StudentRegistrationSystem.Controllers.Admin
 {
+
     public class ManageLecturerController : Controller
     {
         LecturerHelper lecturerHelper = new LecturerHelper();
@@ -58,17 +59,35 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
         public ActionResult Delete(int LecturerID)
         {
-            TempData["LecturerDeleteSuccess"] = "Not Null";
-            foreach(User s in studentHelper.GetOnlyStudents())
+            foreach (User s in studentHelper.GetOnlyStudents())
             {
                 if(s.LecturerID == LecturerID)
                 {
                     TempData["DeleteStatus"] = "Lecturer is Advisor";
-                    s.LecturerID = 0;
+                    s.LecturerID = null;
+                    //lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
+                    lecturerHelper._dbContext.Users.AddOrUpdate<User>(s);
                 }
+            }
+            foreach(Section s in sectionHelper.GetAllSections())
+            {
+                //if(s.LecturerID == LecturerID)
+                //{
+                //    TempData["DeleteStatus2"] = "Lecturer Has a Section";
+                //    //lecturerHelper._dbContext.Sections.Attach(s);
+                //    //if (!lecturerHelper._dbContext.Sections.Contains(s))
+                //    //{
+                //    //    lecturerHelper._dbContext.Sections.Attach(s);
+                //    //}
+                //    Section b = lecturerHelper._dbContext.Sections.Find(s.SectionID);
+                //    lecturerHelper._dbContext.Sections.Remove(b);
+                //    //lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
+                //    //lecturerHelper._dbContext.SaveChanges();
+                //}
             }
             lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
             lecturerHelper._dbContext.SaveChanges();
+            TempData["LecturerDeleteSuccess"] = "Not Null";
             return RedirectToAction("List", "ManageLecturer");
         }
         public ActionResult Update(int LecturerID)
