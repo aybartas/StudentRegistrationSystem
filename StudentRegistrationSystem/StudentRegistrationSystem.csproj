@@ -416,9 +416,11 @@
     <Content Include="Views\ManageLecturer\Courses.cshtml" />
     <Content Include="Views\ManageLecture\List.cshtml" />
     <Content Include="Views\ManageLecture\AddLecture.cshtml" />
-    <Content Include="Views\ManageLecture\AddSection.cshtml" />
+	<Content Include="Views\ManageLecture\UpdateLecture.cshtml" />
+	<Content Include="Views\ManageLecture\AddSection.cshtml" />
     <Content Include="Views\ManageDepartment\List.cshtml" />
     <Content Include="Views\ManageDepartment\Form.cshtml" />
+	  
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
