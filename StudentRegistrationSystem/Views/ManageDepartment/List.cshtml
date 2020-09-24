@@ -1,0 +1,102 @@
+﻿@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container">
+    <h3 class="text-muted text-center mb-3">Bölümler</h3>
+    @if (@TempData["DepartmentAddSuccess"] == null)
+    {
+
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p style="margin-bottom:0">Akademisyen veritabanından silindi.</p>
+            Danışmanı olduğu öğrenciler şu an danışmansız halde ve verdiği dersler de silindi.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <table class="table table-striped bg-light text-center">
+        <thead>
+            <tr class="text-muted">
+
+                <th>Kodu</th>
+                <th>Adı</th>
+                <th>Telefon Numarası</th>
+
+                <th><a href="@Url.Action("Form","ManageDepartment")" class="btn btn-success btn-sm">Bölüm Ekle </a></th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @{DepartmentHelper departmentHelper = new DepartmentHelper();
+                List<Department> allDepartments = departmentHelper.GetDepartments();}
+            @foreach (Department d in allDepartments)
+            {
+                <tr>
+                    <th>@d.DepartmentCode</th>
+                    <th>@d.Name</th>
+                    <th>@d.Phone</th>
+
+                    <th>
+                        <div class="bnt-group">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#@d.DepartmentCode">
+                                Sil
+                            </button>
+                            <a href="@Url.Action("Update", "ManageDepartment", new { DepartmentCode = d.DepartmentCode })" class="btn btn-info btn-sm">Yönet</a>
+
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@d.DepartmentCode" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="text-align:left">
+                                        Seçilen bölümü silmek istediğinizden emin misiniz?<br />
+                                        Bu işlem bölümle alakalı diğer şeyleri de silecektir.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
+                                        <a href="@Url.Action("Delete", "ManageDepartment", new { DepartmentCode = d.DepartmentCode })" class="btn btn-success btn-sm">Evet </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </th>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <!-- end of pagination -->
+
+</div>
