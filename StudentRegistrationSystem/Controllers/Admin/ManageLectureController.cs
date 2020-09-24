@@ -21,6 +21,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         // GET: ManageLecture
         public ActionResult List()
         {
+
             List<DepartmentLecturesViewModel> departmentLectures = new List<DepartmentLecturesViewModel>();
 
             List<Department> departments = departmentHelper.GetDepartments();
@@ -36,17 +37,38 @@ namespace StudentRegistrationSystem.Controllers.Admin
             return View(listLecturesViewModel);
         }
 
+        public ActionResult UpdateLecture(int LectureID)
+        {
+
+            return View();
+        }
+
         public ActionResult AddLecture()
         {
 
             return View();
         }
 
+      
+
+
         public ActionResult AddSection()
         {
 
 
             return View();
+        }
+
+        public ActionResult Delete(int LectureID)
+        {
+
+            
+
+            lectureHelper._dbContext.Lectures.Remove(lectureHelper._dbContext.Lectures.Find(LectureID));
+            lectureHelper._dbContext.SaveChanges();
+            TempData["LectureDeleteStatus"] = "Success";
+
+            return RedirectToAction("List", "ManageLecture");
         }
     }
 }
