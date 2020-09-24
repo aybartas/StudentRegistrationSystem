@@ -55,7 +55,6 @@ namespace StudentRegistrationSystem.Controllers.Admin
         public ActionResult AddSection()
         {
 
-
             return View();
         }
 

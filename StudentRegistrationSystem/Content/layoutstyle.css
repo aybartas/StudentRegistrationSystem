@@ -3,14 +3,21 @@ body {
   background-color: #eee;
 }
 
+
+html {
+    scroll-behavior: smooth;
+   
+}
+
+
 /* navbar */
 .sidebar {
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9));
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: 5px 7px 25px #999;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 5px 7px 25px #999;
 }
 
 .bottom-border {

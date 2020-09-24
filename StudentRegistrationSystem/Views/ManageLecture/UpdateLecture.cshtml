@@ -4,3 +4,356 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
+<div class="container rounded bg-white mt-5 ">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img src="https://www.iconfinder.com/data/icons/e-learning-1-1/50/17-512.png"
+                     alt="Admin" class="rounded-circle" style="width: 50%;height: auto;">
+                <br>
+                <span class="font-weight-bold">Veri Yapıları</span>
+                <span class="text-black-50">Bilgiisayar Mühendisliği</span>
+                <span> </span>
+            </div>
+        </div>
+
+        <div class="col-md-4 border-right">
+
+            <div class="card-body mt-2">
+                <div class="d-flex justify-content-center">
+                    <h4 class="">Ders Bilgileri</h4>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Ders Kodu</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        102
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Ders Adı</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        Veri yapıları
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Öğretim Tipi</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        Birinci Öğretim
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Kredi</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        5
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Dönem</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        Güz
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-5  mt-2">
+
+            <div class="p-1 py-2  mt-2">
+                <div class="d-flex justify-content-center ">
+                    <h4 class="">Dersi Güncelle</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <label class="labels">Ders Kodu</label><input type="text" class="form-control"
+                                                                      placeholder="isim" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Ders Adı</label><input type="text" class="form-control"
+                                                                     value="" placeholder="soyisim">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-12">
+                        <label class="labels">Öğretim Tipi</label><input type="text"
+                                                                         class="form-control" placeholder="Email" value="">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="labels">Kredi</label>
+                        <input type="text" class="form-control" placeholder="Bölüm" value="">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="labels">Dönem</label><input type="text" class="form-control"
+                                                                  placeholder="telefon" value="">
+                    </div>
+
+                    <div class="col-md-12 mt-4 mb-2">
+
+                        <div class="text-center">
+
+                            <div class="container text-center w-50">
+
+
+
+                                <input type="submit" value="Kaydet" class="btn btn-block btn-success btn-sm rounded-0 py-2">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container ">
+    <h3 class="text-muted text-center mb-3">Dersin Şubeleri</h3>
+    <table class="table table-striped bg-light text-center">
+        <thead>
+            <tr class="text-muted">
+                <th>Ders</th>
+                <th>Akademisyen</th>
+                <th>Şube</th>
+                <th>Gün</th>
+                <th>Başlama Saati</th>
+                <th>Bitiş Saati</th>
+                <th>Kota</th>
+                <th>Bina</th>
+                <th>Sınıf</th>
+
+                <th> <a href="#addSectionForm" class="btn btn-success btn-sm">Şube Ekle</a></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Veri Yapıları</th>
+                <th>Faruk Sürmez</th>
+                <th>2</th>
+                <th>Pazartesi</th>
+                <th>09:00</th>
+                <th>11:00 </th>
+                <th>50</th>
+                <th>yılız amfi </th>
+                <th>d4</th>
+
+                <th>
+                    <div class="bnt-group">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ogrencino">
+                            Sil
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm">Yönet</button>
+
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ogrencino" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Şube Silme</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Seçilen şubeyi silmek istediğinizden emin misiniz?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+                                    <button type="button" class="btn btn-success">Evet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </th>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+    <!-- end of pagination -->
+
+</div>
+
+
+<div class="container " id="addSectionForm">
+    <h3 class="text-muted text-center mb-3">Şube Ekle</h3>
+
+    <div class="container contact w-75">
+        <div class="row bg-light">
+
+            <div class="col-md-3">
+                <div class="contact-info mt-4 ml-3">
+                    <i class="fas fa-plus fa-3x" style="color: green;"></i>
+
+
+                </div>
+            </div>
+
+            <div class="col mt-4">
+
+                <form action="">
+
+                    <div class="contact-form">
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Akademisyen</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control " id="exampleFormControlSelect1">
+                                    <option>102</option>
+                                    <option>202</option>
+                                    <option>201</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label " for="fname">Şube Numarası</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="Lütfen Sadece numara giriniz"
+                                       name="fname" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label " for="fname">Kota</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="Lütfen sadece numara giriniz"
+                                       name="fname" required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Gün</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control " id="exampleFormControlSelect1">
+                                    <option>PZT</option>
+                                    <option>SALI</option>
+                                    <option>cars</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Başlangıç Saati</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control " id="exampleFormControlSelect1">
+                                    <option>PZT</option>
+                                    <option>SALI</option>
+                                    <option>cars</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Bitiş Saati</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control " id="exampleFormControlSelect1">
+                                    <option>PZT</option>
+                                    <option>SALI</option>
+                                    <option>cars</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label " for="fname">Bina</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="fname" placeholder="Lütfen şubenin lokasyonunu giriniz"
+                                       name="fname" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label " for="fname">Sınıf</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="fname" placeholder="Lütfen şubenin sınıfını giriniz"
+                                       name="fname" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Şube</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control " id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success ml-5  "> Şube Ekle</button>
+                            </div>
+                        </div>
+
+                        </div>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
