@@ -177,6 +177,7 @@
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
+	<Compile Include="ViewModels\UpdateDepartmentViewModel.cs" />
     <Compile Include="ViewModels\UpdateLecturerViewModel.cs" />
     <Compile Include="ViewModels\UpdatePasswordViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
@@ -420,6 +421,7 @@
 	<Content Include="Views\ManageLecture\AddSection.cshtml" />
     <Content Include="Views\ManageDepartment\List.cshtml" />
     <Content Include="Views\ManageDepartment\Form.cshtml" />
+	<Content Include="Views\ManageDepartment\Update.cshtml" />
 	  
   </ItemGroup>
   <ItemGroup>
