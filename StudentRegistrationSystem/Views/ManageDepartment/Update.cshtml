@@ -1,0 +1,66 @@
+﻿@model StudentRegistrationSystem.ViewModels.UpdateDepartmentViewModel
+@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container rounded bg-white mt-5 ">
+    <div class="row">
+        @{ Model.DepartmentCode = Model.Department.DepartmentCode;}
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img src="https://cdn3.iconfinder.com/data/icons/education-liconica-grey/128/university-building-college-department-512.png"
+                     alt="Admin" class="rounded-circle" style="width: 80%;">
+                <span class="font-weight-bold">@Model.Department.Name</span>
+                <span class="text-black-50">Bölüm</span>
+            </div>
+        </div>
+        <div class="col">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Bölüm Bilgileri</h4>
+                    </div>
+                    <div class="row mt-2">
+                        
+                        <div class="col-md-12">
+                            <label class="labels">Ad</label>
+                            @Html.TextBoxFor(n => n.Name, new { @class = "form-control", placeholder = "Ad", required = "required", @Value = Model.Department.Name })
+
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">Telefon Numarası</label>
+                            @Html.TextBoxFor(n => n.Phone, new { @class = "form-control", placeholder = "Telefon Numarası", required = "required", @Value = Model.Department.Phone })
+                          
+                        </div>
+
+
+                        
+                        <div class="col-md-12 mt-5">
+                            <div class="text-center">
+                                <div class="container text-center w-50">
+
+                                    <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                </div>
+            
+        </div>
+            }
+    </div>
+</div>
+    </div>
+

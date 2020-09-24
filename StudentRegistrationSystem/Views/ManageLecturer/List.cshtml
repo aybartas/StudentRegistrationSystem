@@ -18,7 +18,7 @@
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h5 class="alert-heading"><b>Başarılı!</b></h5>
             <p style="margin-bottom:0">Akademisyen veritabanından silindi.</p>
-            Danışmanı olduğu öğrenciler şu an danışmansız halde ve verdiği dersler de silindi.
+            Akademisyenin ilişkili olduğu diğer veri girdileri de düzenlendi.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -100,6 +100,7 @@
         </thead>
         <tbody>
             @{DepartmentHelper departmentHelper = new DepartmentHelper();
+                string s = "-";
             }
             @foreach (Lecturer l in Model.lecturerlist)
             {
@@ -107,7 +108,8 @@
 
                     <th>@l.Name</th>
                     <th>@l.LastName</th>
-                    <th>@departmentHelper.DepNameFinder(l.DepartmentCode)</th>
+                    <th>@if (l.DepartmentCode==null) {@s;}
+                    @departmentHelper.DepNameFinder(l.DepartmentCode)</th>
                     <th>@l.Phone</th>
                     <th>@l.Email</th>
 

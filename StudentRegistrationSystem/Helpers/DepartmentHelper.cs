@@ -30,7 +30,14 @@ namespace StudentRegistrationSystem.Helpers
         public string DepNameFinder(string DepartmentCode)
         {
             Department dep = _dbContext.Departments.Find(DepartmentCode);
-            return dep.Name;
+            if (dep != null)
+            {
+                return dep.Name;
+            }
+            else
+            {
+                return null;
+            }
         }
 
 

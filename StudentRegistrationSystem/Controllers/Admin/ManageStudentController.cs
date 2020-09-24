@@ -1,4 +1,5 @@
-﻿using StudentRegistrationSystem.Helpers;
+﻿using Microsoft.Ajax.Utilities;
+using StudentRegistrationSystem.Helpers;
 using StudentRegistrationSystem.Models.Entity;
 using StudentRegistrationSystem.ViewModels;
 using System;
@@ -35,19 +36,36 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     user.LastName,
                     user.EducationType,
                     departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
-                    "Öğrencinin Danışmanı Yok");
+                    "-");
                     
                     studentRecords.Add(studentRecord);
                 }
                 else
                 {
-                    StudentRecordViewModel studentRecord = new StudentRecordViewModel(
-                    user.UserID,
-                    user.Name,
-                    user.LastName,
-                    user.EducationType,
-                    departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
-                    studentHelper.GetAdvisor(user.UserID).Name + " " + studentHelper.GetAdvisor(user.UserID).LastName);
+                    //Lecturer Lecturer = studentHelper.GetAdvisor(user.UserID);
+                    //string advisorNameSurname = Lecturer.Name
+                    string s = studentHelper.GetAdvisor(user.UserID).Name + " " + studentHelper.GetAdvisor(user.UserID).LastName;
+                    StudentRecordViewModel studentRecord = new StudentRecordViewModel();
+                    studentRecord.UserID = user.UserID;
+                    studentRecord.Name = user.Name;
+                    studentRecord.Lastname = user.LastName;
+                    studentRecord.EducationType = user.EducationType;
+                    if (user.DepartmentCode != null)
+                    {
+                        studentRecord.Department = studentHelper._dbContext.Departments.Find(user.DepartmentCode).Name;
+                    }
+                    else
+                    {
+                        studentRecord.Department = null;
+                    }
+                    studentRecord.Advisor = s;
+                    //StudentRecordViewModel studentRecord = new StudentRecordViewModel(
+                    //user.UserID,
+                    //user.Name,
+                    //user.LastName,
+                    //user.EducationType,
+                    //departmentHelper._dbContext.Departments.Find(user.DepartmentCode).Name,
+                    //s);
 
                     studentRecords.Add(studentRecord);
                 }
@@ -71,8 +89,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         [HttpPost]
         public ActionResult AddStudentForm(string departmentCode)
         {
-
-            List<Lecturer> templecturers = lecturerHelper.GetLecturers().Where(x => x.DepartmentCode.Equals(departmentCode)).ToList();
+            List<Lecturer> templecturers = lecturerHelper.GetLecturers().Where(x => !x.DepartmentCode.IsNullOrWhiteSpace() && x.DepartmentCode.Equals(departmentCode)).ToList();
 
             List<DropdownAdvisorViewModel> dropdownAdvisors = new List<DropdownAdvisorViewModel>();
 
@@ -89,6 +106,8 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
             SelectList lecturers = new SelectList(dropdownAdvisors, "Id", "FullName", 0);
             return Json(lecturers);
+            
+          
         }
 
         [HttpPost]
@@ -125,7 +144,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         public ActionResult Update(int UserID)
         {
             User user = studentHelper._dbContext.Users.Find(UserID);
-            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user, lecturerHelper.GetLecturers().Where(x => x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
+            UpdateStudentViewModel updateStudentViewModel = new UpdateStudentViewModel(user, lecturerHelper.GetLecturers().Where(x => !x.DepartmentCode.IsNullOrWhiteSpace() && x.DepartmentCode.Equals(user.DepartmentCode)).ToList());
             return View(updateStudentViewModel);
         }
         [HttpPost]
