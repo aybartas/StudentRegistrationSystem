@@ -68,14 +68,15 @@
             </tr>
         </thead>
         <tbody>
-
+            @{ string s = "-";}
             @foreach (var record in Model.StudentRecordViewModels)
             {
                 <tr>
                     <th>@record.UserID</th>
                     <th>@record.Name</th>
                     <th>@record.Lastname</th>
-                    <th>@record.Department</th>
+                    <th>@if (record.Department==null) {@s;}
+                    @record.Department</th>
                     <th>@record.EducationType</th>
                     <th>@record.Advisor</th>
                     <th>

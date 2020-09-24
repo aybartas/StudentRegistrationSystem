@@ -69,8 +69,8 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     lecturerHelper._dbContext.Users.AddOrUpdate<User>(s);
                 }
             }
-            foreach(Section s in sectionHelper.GetAllSections())
-            {
+            //foreach(Section s in sectionHelper.GetAllSections())
+            //{
                 //if(s.LecturerID == LecturerID)
                 //{
                 //    TempData["DeleteStatus2"] = "Lecturer Has a Section";
@@ -84,7 +84,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 //    //lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
                 //    //lecturerHelper._dbContext.SaveChanges();
                 //}
-            }
+            //}
             lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
             lecturerHelper._dbContext.SaveChanges();
             TempData["LecturerDeleteSuccess"] = "Not Null";

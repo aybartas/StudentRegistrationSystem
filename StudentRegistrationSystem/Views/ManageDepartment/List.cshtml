@@ -15,8 +15,35 @@
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <h5 class="alert-heading"><b>Başarılı!</b></h5>
-            <p style="margin-bottom:0">Akademisyen veritabanından silindi.</p>
-            Danışmanı olduğu öğrenciler şu an danışmansız halde ve verdiği dersler de silindi.
+            <p style="margin-bottom:0">Bölüm veritabanına eklendi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@TempData["DepartmentUpdateSuccess"] == null)
+    {
+
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p style="margin-bottom:0">Bölüm bilgileri güncellendi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@TempData["DepartmentDeleteSuccess"] == null)
+    {
+
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p style="margin-bottom:0">Bölüm veritabanından silindi.</p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -61,14 +88,15 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Bölüm Silme</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body" style="text-align:left">
                                         Seçilen bölümü silmek istediğinizden emin misiniz?<br />
-                                        Bu işlem bölümle alakalı diğer şeyleri de silecektir.
+                                        Bu işlem bölümdeki akademisyenleri bölümsüz bırakacaktır.<br />
+                                        Bölüme bağlı dersleri ve şubeleri silecektir.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hayır</button>
