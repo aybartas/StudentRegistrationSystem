@@ -4,8 +4,20 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
+
+
 <div class="container">
-    <h3 class="text-muted text-center mb-3">Aktif Dersler</h3>
+    @if (@TempData["LectureDeleteStatus"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p>Ders veritabanından silindi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <h3 class="text-muted text-center mb-3">Ders Listesi</h3>
 </div>
 
 
@@ -87,36 +99,42 @@
                                             <th>
                                                 <div class="container">
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                                            data-target="#ogrencisil">
+                                                            data-target="#@lecture.LectureID">
                                                         Sil
                                                     </button>
+
+
+
+
                                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                                             data-target="#ogrenciyonet">
-                                                        Düzenle
+                                                        Yönet
                                                     </button>
 
                                                 </div>
 
                                                 <!--Delete Modal -->
-                                                <div class="modal fade" id="ogrencisil" tabindex="-1" role="dialog"
+                                                <div class="modal fade" id="@lecture.LectureID" tabindex="-1" role="dialog"
                                                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Öğrenci Silme</h5>
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Ders Silme</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Seçilen öğrenciyi silmek istediğinizden emin misiniz?
+                                                                Seçilen dersi silmek istediğinizden emin misiniz?
+                                                                <p>Bir ders silindiğinde şubeleri ile beraber silinir</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
+                                                                <button type="button" class="btn btn-secondary btn-sm"
                                                                         data-dismiss="modal">
                                                                     Hayır
                                                                 </button>
-                                                                <button type="button" class="btn btn-success">Evet</button>
+
+                                                                <a href="@Url.Action("Delete","ManageLecture",new{ LectureID = lecture.LectureID})" class="btn btn-success btn-sm">Evet </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -346,7 +364,7 @@
 @section Javascript {
 
 
-   
+
     <script>
 
         $(document).ready(function () {

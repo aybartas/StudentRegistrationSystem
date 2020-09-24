@@ -416,6 +416,7 @@
     <Content Include="Views\ManageLecture\List.cshtml" />
     <Content Include="Views\ManageLecture\AddLecture.cshtml" />
     <Content Include="Views\ManageLecture\AddSection.cshtml" />
+    <Content Include="Views\ManageLecture\UpdateLecture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
