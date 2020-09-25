@@ -1,0 +1,368 @@
+﻿@model StudentRegistrationSystem.ViewModels.UpdateAdminViewModel
+@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container ">
+
+    <div class="main-body ">
+        @if (@TempData["PasswordSuccess"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="container rounded mt-1 alert alert-success alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarılı!</b></h5>
+                <p>Parola güncellendi.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (@TempData["AdminUpdateSuccess"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="container rounded mt-1 alert alert-success alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarılı!</b></h5>
+                <p>Memur bilgileri güncellendi.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (@TempData["PasswordsDontMatch"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="container rounded mt-1 alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Eski parolanız hatalı.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (@TempData["SamePassword"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="container rounded mt-1 alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Parolanız zaten değiştirmek istediğinizle aynı.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="row gutters-sm">
+
+
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://icons.iconarchive.com/icons/aha-soft/free-large-boss/512/Admin-icon.png" alt="Admin" class="rounded-circle"
+                                 width="150">
+                            <div class="mt-3">
+                                <h4>@Model.admin.Name @Model.admin.LastName</h4>
+                                <p class="text-secondary mb-1">Üniversite Memuru</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">İsim</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Model.admin.Name
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Soyisim</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Model.admin.LastName
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Cinsiyet</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Model.admin.Gender
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Telefon</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Model.admin.Phone
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Rol</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                Üniversite Memuru
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="row gutters-sm">
+
+
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+
+
+                        <div class="container">
+
+                            <div class="row justify-content-center">
+
+                                @using (Html.BeginForm("Edit", "Profile",
+                                    new { adminID = Model.admin.UserID },
+                                FormMethod.Post, new { @class = "w-75" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    <div class="card  rounded-0">
+                                        <div class="card-header p-0 bg-secondary ">
+                                            <div class=" text-white text-center py-2">
+                                                <h3><i class="fas fa-pen-square"></i> Kişisel Bilgiler</h3>
+                                                <h8>Bilgilerinizi güncelleyebilirsiniz </h8>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body p-3">
+
+                                            <!--Body-->
+                                            <div class="form-group">
+                                                <h6 class="text-center">İsim</h6>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                                    </div>
+
+                                                    @Html.TextBoxFor(n => n.Name, new { @class = "form-control", placeholder = "İsim", required = "required", @Value = Model.admin.Name })
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <h6 class="text-center">Soyisim</h6>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                                    </div>
+                                                    @Html.TextBoxFor(n => n.LastName, new { @class = "form-control", placeholder = "Soyisim", required = "required", @Value = Model.admin.LastName })
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h6 class="text-center">Cinsiyet</h6>
+                                                <div class="input-group mb-2">
+
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-venus-mars "></i></div>
+                                                    </div>
+                                                    @{
+                                                        List<SelectListItem> items = new List<SelectListItem>();
+                                                        if (Model.admin.Gender.Equals("Erkek"))
+                                                        {
+                                                            items.Add(new SelectListItem { Text = "Kadın", Value = "Kadın" });
+
+                                                            items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek", Selected = true });
+                                                        }
+                                                        else
+                                                        {
+                                                            items.Add(new SelectListItem { Text = "Kadın", Value = "Kadın", Selected = true });
+
+                                                            items.Add(new SelectListItem { Text = "Erkek", Value = "Erkek" });
+                                                        }
+                                                    }
+                                                    @Html.DropDownListFor(n => n.Gender, items, new { @class = "form-control" })
+                                                    <!-- <input type="text" class="form-control" placeholder="Cinsiyet" required> -->
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <h6 class="text-center">Telefon</h6>
+                                                <div class="input-group mb-2">
+
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-phone "></i></div>
+                                                    </div>
+
+                                                    @Html.TextBoxFor(n => n.Phone, new { @class = "form-control", placeholder = "Telefon Numarası", required = "required", pattern = "[0-9]+", @Value = Model.admin.Phone })
+
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="text-center">
+                                                <input type="submit" value="Kaydet" class="btn btn-success btn-block rounded-0 py-2">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                }
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+
+
+                        <div class="container">
+
+                            <div class="row justify-content-center">
+
+                                @using (Html.BeginForm("UpdatePassword", "Profile",
+                                    new { adminID = Model.admin.UserID }, FormMethod.Post,
+                                    new { @class = "w-75" }))
+                                {
+                                    <div class="card  rounded-0">
+                                        <div class="card-header p-0 bg-secondary ">
+                                            <div class=" text-white text-center py-2">
+                                                <h3><i class="fas fa-pen-square"></i> Güvenlik</h3>
+                                                <h8>Parolanızı değiştirebilirsiniz </h8>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body p-3">
+
+                                            <!--Body-->
+                                            <div class="form-group">
+                                                <h6 class="text-center">Eski Parola</h6>
+                                                <div class="input-group mb-2">
+
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                                    </div>
+
+                                                    @Html.PasswordFor(n => n.oldPassword, new { @class = "form-control", placeholder = "Eski Parola", required = "required" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h6 class="text-center">Yeni parola</h6>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                                    </div>
+                                                    @Html.PasswordFor(n => n.Password, new { @class = "form-control", placeholder = "Yeni Parola", required = "required", @id = "password" })
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h6 class="text-center">Yeni Parola Doğrula</h6>
+                                                <div class="input-group mb-2">
+
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-info-circle "></i></div>
+                                                    </div>
+
+                                                    <input type="password" class="form-control" id="confirm_password"
+                                                           placeholder="Yeni Parola Doğrula" required>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="text-center">
+                                                <input type="submit" value="Kaydet" class="btn btn-success btn-block rounded-0 py-2">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                }
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+@section Javascript {
+
+
+    <script src="~/Content/jquery/ajaxuncompressed.js"></script>
+    <script>
+        var password = document.getElementById("password")
+            , confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Parolalar eşleşmiyor");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+
+    </script>
+
+}

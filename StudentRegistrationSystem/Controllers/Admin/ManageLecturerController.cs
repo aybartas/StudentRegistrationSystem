@@ -61,7 +61,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
         {
             foreach (User s in studentHelper.GetOnlyStudents())
             {
-                if(s.LecturerID == LecturerID)
+                if (s.LecturerID == LecturerID)
                 {
                     TempData["DeleteStatus"] = "Lecturer is Advisor";
                     s.LecturerID = null;
@@ -71,19 +71,19 @@ namespace StudentRegistrationSystem.Controllers.Admin
             }
             //foreach(Section s in sectionHelper.GetAllSections())
             //{
-                //if(s.LecturerID == LecturerID)
-                //{
-                //    TempData["DeleteStatus2"] = "Lecturer Has a Section";
-                //    //lecturerHelper._dbContext.Sections.Attach(s);
-                //    //if (!lecturerHelper._dbContext.Sections.Contains(s))
-                //    //{
-                //    //    lecturerHelper._dbContext.Sections.Attach(s);
-                //    //}
-                //    Section b = lecturerHelper._dbContext.Sections.Find(s.SectionID);
-                //    lecturerHelper._dbContext.Sections.Remove(b);
-                //    //lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
-                //    //lecturerHelper._dbContext.SaveChanges();
-                //}
+            //if(s.LecturerID == LecturerID)
+            //{
+            //    TempData["DeleteStatus2"] = "Lecturer Has a Section";
+            //    //lecturerHelper._dbContext.Sections.Attach(s);
+            //    //if (!lecturerHelper._dbContext.Sections.Contains(s))
+            //    //{
+            //    //    lecturerHelper._dbContext.Sections.Attach(s);
+            //    //}
+            //    Section b = lecturerHelper._dbContext.Sections.Find(s.SectionID);
+            //    lecturerHelper._dbContext.Sections.Remove(b);
+            //    //lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
+            //    //lecturerHelper._dbContext.SaveChanges();
+            //}
             //}
             lecturerHelper._dbContext.Lecturers.Remove(lecturerHelper._dbContext.Lecturers.Find(LecturerID));
             lecturerHelper._dbContext.SaveChanges();
@@ -97,7 +97,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
             {
                 lecturer = lecturer,
                 LecturerID = LecturerID,
-                departmentList = departmentHelper.GetDepartments()                
+                departmentList = departmentHelper.GetDepartments()
             };
             return View(updateLecturerViewModel);
         }
@@ -142,23 +142,5 @@ namespace StudentRegistrationSystem.Controllers.Admin
             updateLecturerViewModel.allDepartmentalLectures = lecturerHelper.GetAllLecturesOfLecturersDepartment(LecturerID);
             return View(updateLecturerViewModel);
         }
-        //[HttpPost]
-        //public ActionResult GetSectionsFromLecturesForLecturer(int LectureID)
-        //{
-
-        //    List<Section> dropdownSections = sectionHelper.GetSectionsOfLecture(LectureID);
-
-        //    SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
-        //    return Json(sections);
-        //}
-        //public ActionResult AddSection(int LecturerID, int ddlSection)
-        //{
-        //    Section section = sectionHelper._dbContext.Sections.Find(ddlSection);
-
-        //    if (section.LecturerID == null)
-        //    {
-
-        //    }
-        //}
     }
 }
