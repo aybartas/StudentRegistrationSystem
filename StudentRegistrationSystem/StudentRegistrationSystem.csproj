@@ -171,13 +171,17 @@
     <Compile Include="Models\Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddStudentViewModel.cs" />
+    <Compile Include="ViewModels\AdminLecture\AddSectionFormViewModel.cs" />
     <Compile Include="ViewModels\AdminLecture\DepartmentLecturesViewModel.cs" />
     <Compile Include="ViewModels\AdminLecture\ListLecturesViewModel.cs" />
+    <Compile Include="ViewModels\AdminLecture\UpdateLectureFormViewModel.cs" />
+    <Compile Include="ViewModels\AdminLecture\UpdateLectureViewModel.cs" />
+    <Compile Include="ViewModels\AdminLecture\UpdateSectionFormViewModel.cs" />
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
-	<Compile Include="ViewModels\UpdateDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\UpdateDepartmentViewModel.cs" />
     <Compile Include="ViewModels\UpdateLecturerViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentViewModel.cs" />
     <Compile Include="ViewModels\UpdateStudentCourseViewModel.cs" />
@@ -416,12 +420,11 @@
     <Content Include="Views\ManageLecturer\Courses.cshtml" />
     <Content Include="Views\ManageLecture\List.cshtml" />
     <Content Include="Views\ManageLecture\AddLecture.cshtml" />
-	<Content Include="Views\ManageLecture\UpdateLecture.cshtml" />
-	<Content Include="Views\ManageLecture\AddSection.cshtml" />
+    <Content Include="Views\ManageLecture\UpdateLecture.cshtml" />
+    <Content Include="Views\ManageLecture\AddSection.cshtml" />
     <Content Include="Views\ManageDepartment\List.cshtml" />
     <Content Include="Views\ManageDepartment\Form.cshtml" />
-	<Content Include="Views\ManageDepartment\Update.cshtml" />
-	  
+    <Content Include="Views\ManageDepartment\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -39,8 +39,15 @@ namespace StudentRegistrationSystem.Controllers.Admin
 
         public ActionResult UpdateLecture(int LectureID)
         {
-
-            return View();
+            Lecture currentLecture = lectureHelper._dbContext.Lectures.Find(LectureID);
+            List<Section> sectionsOfCurrentLecture = sectionHelper._dbContext.Sections.Where(m => m.LectureID.Equals(LectureID)).ToList();
+            string departmentNameOfCurrentLecture = departmentHelper._dbContext.Departments.Find(currentLecture.DepartmentCode).Name;
+            AddSectionFormViewModel addSectionFormViewModel = new AddSectionFormViewModel();
+            UpdateLectureFormViewModel updateLectureFormViewModel = new UpdateLectureFormViewModel();
+            UpdateSectionFormViewModel updateSectionFormViewModel = new UpdateSectionFormViewModel();
+            UpdateLectureViewModel updateLectureViewModel = new UpdateLectureViewModel(currentLecture,sectionsOfCurrentLecture,departmentNameOfCurrentLecture,updateLectureFormViewModel,addSectionFormViewModel,updateSectionFormViewModel);
+            
+            return View(updateLectureViewModel);
         }
 
         public ActionResult AddLecture()

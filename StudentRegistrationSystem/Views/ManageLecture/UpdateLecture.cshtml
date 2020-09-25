@@ -1,4 +1,6 @@
-﻿
+﻿@model StudentRegistrationSystem.ViewModels.AdminLecture.UpdateLectureViewModel
+@using StudentRegistrationSystem.Helpers
+@using StudentRegistrationSystem.Models.Entity 
 @{
     ViewBag.Title = "UpdateLecture";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
@@ -11,8 +13,8 @@
                 <img src="https://www.iconfinder.com/data/icons/e-learning-1-1/50/17-512.png"
                      alt="Admin" class="rounded-circle" style="width: 50%;height: auto;">
                 <br>
-                <span class="font-weight-bold">Veri Yapıları</span>
-                <span class="text-black-50">Bilgiisayar Mühendisliği</span>
+                <span class="font-weight-bold">@Model.lecture.Name</span>
+                <span class="text-black-50">@Model.departmentName</span>
                 <span> </span>
             </div>
         </div>
@@ -29,7 +31,7 @@
                         <h6 class="mb-0">Ders Kodu</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        102
+                        @Model.lecture.LectureCode
                     </div>
                 </div>
                 <hr>
@@ -38,7 +40,7 @@
                         <h6 class="mb-0">Ders Adı</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        Veri yapıları
+                        @Model.lecture.Name
                     </div>
                 </div>
                 <hr>
@@ -47,7 +49,7 @@
                         <h6 class="mb-0">Öğretim Tipi</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        Birinci Öğretim
+                        @Model.lecture.EducationType
                     </div>
                 </div>
                 <hr>
@@ -56,7 +58,7 @@
                         <h6 class="mb-0">Kredi</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        5
+                        @Model.lecture.Credit
                     </div>
                 </div>
                 <hr>
@@ -65,7 +67,7 @@
                         <h6 class="mb-0">Dönem</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        Güz
+                        @Model.lecture.Term
                     </div>
                 </div>
             </div>
@@ -76,36 +78,37 @@
 
         <div class="col-md-5  mt-2">
 
+            <!-- Form başlangıç-->
             <div class="p-1 py-2  mt-2">
                 <div class="d-flex justify-content-center ">
                     <h4 class="">Dersi Güncelle</h4>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6">
-                        <label class="labels">Ders Kodu</label><input type="text" class="form-control"
-                                                                      placeholder="isim" value="">
+                        <label class="labels">Ders Kodu</label>
+                        <input type="text" class="form-control" placeholder="Ders Kodu" value="@Model.lecture.LectureCode">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">Ders Adı</label><input type="text" class="form-control"
-                                                                     value="" placeholder="soyisim">
+                        <label class="labels">Ders Adı</label>
+                        <input type="text" class="form-control" value="@Model.lecture.Name" placeholder="Ders Adı">
                     </div>
                 </div>
 
                 <div class="row mt-3">
 
                     <div class="col-md-12">
-                        <label class="labels">Öğretim Tipi</label><input type="text"
-                                                                         class="form-control" placeholder="Email" value="">
+                        <label class="labels">Öğretim Tipi</label>
+                        <input type="text" class="form-control" placeholder="Öğretim Tipi" value="@Model.lecture.EducationType">
                     </div>
 
                     <div class="col-md-12">
                         <label class="labels">Kredi</label>
-                        <input type="text" class="form-control" placeholder="Bölüm" value="">
+                        <input type="text" class="form-control" placeholder="Kredi" value="@Model.lecture.Credit">
                     </div>
 
                     <div class="col-md-12">
-                        <label class="labels">Dönem</label><input type="text" class="form-control"
-                                                                  placeholder="telefon" value="">
+                        <label class="labels">Dönem</label>
+                        <input type="text" class="form-control" placeholder="Dönem" value="@Model.lecture.Term">
                     </div>
 
                     <div class="col-md-12 mt-4 mb-2">
@@ -129,13 +132,13 @@
 
             </div>
 
-
+            <!-- form bitiş -->
 
         </div>
     </div>
 </div>
 
-<div class="container ">
+<div class="container mt-4 ">
     <h3 class="text-muted text-center mb-3">Dersin Şubeleri</h3>
     <table class="table table-striped bg-light text-center">
         <thead>
@@ -154,21 +157,28 @@
 
             </tr>
         </thead>
+
         <tbody>
+
+            @foreach (var currentSection in Model.sections)
+            {
+                LecturerHelper lecturerHelper = new LecturerHelper();
+                Lecturer currentLecturer = lecturerHelper._dbContext.Lecturers.Find(currentSection.LecturerID);
+                
             <tr>
-                <th>Veri Yapıları</th>
-                <th>Faruk Sürmez</th>
-                <th>2</th>
-                <th>Pazartesi</th>
-                <th>09:00</th>
-                <th>11:00 </th>
-                <th>50</th>
-                <th>yılız amfi </th>
-                <th>d4</th>
+                <th>@Model.lecture.Name</th>
+                <th>@currentLecturer.Name @currentLecturer.LastName</th>
+                <th>@currentSection.Number</th>
+                <th>@currentSection.Day</th>
+                <th>@currentSection.Time</th>
+                <th>@currentSection.EndTime</th>
+                <th>@currentSection.Quota</th>
+                <th>@currentSection.Building </th>
+                <th>@currentSection.Classroom</th>
 
                 <th>
                     <div class="bnt-group">
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ogrencino">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@currentSection.SectionID">
                             Sil
                         </button>
                         <button type="button" class="btn btn-info btn-sm">Yönet</button>
@@ -176,7 +186,7 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="ogrencino" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="@currentSection.SectionID" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -200,7 +210,7 @@
 
                 </th>
             </tr>
-
+        }
         </tbody>
     </table>
 
@@ -345,7 +355,7 @@
                             </div>
                         </div>
 
-                        </div>
+                    </div>
 
                 </form>
 
