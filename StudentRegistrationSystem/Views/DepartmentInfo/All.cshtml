@@ -1,0 +1,309 @@
+﻿@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_studentLayout.cshtml";
+}
+@{  LectureHelper lectureHelper = new LectureHelper();
+    StudentHelper studentHelper = new StudentHelper();
+    int StudentID = int.Parse(HttpContext.Current.User.Identity.Name.Split(',')[0]);
+    User student = studentHelper.FindUserByID(StudentID);
+    List<Lecture> allLectures = studentHelper.GetAllLecturesOfUsersDepartmentDependingOnEducationType(StudentID);
+    List<Lecture> firstGradeList = new List<Lecture>();
+    List<Lecture> secondGradeList = new List<Lecture>();
+    List<Lecture> thirdGradeList = new List<Lecture>();
+    List<Lecture> fourthGradeList = new List<Lecture>();
+    foreach (Lecture l in allLectures)
+    {
+        if (l.LectureCode[0].Equals('1'))
+        {
+            firstGradeList.Add(l);
+        }
+        if (l.LectureCode[0].Equals('2'))
+        {
+            secondGradeList.Add(l);
+        }
+        if (l.LectureCode[0].Equals('3'))
+        {
+            thirdGradeList.Add(l);
+        }
+        if (l.LectureCode[0].Equals('4'))
+        {
+            fourthGradeList.Add(l);
+        }
+    }
+}
+<h2 class="text-muted text-center mb-3" style="margin-top:9vh"><b>Öğretim Programı</b></h2>
+<h3 class="text-muted text-center mb-3">1.Sınıf</h3>
+
+<div class="row ml-1 mr-1">
+
+    <div class="container col-md-6  white-space: normal">
+        <h5 class="text-muted text-center mb-3">1.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in firstGradeList)
+                {
+                    if (l.Term.Equals("Güz")){
+                    <tr>
+                    <th>@l.LectureCode</th>
+                    <th class="white-space:normal">@l.Name</th>
+                    <th>@l.Credit</th>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+    <div class="container col-md-6 white-space: normal">
+        <h5 class="text-muted text-center mb-3">2.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in firstGradeList)
+                {
+                    if (l.Term.Equals("Bahar"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+
+
+
+</div>
+<br/>
+<h3 class="text-muted text-center mb-3">2.Sınıf</h3>
+<div class="row ml-1 mr-1">
+
+    <div class="container col-md-6  white-space: normal">
+        <h5 class="text-muted text-center mb-3">1.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in secondGradeList)
+                {
+                    if (l.Term.Equals("Güz"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+    <div class="container col-md-6 white-space: normal">
+        <h5 class="text-muted text-center mb-3">2.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in secondGradeList)
+                {
+                    if (l.Term.Equals("Bahar"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+
+
+
+</div>
+<br />
+<h3 class="text-muted text-center mb-3">3.Sınıf</h3>
+
+<div class="row ml-1 mr-1">
+
+    <div class="container col-md-6  white-space: normal">
+        <h5 class="text-muted text-center mb-3">1.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in thirdGradeList)
+                {
+                    if (l.Term.Equals("Güz"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+    <div class="container col-md-6 white-space: normal">
+        <h5 class="text-muted text-center mb-3">2.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in thirdGradeList)
+                {
+                    if (l.Term.Equals("Bahar"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+
+
+
+</div>
+<br />
+<h3 class="text-muted text-center mb-3">4.Sınıf</h3>
+<div class="row ml-1 mr-1">
+
+    <div class="container col-md-6  white-space: normal">
+        <h5 class="text-muted text-center mb-3">1.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in fourthGradeList)
+                {
+                    if (l.Term.Equals("Güz"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+    <div class="container col-md-6 white-space: normal">
+        <h5 class="text-muted text-center mb-3">2.Dönem</h5>
+        <table class="table table-striped bg-light text-center">
+            <thead>
+                <tr class="text-muted">
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Kredi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Lecture l in fourthGradeList)
+                {
+                    if (l.Term.Equals("Bahar"))
+                    {
+                        <tr>
+                            <th>@l.LectureCode</th>
+                            <th class="white-space:normal">@l.Name</th>
+                            <th>@l.Credit</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <!-- pagination -->
+        <!-- end of pagination -->
+
+    </div>
+
+
+
+</div>
+

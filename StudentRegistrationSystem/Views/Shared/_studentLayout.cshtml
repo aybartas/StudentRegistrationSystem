@@ -35,13 +35,13 @@
 
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Ders Ara</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Ders Seç </a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profili Yönet</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Transkript Al</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Ders Programı Gör</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğretim Programını İzle</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                            <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
 
                         </ul>
                     </div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Hayır</button>
-                    @Html.ActionLink("Evet", "Logout", "Home", new { @class = "btn btn-success" })
+                    <a href="@Url.Action("Logout","Home")" class="btn btn-success">Evet</a>
                     @*<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>*@
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 
 
-                    <div class="row ml-1" style="margin-top:9vh">
+                  
 
 
                         @RenderBody()
@@ -108,9 +108,9 @@
 
 
 
-                    </div>
+                    
 
-                    <br>
+                   
 
 
                 </div>
