@@ -131,7 +131,7 @@
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <h5 class="alert-heading"><b>Başarısız!</b></h5>
                     <p>Aynı ders kodu ve öğretim tipine sahip başka bir der bulunuyor.</p>
-                    <p>Lütfen önce o dersi silin ya da öğretim tipini değiştirin</p>
+                    <p>Lütfen önce o dersi silin ya da öğretim tipini değiştirin.</p>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -146,25 +146,3 @@
     </div>
 </div>
 
-@section Javascript {
-
-
-    <script src="~/Content/jquery/ajaxuncompressed.js"></script>
-    <script>
-        var password = document.getElementById("password")
-            , confirm_password = document.getElementById("confirm_password");
-
-        function validatePassword() {
-            if (password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Parolalar eşleşmiyor");
-            } else {
-                confirm_password.setCustomValidity('');
-            }
-        }
-
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
-
-
-    </script>
-}

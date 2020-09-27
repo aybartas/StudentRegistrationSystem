@@ -89,7 +89,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     double endTimeOfExistingSection = Convert.ToDouble(sectionOfLecturer.EndTime.Replace(".", ","));
                     double startTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.updateSectionFormViewModel.Time.Replace(".", ","));
                     double endTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.updateSectionFormViewModel.EndTime.Replace(".", ","));
-                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) >= 0) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) <= 0)))
                     {
                         TempData["UpdateSectionStatus"] = "LecturerOccupied";
                         return RedirectToAction("UpdateLecture", "ManageLecture", new { lecture.LectureID });
@@ -109,7 +109,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 double endTimeOfExistingSection = Convert.ToDouble(s.EndTime.Replace(".", ","));
                 double startTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.updateSectionFormViewModel.Time.Replace(".", ","));
                 double endTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.updateSectionFormViewModel.EndTime.Replace(".", ","));
-                if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) >= 0) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) <= 0)))
                 {
                     TempData["UpdateSectionStatus"] = "AnotherSectionOppuied";
                     return RedirectToAction("UpdateLecture", "ManageLecture", new { lecture.LectureID });
@@ -290,7 +290,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     double endTimeOfExistingSection = Convert.ToDouble(sectionOfLecturer.EndTime.Replace(".", ","));
                     double startTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.addSectionFormViewModel.Time.Replace(".", ","));
                     double endTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.addSectionFormViewModel.EndTime.Replace(".", ","));
-                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) >= 0) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) <= 0)))
                     {
                         TempData["AddSectionStatus"] = "LecturerOccupied";
                         return RedirectToAction("UpdateLecture", "ManageLecture", new { lecture.LectureID });
@@ -309,7 +309,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                 double endTimeOfExistingSection = Convert.ToDouble(s.EndTime.Replace(".", ","));
                 double startTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.addSectionFormViewModel.Time.Replace(".", ","));
                 double endTimeOfNewSection = Convert.ToDouble(updateLectureViewModel.addSectionFormViewModel.EndTime.Replace(".", ","));
-                if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) >= 0) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) <= 0)))
                 {
                     TempData["AddSectionStatus"] = "AnotherSectionOppuied";
                     return RedirectToAction("UpdateLecture", "ManageLecture", new { lecture.LectureID });
