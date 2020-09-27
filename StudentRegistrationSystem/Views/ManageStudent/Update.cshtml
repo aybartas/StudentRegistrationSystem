@@ -127,7 +127,7 @@ else
 
                     <div class="mt-5 text-center">
 
-                        <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2">
+                        <input type="submit" value="Kaydet" class="btn  btn-block btn-success rounded-0 py-2 mx-auto" style="width:15vw">
 
                     </div>
 
@@ -211,7 +211,7 @@ else
 
         function validatePassword() {
             if (password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Parolalar eşlemiyor");
+                confirm_password.setCustomValidity("Parolalar eşleşmiyor");
             } else {
                 confirm_password.setCustomValidity('');
             }

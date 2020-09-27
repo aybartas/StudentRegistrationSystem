@@ -45,7 +45,7 @@
                             @if (currentDecider.Equals("Home"))
                             {
                                 <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
@@ -55,7 +55,7 @@
                             @if (currentDecider.Equals("ManageStudent"))
                             {
                                 <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
@@ -65,7 +65,7 @@
                             @if (currentDecider.Equals("ManageLecturer"))
                             {
                                 <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
@@ -75,7 +75,7 @@
                             @if (currentDecider.Equals("ManageLecture"))
                             {
                                 <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
@@ -84,11 +84,21 @@
                             @if (currentDecider.Equals("ManageDepartment"))
                             {
                                 <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
                                 <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
                                 <li class="nav-item "><a href="@Url.Action("List", "ManageDepartment")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-school text-light fa-lg mr-3"></i>Bölümler</a></li>
+                            }
+                            @if (currentDecider.Equals("Profile"))
+                            {
+                                <li class="nav-item "><a href="@Url.Action("Admin", "Home")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "Profile")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profil</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageStudent")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Öğrenciler </a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecturer")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user-tie text-light fa-lg mr-3"></i>Akademisyenler</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "ManageLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-university text-light fa-lg mr-3"></i>Dersler</a></li>
+                                <li class="nav-item "><a href="@Url.Action("List", "ManageDepartment")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-school text-light fa-lg mr-3"></i>Bölümler</a></li>
+
                             }
                         </ul>
                     </div>
@@ -130,7 +140,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    Çıkmak için Evet butonuna basınız
+                    Çıkmak için Evet butonuna basınız.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Hayır</button>

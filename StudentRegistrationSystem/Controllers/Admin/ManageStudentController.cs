@@ -284,10 +284,20 @@ namespace StudentRegistrationSystem.Controllers.Admin
         [HttpPost]
         public ActionResult GetSectionsFromLectures(int LectureID)
         {
-
+           
             List<Section> dropdownSections = sectionHelper.GetSectionsOfLecture(LectureID);
+            List<DropdownSectionViewModel> dropdownSectionViewModels = new List<DropdownSectionViewModel>();
+            foreach(Section s in dropdownSections)
+            {
+                DropdownSectionViewModel dropdownSectionViewModel = new DropdownSectionViewModel
+                {
+                    SectionId = s.SectionID,
+                    SectionInfo = s.Number.ToString() + ". "+s.Day+" "+s.Time+" - "+s.EndTime
+                };
+                dropdownSectionViewModels.Add(dropdownSectionViewModel);
+            }
 
-            SelectList sections = new SelectList(dropdownSections, "SectionID", "Number", 0);
+           SelectList sections = new SelectList(dropdownSectionViewModels, "SectionID", "SectionInfo", 0);
             return Json(sections);
         }
 

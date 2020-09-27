@@ -16,6 +16,7 @@ namespace StudentRegistrationSystem.ViewModels
         public string Phone { get; set; }
         public string EducationType { get; set; }
         public string Password { get; set; }
+        public string oldPassword { get; set; }
         public int LecturerID { get; set; }
         public List<Lecturer> departmentLecturers { get; set; }
         public UpdateStudentViewModel()
@@ -27,6 +28,9 @@ namespace StudentRegistrationSystem.ViewModels
             departmentLecturers = lecturers;
         }
 
-        
+        public UpdateStudentViewModel(User user)
+        {
+            this.user = user;
+        }
     }
 }
