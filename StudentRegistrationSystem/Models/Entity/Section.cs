@@ -29,6 +29,7 @@ namespace StudentRegistrationSystem.Models.Entity
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
+        
 
     }
 }

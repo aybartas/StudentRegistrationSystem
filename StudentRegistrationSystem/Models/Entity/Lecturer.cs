@@ -20,8 +20,8 @@ namespace StudentRegistrationSystem.Models.Entity
 #nullable disable
         public Department Department { get; set; }
 
-        public virtual IEnumerable<User> Users { get; set; }
-        public virtual IEnumerable<Section> Sections { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Section> Sections { get; set; }
        
 
 

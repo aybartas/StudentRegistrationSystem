@@ -17,5 +17,9 @@ namespace StudentRegistrationSystem.ViewModels.AdminLecture
             this.department = department;
             this.lectures = lectures;
         }
+
+        public DepartmentLecturesViewModel()
+        {
+        }
     }
 }

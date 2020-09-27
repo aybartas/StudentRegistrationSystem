@@ -20,9 +20,13 @@ namespace StudentRegistrationSystem.ViewModels.AdminLecture
 
         public UpdateSectionFormViewModel updateSectionFormViewModel { get; set; }
 
-        
+        public List<Lecturer> lecturers { get; set; }
 
-        public UpdateLectureViewModel(Lecture lecture, List<Section> sections, string departmentName, UpdateLectureFormViewModel updateLectureFormViewModel, AddSectionFormViewModel addSectionFormViewModel, UpdateSectionFormViewModel updateSectionFormViewModel)
+        public UpdateLectureViewModel()
+        {
+        }
+
+        public UpdateLectureViewModel(Lecture lecture, List<Section> sections, string departmentName, UpdateLectureFormViewModel updateLectureFormViewModel, AddSectionFormViewModel addSectionFormViewModel, UpdateSectionFormViewModel updateSectionFormViewModel, List<Lecturer> lecturers)
         {
             this.lecture = lecture;
             this.sections = sections;
@@ -30,6 +34,7 @@ namespace StudentRegistrationSystem.ViewModels.AdminLecture
             this.updateLectureFormViewModel = updateLectureFormViewModel;
             this.addSectionFormViewModel = addSectionFormViewModel;
             this.updateSectionFormViewModel = updateSectionFormViewModel;
+            this.lecturers = lecturers;
         }
     }
 }

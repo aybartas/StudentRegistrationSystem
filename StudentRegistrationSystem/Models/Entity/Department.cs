@@ -15,10 +15,10 @@ namespace StudentRegistrationSystem.Models.Entity
 
         public string Phone { get; set; }
 
-        public virtual IEnumerable<User> Users { get; set; }
-        public virtual IEnumerable<Lecturer> Lecturers { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Lecturer> Lecturers { get; set; }
 
-        public virtual IEnumerable<Lecture> Lectures { get; set; }
+        public virtual ICollection<Lecture> Lectures { get; set; }
 
 
     }

@@ -39,5 +39,7 @@ namespace StudentRegistrationSystem.Helpers
             return _dbContext.Lectures.ToList();
         }
 
+
+
     }
 }

@@ -1,10 +1,12 @@
 ﻿@model StudentRegistrationSystem.ViewModels.AdminLecture.UpdateLectureViewModel
 @using StudentRegistrationSystem.Helpers
-@using StudentRegistrationSystem.Models.Entity 
+@using StudentRegistrationSystem.Models.Entity
 @{
     ViewBag.Title = "UpdateLecture";
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
+
+@*TempData["UpdateLectureStatus"] = "Successful"*@
 
 <div class="container rounded bg-white mt-5 ">
     <div class="row">
@@ -74,72 +76,149 @@
 
         </div>
 
-
-
         <div class="col-md-5  mt-2">
 
             <!-- Form başlangıç-->
-            <div class="p-1 py-2  mt-2">
-                <div class="d-flex justify-content-center ">
-                    <h4 class="">Dersi Güncelle</h4>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6">
-                        <label class="labels">Ders Kodu</label>
-                        <input type="text" class="form-control" placeholder="Ders Kodu" value="@Model.lecture.LectureCode">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Ders Adı</label>
-                        <input type="text" class="form-control" value="@Model.lecture.Name" placeholder="Ders Adı">
-                    </div>
-                </div>
+            @using (Html.BeginForm("UpdateLecture", "ManageLecture", new { LectureID = Model.lecture.LectureID }, FormMethod.Post))
+            {
 
-                <div class="row mt-3">
-
-                    <div class="col-md-12">
-                        <label class="labels">Öğretim Tipi</label>
-                        <input type="text" class="form-control" placeholder="Öğretim Tipi" value="@Model.lecture.EducationType">
+                @Html.AntiForgeryToken()
+                <div class="p-1 py-2  mt-2">
+                    <div class="d-flex justify-content-center ">
+                        <h4 class="">Dersi Güncelle</h4>
                     </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Ders Kodu</label>
+                            @*<input type="text" class="form-control" placeholder="Ders Kodu" value="@Model.lecture.LectureCode">*@
+                            @Html.TextBoxFor(m => m.updateLectureFormViewModel.LectureCode, new { @class = "form-control", placeholder = "Ders Kodu", pattern = "[0-9]+", title = "Ders kodu sadece rakam içerebilir", required = "required", @Value = Model.lecture.LectureCode })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Ders Adı</label>
+                            @*<input type="text" class="form-control" value="@Model.lecture.Name" placeholder="Ders Adı">*@
+                            @Html.TextBoxFor(m => m.updateLectureFormViewModel.Name, new { @class = "form-control", placeholder = "Ders Adı", required = "required", @Value = Model.lecture.Name })
 
-                    <div class="col-md-12">
-                        <label class="labels">Kredi</label>
-                        <input type="text" class="form-control" placeholder="Kredi" value="@Model.lecture.Credit">
+                        </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <label class="labels">Dönem</label>
-                        <input type="text" class="form-control" placeholder="Dönem" value="@Model.lecture.Term">
-                    </div>
+                    <div class="row mt-3">
 
-                    <div class="col-md-12 mt-4 mb-2">
+                        <div class="col-md-12">
+                            <label class="labels">Öğretim Tipi</label>
+                            @{
+                                List<SelectListItem> items = new List<SelectListItem>();
+                                if (Model.lecture.EducationType.Equals("Birinci Öğretim"))
+                                {
+                                    items.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim", Selected = true });
 
-                        <div class="text-center">
+                                    items.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim" });
+                                }
+                                else
+                                {
+                                    items.Add(new SelectListItem { Text = "İkinci Öğretim", Value = "İkinci Öğretim", Selected = true });
 
-                            <div class="container text-center w-50">
+                                    items.Add(new SelectListItem { Text = "Birinci Öğretim", Value = "Birinci Öğretim" });
+                                }
+                            }
+                            @Html.DropDownListFor(m => m.updateLectureFormViewModel.EducationType, items, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Kredi</label>
+                            @*<input type="text" class="form-control" placeholder="Kredi" value="@Model.lecture.Credit">*@
+                            @Html.TextBoxFor(m => m.updateLectureFormViewModel.Credit, new { @class = "form-control", placeholder = "Ders Kredisi", pattern = "[0-9]+", title = "Lütfen sadece sayı giriniz", required = "required", @Value = Model.lecture.Credit })
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Dönem</label>
+
+
+                            @{
+                                List<SelectListItem> terms = new List<SelectListItem>();
+                                if (Model.lecture.Term.ToLower().Equals("güz"))
+                                {
+                                    terms.Add(new SelectListItem { Text = "Güz", Value = "Güz", Selected = true });
+
+                                    terms.Add(new SelectListItem { Text = "Bahar", Value = "Bahar" });
+                                }
+                                else
+                                {
+                                    terms.Add(new SelectListItem { Text = "Bahar", Value = "Bahar", Selected = true });
+
+                                    terms.Add(new SelectListItem { Text = "Güz", Value = "Güz" });
+                                }
+                            }
+                            @Html.DropDownListFor(m => m.updateLectureFormViewModel.Term, terms, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-md-12 mt-4 mb-2">
+
+                            <div class="text-center">
+
+                                <div class="container text-center w-50">
 
 
 
-                                <input type="submit" value="Kaydet" class="btn btn-block btn-success btn-sm rounded-0 py-2">
+                                    <input type="submit" value="Kaydet" class="btn btn-block btn-success btn-sm rounded-0 py-2">
+
+                                </div>
 
                             </div>
 
                         </div>
 
+
                     </div>
+
+                    @if (@TempData["UpdateLectureStatus"] != null && @TempData["UpdateLectureStatus"].Equals("Invalid"))
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                            <strong>Başarısız!</strong>
+
+                            <p> Aynı isme ve öğretim tipine sahip birden fazla ders olamaz</p>
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+                    @if (@TempData["UpdateLectureStatus"] != null && @TempData["UpdateLectureStatus"].Equals("Successful"))
+                    {
+                        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                            <strong>Başarılı</strong>
+
+                            <p> Ders başarıyla güncellendi</p>
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+
 
                 </div>
 
-
-            </div>
-
-            <!-- form bitiş -->
-
+                <!-- form bitiş -->
+            }
         </div>
     </div>
 </div>
-
+ 
 <div class="container mt-4 ">
     <h3 class="text-muted text-center mb-3">Dersin Şubeleri</h3>
+    @if (@TempData["SectionDeleteStatus"] != null && @TempData["SectionDeleteStatus"].Equals("Success"))
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+            <strong>Başarılı!!</strong>
+
+            <p> Şube başarıyla silindi! </p>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
     <table class="table table-striped bg-light text-center">
         <thead>
             <tr class="text-muted">
@@ -164,67 +243,345 @@
             {
                 LecturerHelper lecturerHelper = new LecturerHelper();
                 Lecturer currentLecturer = lecturerHelper._dbContext.Lecturers.Find(currentSection.LecturerID);
-                
-            <tr>
-                <th>@Model.lecture.Name</th>
-                <th>@currentLecturer.Name @currentLecturer.LastName</th>
-                <th>@currentSection.Number</th>
-                <th>@currentSection.Day</th>
-                <th>@currentSection.Time</th>
-                <th>@currentSection.EndTime</th>
-                <th>@currentSection.Quota</th>
-                <th>@currentSection.Building </th>
-                <th>@currentSection.Classroom</th>
 
-                <th>
-                    <div class="bnt-group">
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@currentSection.SectionID">
-                            Sil
-                        </button>
-                        <button type="button" class="btn btn-info btn-sm">Yönet</button>
+                <tr>
+                    <th>@Model.lecture.Name</th>
+                    <th>@currentLecturer.Name @currentLecturer.LastName</th>
+                    <th>@currentSection.Number</th>
+                    <th>@currentSection.Day</th>
+                    <th>@currentSection.Time</th>
+                    <th>@currentSection.EndTime</th>
+                    <th>@currentSection.Quota</th>
+                    <th>@currentSection.Building </th>
+                    <th>@currentSection.Classroom</th>
 
-                    </div>
+                    <th>
+                        <div class="bnt-group">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@currentSection.SectionID">
+                                Sil
+                            </button>
+                            @{ int currentSectionModelId = currentSection.SectionID + 10;}
+                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#@currentSectionModelId">
+                                Yönet
+                            </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="@currentSection.SectionID" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Şube Silme</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Seçilen şubeyi silmek istediğinizden emin misiniz?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
-                                    <button type="button" class="btn btn-success">Evet</button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="@currentSection.SectionID" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Şube Silme</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Seçilen şubeyi silmek istediğinizden emin misiniz?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+                                        <a href="@Url.Action("DeleteSection","ManageLecture",new{SectionID = currentSection.SectionID, LectureID = Model.lecture.LectureID })" class="btn btn-success ">Evet </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="modal fade" id="@currentSectionModelId" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="text-align:center"  id="exampleModalLongTitle">Şube Yönet</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        @using (Html.BeginForm("UpdateSection", "ManageLecture", new { SectionID = currentSection.SectionID}, FormMethod.Post))
+                                        {
+
+                                            @Html.AntiForgeryToken()
+                                        <div class="p-1 py-2  mt-2">
 
 
-                </th>
-            </tr>
-        }
+
+                                            <div class="row mt-3">
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Akademisyen</label>
+                                                    @{ List<SelectListItem> lecturers = new List<SelectListItem>();}
+
+                                                    @foreach (Lecturer l in Model.lecturers)
+                                                    {
+
+                                                        if (l.LecturerID == currentLecturer.LecturerID)
+                                                        {
+                                                            lecturers.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString(), Selected = true });
+                                                        }
+                                                        else
+                                                        {
+                                                            lecturers.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString() });
+                                                        }
+
+                                                    }
+                                                    @Html.DropDownListFor(n => n.updateSectionFormViewModel.LecturerID, lecturers, new { @class = "form-control" })
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Gün</label>
+                                                    @{
+                                                        List<string> daysOfWeek = new List<string>();
+                                                        daysOfWeek.Add("Pazartesi");
+                                                        daysOfWeek.Add("Salı");
+                                                        daysOfWeek.Add("Çarşamba");
+                                                        daysOfWeek.Add("Perşembe");
+                                                        daysOfWeek.Add("Cuma");
+
+                                                        List<SelectListItem> days = new List<SelectListItem>();
+
+                                                        foreach (string d in daysOfWeek)
+                                                        {
+
+                                                            if (currentSection.Day.Equals(d))
+                                                            {
+                                                                days.Add(new SelectListItem { Text = currentSection.Day, Value = currentSection.Day, Selected = true });
+                                                            }
+                                                            else
+                                                            {
+                                                                days.Add(new SelectListItem { Text = d, Value = d });
+                                                            }
+
+                                                        }
+
+                                                    }
+                                                    @Html.DropDownListFor(m => m.updateSectionFormViewModel.Day, days, new { @class = "form-control" })
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Şube Numarası</label>
+                                                    @Html.TextBoxFor(m => m.updateSectionFormViewModel.Number, new { @class = "form-control", placeholder = "Şube Numarası", pattern = "[0-9]+", required = "required", @Value = currentSection.Number })
+
+                                                </div>
+
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Başlangıç</label>
+
+                                                    @{
+                                                        List<string> times = new List<string>();
+                                                        times.Add("9.00");
+                                                        times.Add("9.30");
+                                                        times.Add("10.00");
+                                                        times.Add("10.30");
+                                                        times.Add("11.00");
+                                                        times.Add("11.30");
+                                                        times.Add("12.00");
+                                                        times.Add("12.30");
+                                                        times.Add("13.00");
+                                                        times.Add("13.30");
+                                                        times.Add("14.00");
+                                                        times.Add("14.30");
+                                                        times.Add("15.00");
+                                                        times.Add("15.30");
+                                                        times.Add("16.00");
+
+                                                        List<SelectListItem> startTimes = new List<SelectListItem>();
+
+                                                        foreach (string d in times)
+                                                        {
+
+                                                            if (currentSection.Time.Equals(d))
+                                                            {
+                                                                startTimes.Add(new SelectListItem { Text = currentSection.Time, Value = currentSection.Time, Selected = true });
+                                                            }
+                                                            else
+                                                            {
+                                                                startTimes.Add(new SelectListItem { Text = d, Value = d });
+                                                            }
+
+                                                        }
+
+                                                    }
+                                                    @Html.DropDownListFor(m => m.updateSectionFormViewModel.Time, startTimes, new { @class = "form-control" })
+
+
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Bitiş</label>
+
+                                                    @{
+                                                        List<string> endtimes = new List<string>();
+
+                                                        endtimes.Add("10.00");
+                                                        endtimes.Add("10.30");
+                                                        endtimes.Add("11.00");
+                                                        endtimes.Add("11.30");
+                                                        endtimes.Add("12.00");
+                                                        endtimes.Add("12.30");
+                                                        endtimes.Add("13.00");
+                                                        endtimes.Add("13.30");
+                                                        endtimes.Add("14.00");
+                                                        endtimes.Add("14.30");
+                                                        endtimes.Add("15.00");
+                                                        endtimes.Add("15.30");
+                                                        endtimes.Add("16.00");
+                                                        endtimes.Add("16.30");
+                                                        endtimes.Add("17.00");
+
+                                                        List<SelectListItem> endOfSection = new List<SelectListItem>();
+
+                                                        foreach (string d in endtimes)
+                                                        {
+
+                                                            if (currentSection.EndTime.Equals(d))
+                                                            {
+                                                                endOfSection.Add(new SelectListItem { Text = currentSection.EndTime, Value = currentSection.EndTime, Selected = true });
+                                                            }
+                                                            else
+                                                            {
+                                                                endOfSection.Add(new SelectListItem { Text = d, Value = d });
+                                                            }
+
+                                                        }
+
+                                                    }
+                                                    @Html.DropDownListFor(m => m.updateSectionFormViewModel.EndTime, endOfSection, new { @class = "form-control" })
+
+
+                                                </div>
+
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Kota</label>
+                                                    @Html.TextBoxFor(m => m.updateSectionFormViewModel.Quota, new { @class = "form-control", placeholder = "Dersin Kotası", pattern = "[0-9]+", required = "required", @Value = currentSection.Quota })
+
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="labels">Bina</label>
+                                                    @Html.TextBoxFor(m => m.updateSectionFormViewModel.Building, new { @class = "form-control", placeholder = "Dersin verileceği bina", required = "required", @Value = currentSection.Building })
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="labels">Sınıf</label>
+                                                    @Html.TextBoxFor(m => m.updateSectionFormViewModel.Classroom, new { @class = "form-control", placeholder = "Dersin verileceği sınıf", required = "required", @Value = currentSection.Classroom })
+
+                                                </div>
+
+
+
+                                                <div class="col-md-12 mt-4 mb-2">
+
+                                                    <div class="text-center">
+
+                                                        <div class="container text-center w-50">
+
+
+
+                                                            <input type="submit" value="Kaydet" class="btn btn-block btn-success btn-sm rounded-0 py-2">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+                                            <!-- UPDATE SECTİON HATA MESAJLARI YAZILCAK-->
+
+                                            @if (TempData["UpdateSectionStatus"] != null)
+                                            {
+                                                if (TempData["UpdateSectionStatus"].Equals("NumberExists"))
+                                                {
+
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                                                        <p>Tanımladığınız şube zaten var.</p>
+                                                        <p>Lütfen olmayan bir şube numarası veriniz</p>
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                }
+                                                else if (TempData["UpdateSectionStatus"].Equals("StartTimeError"))
+                                                {
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                                                        <p>Dersin bitiş zamanı başlangıç zamanından daha geç olmalıdır.</p>
+
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                }
+                                                else if (TempData["UpdateSectionStatus"].Equals("LecturerOccupied"))
+                                                {
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                                                        <p>Seçtiğiniz akademisyen verdiğiniz zaman aralıklarında dolu.</p>
+                                                        <p>Lütfen başka bir zaman aralığı ya da akademisyen seçiniz</p>
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                }
+                                                else if (TempData["UpdateSectionStatus"].Equals("AnotherSectionOppuied"))
+                                                {
+                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                        <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                                                        <p>Seçtiğiniz zaman aralığı ve yer başka bir şube tarafından kullanılıyor.</p>
+                                                        <p>Lütfen şubenin zaman aralığını ya da şubenin yerini değiştiriniz</p>
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <h5 class="alert-heading"><b>Başarılı!</b></h5>
+                                                        <p>Şube başarıyla güncellendi</p>
+
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                }
+
+                                            }
+
+
+
+
+                                        </div>
+
+                                            <!-- form bitiş -->
+                                        }
+
+
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </th>
+                </tr>
+            }
         </tbody>
     </table>
-
-    <!-- pagination -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link text-dark" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-            <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
-        </ul>
-    </nav>
-    <!-- end of pagination -->
 
 </div>
 
@@ -232,6 +589,69 @@
 <div class="container " id="addSectionForm">
     <h3 class="text-muted text-center mb-3">Şube Ekle</h3>
 
+    @if (TempData["AddSectionStatus"] != null)
+    {
+        if (TempData["AddSectionStatus"].Equals("NumberExists"))
+        {
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Tanımladığınız şube zaten var.</p>
+                <p>Lütfen olmayan bir şube numarası veriniz</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        }
+        else if (TempData["AddSectionStatus"].Equals("StartTimeError"))
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Dersin bitiş zamanı başlangıç zamanından büyük olmalıdır.</p>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else if (TempData["AddSectionStatus"].Equals("LecturerOccupied"))
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Seçtiğiniz akademisyen verdiğiniz zaman aralıklarında dolu.</p>
+                <p>Lütfen başka bir zaman aralığı ya da akademisyen seçiniz</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else if (TempData["AddSectionStatus"].Equals("AnotherSectionOppuied"))
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarısız!</b></h5>
+                <p>Seçtiğiniz zaman aralığı ve yer başka bir şube tarafından kullanılıyor.</p>
+                <p>Lütfen şubenin zaman aralığını ya da şubenin yerini değiştiriniz</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarılı!</b></h5>
+                <p>Şube başarıyla eklendi</p>
+                
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+    }
+
+  
     <div class="container contact w-75">
         <div class="row bg-light">
 
@@ -245,7 +665,10 @@
 
             <div class="col mt-4">
 
-                <form action="">
+
+
+                @using (Html.BeginForm("AddSection", "ManageLecture", new { LectureID = Model.lecture.LectureID }, FormMethod.Post))
+                {
 
                     <div class="contact-form">
 
@@ -254,28 +677,33 @@
                             <label for="exampleFormControlSelect1">Akademisyen</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control " id="exampleFormControlSelect1">
-                                    <option>102</option>
-                                    <option>202</option>
-                                    <option>201</option>
-                                </select>
+                                @{ List<SelectListItem> lecturers = new List<SelectListItem>();}
 
+                                @foreach (Lecturer l in Model.lecturers)
+                                {
+
+                                    lecturers.Add(new SelectListItem { Text = l.Name + " " + l.LastName, Value = l.LecturerID.ToString() });
+
+                                }
+                                @Html.DropDownListFor(n => n.addSectionFormViewModel.LecturerID, lecturers, new { @class = "form-control" })
                             </div>
+
+
                         </div>
 
                         <div class="form-group">
                             <label class="control-label " for="fname">Şube Numarası</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="Lütfen Sadece numara giriniz"
-                                       name="fname" required>
+                                @Html.TextBoxFor(m => m.addSectionFormViewModel.Number, new { @class = "form-control", placeholder = "Şube Numarası", title = "Lütfen sadece sayı giriniz", pattern = "[0-9]+", required = "required" })
+
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label " for="fname">Kota</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="fname" pattern="[0-9]+" placeholder="Lütfen sadece numara giriniz"
-                                       name="fname" required>
+                                @Html.TextBoxFor(m => m.addSectionFormViewModel.Quota, new { @class = "form-control", placeholder = "Dersin Kotası", title = "Lütfen sadece sayı giriniz", pattern = "[0-9]+", required = "required" })
+
                             </div>
                         </div>
 
@@ -284,11 +712,23 @@
                             <label for="exampleFormControlSelect1">Gün</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control " id="exampleFormControlSelect1">
-                                    <option>PZT</option>
-                                    <option>SALI</option>
-                                    <option>cars</option>
-                                </select>
+                                @{
+                                    List<string> daysOfWeek = new List<string>();
+                                    daysOfWeek.Add("Pazartesi");
+                                    daysOfWeek.Add("Salı");
+                                    daysOfWeek.Add("Çarşamba");
+                                    daysOfWeek.Add("Perşembe");
+                                    daysOfWeek.Add("Cuma");
+
+                                    List<SelectListItem> days = new List<SelectListItem>();
+
+                                    foreach (string d in daysOfWeek)
+                                    {
+                                        days.Add(new SelectListItem { Text = d, Value = d });
+                                    }
+
+                                }
+                                @Html.DropDownListFor(m => m.addSectionFormViewModel.Day, days, new { @class = "form-control" })
 
                             </div>
                         </div>
@@ -298,11 +738,33 @@
                             <label for="exampleFormControlSelect1">Başlangıç Saati</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control " id="exampleFormControlSelect1">
-                                    <option>PZT</option>
-                                    <option>SALI</option>
-                                    <option>cars</option>
-                                </select>
+                                @{
+                                    List<string> times = new List<string>();
+                                    times.Add("9.00");
+                                    times.Add("9.30");
+                                    times.Add("10.00");
+                                    times.Add("10.30");
+                                    times.Add("11.00");
+                                    times.Add("11.30");
+                                    times.Add("12.00");
+                                    times.Add("12.30");
+                                    times.Add("13.00");
+                                    times.Add("13.30");
+                                    times.Add("14.00");
+                                    times.Add("14.30");
+                                    times.Add("15.00");
+                                    times.Add("15.30");
+                                    times.Add("16.00");
+
+                                    List<SelectListItem> startTimes = new List<SelectListItem>();
+
+                                    foreach (string d in times)
+                                    {
+                                        startTimes.Add(new SelectListItem { Text = d, Value = d });
+                                    }
+
+                                }
+                                @Html.DropDownListFor(m => m.addSectionFormViewModel.Time, startTimes, new { @class = "form-control" })
 
                             </div>
                         </div>
@@ -312,11 +774,34 @@
                             <label for="exampleFormControlSelect1">Bitiş Saati</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control " id="exampleFormControlSelect1">
-                                    <option>PZT</option>
-                                    <option>SALI</option>
-                                    <option>cars</option>
-                                </select>
+                                @{
+                                    List<string> endtimes = new List<string>();
+
+                                    endtimes.Add("10.00");
+                                    endtimes.Add("10.30");
+                                    endtimes.Add("11.00");
+                                    endtimes.Add("11.30");
+                                    endtimes.Add("12.00");
+                                    endtimes.Add("12.30");
+                                    endtimes.Add("13.00");
+                                    endtimes.Add("13.30");
+                                    endtimes.Add("14.00");
+                                    endtimes.Add("14.30");
+                                    endtimes.Add("15.00");
+                                    endtimes.Add("15.30");
+                                    endtimes.Add("16.00");
+                                    endtimes.Add("16.30");
+                                    endtimes.Add("17.00");
+
+                                    List<SelectListItem> endOfSection = new List<SelectListItem>();
+
+                                    foreach (string d in endtimes)
+                                    {
+                                        endOfSection.Add(new SelectListItem { Text = d, Value = d });
+                                    }
+
+                                }
+                                @Html.DropDownListFor(m => m.addSectionFormViewModel.EndTime, endOfSection, new { @class = "form-control" })
 
                             </div>
                         </div>
@@ -324,30 +809,19 @@
                         <div class="form-group">
                             <label class="control-label " for="fname">Bina</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="fname" placeholder="Lütfen şubenin lokasyonunu giriniz"
-                                       name="fname" required>
+                                @Html.TextBoxFor(m => m.addSectionFormViewModel.Building, new { @class = "form-control", placeholder = "Dersin verileceği bina", required = "required" })
+
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label " for="fname">Sınıf</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="fname" placeholder="Lütfen şubenin sınıfını giriniz"
-                                       name="fname" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Şube</label>
-                            <div class="col-sm-8">
-
-                                <select class="form-control " id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
+                                @Html.TextBoxFor(m => m.addSectionFormViewModel.Classroom, new { @class = "form-control", placeholder = "Dersin verileceği sınıf", required = "required" })
 
                             </div>
                         </div>
+
+
 
                         <div class="form-group ">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -357,7 +831,7 @@
 
                     </div>
 
-                </form>
+                }
 
 
 

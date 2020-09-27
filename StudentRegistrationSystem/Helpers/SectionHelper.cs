@@ -41,6 +41,7 @@ namespace StudentRegistrationSystem.Helpers
             return sections;
         }
 
+       
         public List<Section> GetSectionsOfEnrollemnts(List<Enrollment> enrollments)
         {
             List<Section> sections = new List<Section>();
