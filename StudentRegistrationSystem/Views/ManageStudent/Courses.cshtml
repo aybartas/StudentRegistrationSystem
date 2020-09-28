@@ -29,36 +29,35 @@
     }
     else if (@TempData["EnrollmentStatus"].Equals("SameSectionSameNumber"))
     {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
-        <p>Seçilen ders ve şube öğrenciye zaten tanımlanmış</p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading"><b>Başarısız!</b></h5>
+    <p>Seçilen ders ve şube öğrenciye zaten tanımlanmış.</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
     }
     else if (@TempData["EnrollmentStatus"].Equals("DifferentSectionSameLesson"))
     {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
-            <br />
-            <p>Seçilen dersin başka bir şubesi öğrenciye zaten tanımlanmış</p>
-            <p>Lütfen önce tanımlı olan şubeyi silerek tekrar deneyiniz</p>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading"><b>Başarısız!</b></h5>
+    <p style="margin-bottom:0">Seçilen dersin başka bir şubesi öğrenciye zaten tanımlanmış.</p>
+    <p>Lütfen önce tanımlı olan şubeyi silerek tekrar deneyiniz.</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
     }
     else if (@TempData["EnrollmentStatus"].Equals("DifferentLessonSameTime"))
     {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
-            <p>Seçilen şube öğrencinin aldığı diğer şubelerle çakışıyor</p>
-            <p>Eş zamanlı ders eklenemez</p>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+    <p style="margin-bottom:0">Seçilen şube öğrencinin aldığı diğer şubelerle çakışıyor.</p>
+    <p>Eş zamanlı ders eklenemez.</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
     }
     else
     {

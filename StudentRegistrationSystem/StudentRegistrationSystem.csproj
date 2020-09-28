@@ -141,6 +141,7 @@
     <Compile Include="Controllers\Admin\ProfileController.cs" />
     <Compile Include="Controllers\Students\DepartmentInfoController.cs" />
     <Compile Include="Controllers\Students\StudentProfileController.cs" />
+    <Compile Include="Controllers\TimeTableController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\EnrollmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />
@@ -434,6 +435,7 @@
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\DepartmentInfo\All.cshtml" />
     <Content Include="Views\StudentProfile\Edit.cshtml" />
+    <Content Include="Views\TimeTable\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

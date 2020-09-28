@@ -263,7 +263,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
                     double endTimeOfExistingSection = Convert.ToDouble(tempSection.EndTime.Replace(".", ","));
                     double startTimeOfNewSection = Convert.ToDouble(currentSelectedSection.Time.Replace(".", ","));
                     double endTimeOfNewSection = Convert.ToDouble(currentSelectedSection.EndTime.Replace(".",","));
-                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) > 1 ) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) < 0)))
+                    if (!((startTimeOfExistingSection.CompareTo(endTimeOfNewSection) >= 0) || (endTimeOfExistingSection.CompareTo(startTimeOfNewSection) <=0)))
                     {
                         // sıkıntı var çakışma oldu
 

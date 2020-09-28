@@ -116,6 +116,15 @@ namespace StudentRegistrationSystem.Controllers.Admin
             if (ModelState.IsValid)
             {
                 TempData["LecturerUpdateSuccess"] = "Not Null";
+                foreach (User s in studentHelper.GetOnlyStudents())
+                {
+                    if (s.LecturerID == lecturer.LecturerID)
+                    {
+                        TempData["UpdateStatus"] = "Lecturer is Advisor";
+                        s.LecturerID = null;
+                        lecturerHelper._dbContext.Users.AddOrUpdate<User>(s);
+                    }
+                }
                 lecturerHelper._dbContext.Lecturers.AddOrUpdate<Lecturer>(lecturer);
                 lecturerHelper._dbContext.SaveChanges();
                 return RedirectToAction("List", "ManageLecturer");
