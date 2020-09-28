@@ -141,7 +141,7 @@
     <Compile Include="Controllers\Admin\ProfileController.cs" />
     <Compile Include="Controllers\Students\DepartmentInfoController.cs" />
     <Compile Include="Controllers\Students\StudentProfileController.cs" />
-    <Compile Include="Controllers\TimeTableController.cs" />
+    <Compile Include="Controllers\Students\TimeTableController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\EnrollmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />

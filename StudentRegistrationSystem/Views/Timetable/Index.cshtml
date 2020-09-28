@@ -1,4 +1,5 @@
-﻿
+﻿@using StudentRegistrationSystem.Models.Entity
+@using StudentRegistrationSystem.Helpers
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_studentLayout.cshtml";
@@ -6,6 +7,19 @@
 
 <center><h2 style="margin-top:10vh"><b>Ders Programı</b></h2></center>
 <table class="table table-bordered table-striped" style="margin-top:3vh; margin-left: 0.5vw">
+    @{StudentHelper studentHelper = new StudentHelper();
+        EnrollmentHelper enrollmentHelper = new EnrollmentHelper();
+        int UserID = int.Parse(HttpContext.Current.User.Identity.Name.Split(',')[0]);
+        User user = studentHelper.FindUserByID(UserID);
+        List<Enrollment> currentEnrollments = new List<Enrollment>();
+        foreach(Enrollment e in enrollmentHelper.GetEnrollments())
+        {
+            if(e.UserID==user.UserID && e.Grade.Equals(null))
+            {
+                currentEnrollments.Add(e);
+            }
+        }
+    }
     <thead class="thead-dark">
         <tr>
             <th></th>

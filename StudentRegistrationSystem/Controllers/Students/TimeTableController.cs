@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace StudentRegistrationSystem.Controllers
+namespace StudentRegistrationSystem.Controllers.Students
 {
     public class TimeTableController : Controller
     {
