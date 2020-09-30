@@ -1,0 +1,445 @@
+﻿@model StudentRegistrationSystem.ViewModels.TranscriptViewModel
+@using StudentRegistrationSystem.Models.Entity
+@{
+    ViewBag.Title = "Transcript";
+    Layout = "~/Views/Shared/_studentLayout.cshtml";
+}
+
+
+@{ 
+    List<Enrollment> firstGrade = new List<Enrollment>();
+    List<Enrollment> secondGrade= new List<Enrollment>();
+    List<Enrollment> thirdGrade= new List<Enrollment>();
+    List<Enrollment> forthGrade= new List<Enrollment>();
+    List<Enrollment> currentlySelected= new List<Enrollment>();
+    int totalLectures = 0;
+    int successedLectures = 0;
+    
+
+    foreach (Enrollment enrollment in Model.enrollments)
+    {
+        if(enrollment.Section.Lecture.LectureCode.StartsWith("1") && enrollment.Grade != null)
+        {
+            firstGrade.Add(enrollment);
+        }
+        else if (enrollment.Section.Lecture.LectureCode.StartsWith("2") && enrollment.Grade != null)
+        {
+            secondGrade.Add(enrollment);
+        }
+        else if (enrollment.Section.Lecture.LectureCode.StartsWith("3") && enrollment.Grade != null)
+        {
+            thirdGrade.Add(enrollment);
+        }
+        else if(enrollment.Section.Lecture.LectureCode.StartsWith("4") && enrollment.Grade != null)
+        {
+            forthGrade.Add(enrollment);
+        }
+        else
+        {
+            currentlySelected.Add(enrollment);
+        }
+
+    }
+}
+
+<div class="container ml-3 mr-lg-4" style="margin-top:10vh">
+    <div class="">
+        <h2 class="text-muted text-center mb-4"><b>Transkript</b></h2>
+        <div class="text-center mt-2">
+
+            @if (firstGrade.Count > 0)
+            {
+                <h4 class="text-muted text-center mb-3">Birinci Sınıf</h4>
+                <table class="table table-striped bg-light text-center">
+                    <thead>
+                        <tr class="text-muted">
+
+                            <th>Ders Adı</th>
+                            <th>Ders Kodu</th>
+                            <th>Şube</th>
+                            <th>Kredi</th>
+                            <th>Not</th>
+                            <th>Geçme Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int totalCredit = 0;
+                            int successedCredit = 0;
+
+                        }
+                        @foreach (Enrollment e in firstGrade)
+                        {
+
+                            <tr>
+                                <th>@e.Section.Lecture.Name</th>
+                                <th>@e.Section.Lecture.LectureCode</th>
+                                <th>@e.Section.Number</th>
+                                <th>@e.Section.Lecture.Credit</th>
+                                <th>@e.Grade</th>
+                                @if (e.Grade != null && e.Grade.Equals("F"))
+                                {
+                                    <th>
+                                        Başarısız
+                                    </th>
+
+
+                                }
+                                else
+                                {
+                                    <th>
+                                        Başarılı
+                                    </th>
+                                    successedCredit += e.Section.Lecture.Credit;
+                                    successedLectures++;
+
+                                }
+                                @{ totalCredit += e.Section.Lecture.Credit;
+                                    totalLectures++;
+                                    }
+
+                            </tr>
+                        }
+                        <tr class="text-secondary">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Toplam Kredi: @totalCredit
+                            </th>
+                            <th>
+                                Başarılı Olunan Kredi: @successedCredit
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+
+            @if (secondGrade.Count > 0)
+            {
+                <h4 class="text-muted text-center mb-3">İkinci Sınıf</h4>
+                <table class="table table-striped bg-light text-center">
+                    <thead>
+                        <tr class="text-muted">
+
+                            <th>Ders Adı</th>
+                            <th>Ders Kodu</th>
+                            <th>Şube</th>
+                            <th>Kredi</th>
+                            <th>Not</th>
+                            <th>Geçme Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int totalCredit = 0;
+                            int successedCredit = 0;
+
+                        }
+                        @foreach (Enrollment e in secondGrade)
+                        {
+
+                            <tr>
+                                <th>@e.Section.Lecture.Name</th>
+                                <th>@e.Section.Lecture.LectureCode</th>
+                                <th>@e.Section.Number</th>
+                                <th>@e.Section.Lecture.Credit</th>
+                                <th>@e.Grade</th>
+                                @if (e.Grade != null && e.Grade.Equals("F"))
+                                {
+                                    <th>
+                                        Başarısız
+                                    </th>
+
+
+                                }
+                                else
+                                {
+                                    <th>
+                                        Başarılı
+                                    </th>
+                                    successedCredit += e.Section.Lecture.Credit;
+                                    successedLectures++;
+
+                                }
+                                @{ totalCredit += e.Section.Lecture.Credit;
+                                    totalLectures++;}
+
+                            </tr>
+                        }
+                        <tr class="text-secondary">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Toplam Kredi: @totalCredit
+                            </th>
+                            <th>
+                                Başarılı Olunan Kredi: @successedCredit
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+
+            @if (thirdGrade.Count > 0)
+            {
+                <h4 class="text-muted text-center mb-3">Üçüncü Sınıf</h4>
+                <table class="table table-striped bg-light text-center">
+                    <thead>
+                        <tr class="text-muted">
+
+                            <th>Ders Adı</th>
+                            <th>Ders Kodu</th>
+                            <th>Şube</th>
+                            <th>Kredi</th>
+                            <th>Not</th>
+                            <th>Geçme Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int totalCredit = 0;
+                            int successedCredit = 0;
+
+                        }
+                        @foreach (Enrollment e in thirdGrade)
+                        {
+
+                            <tr>
+                                <th>@e.Section.Lecture.Name</th>
+                                <th>@e.Section.Lecture.LectureCode</th>
+                                <th>@e.Section.Number</th>
+                                <th>@e.Section.Lecture.Credit</th>
+                                <th>@e.Grade</th>
+                                @if (e.Grade != null && e.Grade.Equals("F"))
+                                {
+                                    <th>
+                                        Başarısız
+                                    </th>
+
+
+                                }
+                                else
+                                {
+                                    <th>
+                                        Başarılı
+                                    </th>
+                                    successedCredit += e.Section.Lecture.Credit;
+                                    successedLectures++;
+
+                                }
+                                @{ totalCredit += e.Section.Lecture.Credit;
+                                    totalLectures++;}
+
+                            </tr>
+                        }
+                        <tr class="text-secondary">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Toplam Kredi: @totalCredit
+                            </th>
+                            <th>
+                                Başarılı Olunan Kredi: @successedCredit
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+
+            @if (forthGrade.Count > 0)
+            {
+                <h4 class="text-muted text-center mb-3">Dördüncü Sınıf</h4>
+                <table class="table table-striped bg-light text-center">
+                    <thead>
+                        <tr class="text-muted">
+
+                            <th>Ders Adı</th>
+                            <th>Ders Kodu</th>
+                            <th>Şube</th>
+                            <th>Kredi</th>
+                            <th>Not</th>
+                            <th>Geçme Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int totalCredit = 0;
+                            int successedCredit = 0;
+
+                        }
+                        @foreach (Enrollment e in forthGrade)
+                        {
+
+                            <tr>
+                                <th>@e.Section.Lecture.Name</th>
+                                <th>@e.Section.Lecture.LectureCode</th>
+                                <th>@e.Section.Number</th>
+                                <th>@e.Section.Lecture.Credit</th>
+                                <th>@e.Grade</th>
+                                @if (e.Grade != null && e.Grade.Equals("F"))
+                                {
+                                    <th>
+                                        Başarısız
+                                    </th>
+
+
+                                }
+                                else
+                                {
+                                    <th>
+                                        Başarılı
+                                    </th>
+                                    successedCredit += e.Section.Lecture.Credit;
+                                    successedLectures++;
+
+                                }
+                                @{ totalCredit += e.Section.Lecture.Credit;
+                                    totalLectures++;}
+
+                            </tr>
+                        }
+                        <tr class="text-secondary">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Toplam Kredi: @totalCredit
+                            </th>
+                            <th>
+                                Başarılı Olunan Kredi: @successedCredit
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+
+            @if (currentlySelected.Count > 0)
+            {
+                <h4 class="text-muted text-center mb-3">Güncel Seçilen Dersler</h4>
+                <table class="table table-striped bg-light text-center">
+                    <thead>
+                        <tr class="text-muted">
+
+                            <th>Ders Adı</th>
+                            <th>Ders Kodu</th>
+                            <th>Şube</th>
+                            <th>Kredi</th>
+                            <th></th>
+                            <th>Geçme Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int totalCredit = 0;
+                           
+
+                        }
+                        @foreach (Enrollment e in currentlySelected)
+                        {
+
+                            <tr>
+                                <th>@e.Section.Lecture.Name</th>
+                                <th>@e.Section.Lecture.LectureCode</th>
+                                <th>@e.Section.Number</th>
+                                <th>@e.Section.Lecture.Credit</th>
+                                <th></th>
+                                <th>-</th>
+                                @{ totalCredit += e.Section.Lecture.Credit;}
+
+                            </tr>
+                        }
+                        <tr class="text-secondary">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                                Toplam Kredi: @totalCredit
+                            </th>
+                            <th>
+                                Başarılı Olunan Kredi: 0
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+            }
+
+        
+                <div class="card text-center">
+                    <div class="card-header">
+                        Genel Durum
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col">
+
+                                <div class="card" style="">
+                                    <div class="card-header bg-reddit content-center">
+                                        <i class="fas fa-school fa-3x"></i>
+                                    </div>
+                                    <div class="card-body row text-center">
+                                        <div class="col">
+                                            <div class="text-value-xl">@totalLectures</div>
+                                            <div class="text-uppercase text-muted small">Alınan Dersler</div>
+                                        </div>
+                                        <div class="vr"></div>
+                                        <div class="col">
+                                            <div class="text-value-xl">@successedLectures </div>
+                                            <div class="text-uppercase text-muted small">Başarılı Olunan Dersler</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card" >
+                                    <div class="card-header bg-reddit content-center">
+                                        <i class="fas fa-graduation-cap fa-3x"></i>
+                                    </div>
+                                    <div class="card-body row text-center">
+                                        <div class="col">
+                                            <div class="text-value-xl">@currentlySelected.Count</div>
+                                            <div class="text-uppercase text-muted small">Güncel Dersler</div>
+                                        </div>
+                                       
+                                        <div class="col">
+                                            <div class="text-value-xl">@Model.cgpa</div>
+                                            <div class="text-uppercase text-muted small">Akademik Ortalama</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+</div>
+

@@ -1,0 +1,137 @@
+﻿@model StudentRegistrationSystem.ViewModels.SearchLectureViewModel
+@using StudentRegistrationSystem.Models.Entity
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_studentLayout.cshtml";
+}
+
+
+<div class="container ml-3 mr-lg-4" style="margin-top:10vh">
+    <div class="">
+        <h2 class="text-muted text-center mb-4"><b>Dersler / Şubeler</b></h2>
+        <div class="text-center mt-2">
+
+            <table class="table table-striped table-hover table-secondary text-center mr-3 ml-3 " id="lectureTable">
+                <thead class="thead-dark">
+                    <tr class="text-muted">
+                        <th> Bölüm</th>
+                        <th>Ders Adı</th>
+                        <th>Ders Kodu</th>
+                        <th>Eğitim Tipi</th>
+                        <th>Kredi</th>
+
+                        <th>Şubeler</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var lecture in Model.lectures)
+                    {
+
+
+                        <tr>
+                            <th>@lecture.Department.Name</th>
+                            <th>@lecture.Name</th>
+                            <th>@lecture.LectureCode</th>
+                            <th>@lecture.EducationType</th>
+                            <th>@lecture.Credit</th>
+
+                            <th>
+
+                                <div class="bnt-group">
+                                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#@lecture.LectureCode">
+                                        Şubeleri Gör
+                                    </button>
+
+
+                                </div>
+
+                                <div class="modal fade" id="@lecture.LectureCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content" style="width:3000px;">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title text-center" id="exampleModalLongTitle">@lecture.Name Dersinin Şubeleri</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <table class="table table-striped table-hover bg-light text-center">
+                                                    <thead class="thead-dark">
+
+
+                                                        <tr class="text-muted">
+                                                            <th> Şube </th>
+                                                            <th>Akademisyen</th>
+                                                            <th>Gün</th>
+                                                            <th>Zaman</th>
+                                                            <th>Kota</th>
+                                                            <th>Bina</th>
+                                                            <th>Sınıf</th>
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var current in lecture.Sections)
+                                                        {
+
+                                                            <tr>
+                                                                <th>@current.Number</th>
+                                                                <th>@current.Lecturer.Name  @current.Lecturer.LastName</th>
+                                                                <th>@current.Day</th>
+                                                                <th>@current.Time - @current.EndTime</th>
+                                                                <th>@current.Quota</th>
+                                                                <th>@current.Building</th>
+                                                                <th>@current.Classroom</th>
+
+                                                            </tr>
+
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </th>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+@section Javascript {
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#lectureTable').DataTable();
+        });
+
+
+    </script>
+
+}

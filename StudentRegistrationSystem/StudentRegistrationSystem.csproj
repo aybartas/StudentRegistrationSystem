@@ -141,7 +141,8 @@
     <Compile Include="Controllers\Admin\ProfileController.cs" />
     <Compile Include="Controllers\Students\DepartmentInfoController.cs" />
     <Compile Include="Controllers\Students\StudentProfileController.cs" />
-    <Compile Include="Controllers\Students\TimeTableController.cs" />
+    <Compile Include="Controllers\Students\TranscriptController.cs" />
+    <Compile Include="Controllers\TimeTableController.cs" />
     <Compile Include="Helpers\DepartmentHelper.cs" />
     <Compile Include="Helpers\EnrollmentHelper.cs" />
     <Compile Include="Helpers\LectureHelper.cs" />
@@ -185,9 +186,10 @@
     <Compile Include="ViewModels\DropdownAdvisorViewModel.cs" />
     <Compile Include="ViewModels\DropdownSectionViewModel.cs" />
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
+    <Compile Include="ViewModels\SearchLectureViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
-    <Compile Include="ViewModels\TimeTableViewModel.cs" />
+    <Compile Include="ViewModels\TranscriptViewModel.cs" />
     <Compile Include="ViewModels\UpdateAdminViewModel.cs" />
     <Compile Include="ViewModels\UpdateDepartmentViewModel.cs" />
     <Compile Include="ViewModels\UpdateLecturerViewModel.cs" />
@@ -370,7 +372,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\SearchCourse\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -437,6 +438,8 @@
     <Content Include="Views\DepartmentInfo\All.cshtml" />
     <Content Include="Views\StudentProfile\Edit.cshtml" />
     <Content Include="Views\TimeTable\Index.cshtml" />
+    <Content Include="Views\SearchCourse\List.cshtml" />
+    <Content Include="Views\Transcript\Transcript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
