@@ -1,8 +1,373 @@
-﻿
+﻿@model StudentRegistrationSystem.Models.Entity.User
 @{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_studentLayout.cshtml";
 }
 
-<h2>Users</h2>
+<div class="container ml-3 mr-lg-4" style="margin-top:10vh">
+    <div class="">
+       
+        <div class="text-center mt-2">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <div class="card mt-3 tab-card">
+                      
+                        <div class="card-header tab-card-header">
+                            <div class="nav nav-tabs card-title text-center align-items-center">
+
+                                
+                                    <h4>Öğrenci Bilgileri</h4>
+                                
+
+                            </div>
+
+
+                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">Kişisel Bilgiler</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Öğrenim Bilgileri</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+
+
+                                <!-- KİŞİSEL BİLGİLER KISMI -->
+
+                                <table class="table table-light mt-2 mb-2">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Adı/Soyadı</th>
+                                            <td>@Model.Name @Model.LastName</td>
+
+
+                                        </tr>
+                                       
+
+                                        <tr>
+                                            <th>TCKN</th>
+                                            <td>@Model.CitizenshipNo</td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <th>Cinsiyet</th>
+                                            <td>@Model.Gender</td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <th>Telefon</th>
+                                            <td>@Model.Phone</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                            <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+
+                                <table class="table table-light mt-2 mb-2">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Bölümü</th>
+                                            <td>@Model.Department.Name</td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th>Öğretim Tipi</th>
+                                            <td>@Model.EducationType</td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <th>Danışmanı</th>
+                                            @if (Model.Lecturer != null)
+                                            {
+                                                <td>@Model.Lecturer.Name @Model.Lecturer.LastName</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Danışmanı Yok</td>
+                                            }
+
+
+
+                                        </tr>
+
+                                      
+                                    </tbody>
+                                </table>
+
+                            </div>
+                         
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+
+                    <div class="card mt-3 tab-card">
+
+                        <div class="card-header tab-card-header">
+
+                            <ul class="nav nav-tabs card-title text-center">
+                                <h4 class="card-title">Danışman Bilgileri</h4>
+                            </ul>
+
+                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                               
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary" id="lecturertab" data-toggle="tab" href="#lecturerone" role="tab" aria-controls="One" aria-selected="true">Kişisel Bilgiler</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary" id="lecturertab1" data-toggle="tab" href="#lecturertwo" role="tab" aria-controls="Two" aria-selected="false">İletişim Bilgileri</a>
+                                </li>
+                             
+                            </ul>
+                        </div>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active p-3" id="lecturerone" role="tabpanel" aria-labelledby="lecturertab">
+
+
+                                <table class="table table-light mt-2 mb-2">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Adı/Soyadı</th>
+
+                                            @if (Model.Lecturer != null)
+                                            {
+                                                <td>@Model.Lecturer.Name @Model.Lecturer.LastName</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Danışmanı Yok</td>
+                                            }
+
+                                            
+
+                                        </tr>
+                                        <tr>
+
+                                            <th>Bölümü</th>
+                                            @if (Model.Lecturer != null && Model.Lecturer.Department != null)
+                                            {
+                                                <td>@Model.Lecturer.Department.Name</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Danışmanın bölümü tanımlanmamış</td>
+                                            }
+
+                                           
+
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+
+
+                            </div>
+                            <div class="tab-pane fade p-3" id="lecturertwo" role="tabpanel" aria-labelledby="lecturertab1">
+                                
+                                <table class="table table-light mt-2 mb-2">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Danışmanın Telefonu</th>
+                                            @if (Model.Lecturer != null)
+                                            {
+                                                <td>@Model.Lecturer.Phone</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Danışmanın telefonu tanımlanmamış</td>
+                                            }
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <th>Danışmanın Emaili</th>
+                                            @if (Model.Lecturer != null)
+                                            {
+                                                <td>@Model.Lecturer.Email</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Danışmanın emaili tanımlanmamış</td>
+                                            }
+
+
+                                        </tr>
+                                        <tr>
+                                            <th>Bölüm Telefonu</th>
+                                            @if (Model.Lecturer != null && Model.Lecturer.Department != null)
+                                            {
+                                                <td>@Model.Lecturer.Department.Phone</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Bölümün telefonu tanımlanmamış</td>
+                                            }
+                                          
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-lg-4">
+
+
+                <div class="col-sm-6">
+
+
+                    <h4 class="text-muted mb-4">Öğrenci Paneli SSS </h4>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse1">
+
+                                   Ders Seçimi
+                                </button>
+                            </div>
+                            <div class="collapse" id="collapse1" data-parent="#accordion">
+                                <div class="card-body">
+                                    Öğrenci panelindeki "Ders Seç" kısmına tıklayarak gelen arayüzde ders seçim işlemlerinizi yapabilirsiniz
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse2">
+
+                                   Transkript Alma
+                                </button>
+                            </div>
+                            <div class="collapse" id="collapse2" data-parent="#accordion">
+                                <div class="card-body">
+                                    Öğrenci panelindeki "Transkript Al" kısmına tıklayarak transkriptinizi görebilir , eğer bir hata olduğunu düşünüyorsanız danışmanınız ile iletişim kurabilirsiniz.
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse3">
+                                    Ders Arama
+                                </button>
+                            </div>
+                            <div class="collapse" id="collapse3" data-parent="#accordion">
+                                <div class="card-body">
+                                    Öğrenci panelindeki "Ders Ara" sekmesine tıklayarak gelen arayüzde istediğiniz dersi arayabilir , "Şubeleri Gör" butonuna tıklayarak seçtiğiniz dersin şubelerini görebilirsiniz.
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <button class="btn btn-block bg-secondary text-light text-left" data-toggle="collapse" data-target="#collapse4">
+
+                                    Profili Güncelleme
+                                </button>
+                            </div>
+                            <div class="collapse" id="collapse4" data-parent="#accordion">
+                                <div class="card-body">
+                                    Öğrenci panelindeki "Profili Yönet" sekmesine tıklayarak bilgilerinizi kontrol edebilir , size izin verilen alanları güncelleyebilirsiniz.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-6">
+
+                    <div class="card rounded mt-4">
+                        <div class="card-body">
+                            <h5 class="text-muted text-center mb-4">Takvim</h5>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <i class="far fa-calendar-alt fa-8x text-warning d-block m-auto py-3"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-center font-weight-bold text-uppercase">
+                                                @{DateTime dateTime = DateTime.Now;
+                                                } @dateTime.ToString("dd MMMM yyyy dddd")
+                                            </p>
+                                            @*@{System.Diagnostics.Debug.WriteLine(dateTime.ToString("dddd, dd MMMM yyyy: HH:mm:ss"));
+                                }*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card bg-light">
+                                        <i class="far fa-clock fa-8x text-danger d-block m-auto py-3"></i>
+                                        <div class="card-body">
+                                            <p class="card-text text-center font-weight-bold text-uppercase">@dateTime.ToString("HH:mm") </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
 

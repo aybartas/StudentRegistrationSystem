@@ -13,6 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/layoutstyle.css">
+    <link href="~/Content/jquery/DataTables/datatables.css" rel="stylesheet" />
     <title>Yönetici Paneli</title>
 </head>
 <body>
@@ -36,10 +37,10 @@
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
                             <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                            <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
                             <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
                             <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
                             <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
 
@@ -143,64 +144,14 @@
     @RenderSection("Javascript", false)
     <script src="~/Content/jquery/ajaxuncompressed.js"></script>
     <script src="~/Content/jquery/DataTables/datatables.js"></script>
-    <script>
-        function GetAdvisor(departmentCode) {
-            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
-            $("#ddlAdvisor").html(procemessage).show();
-            var url = "/ManageStudent/AddStudentForm/";
-
-            $.ajax({
-                url: url,
-                data: { departmentCode: departmentCode },
-                cache: false,
-                type: "POST",
-                success: function (data) {
-                    var markup = "<option value='' disabled hidden selected>Danışman Seçiniz</option>";
-                    for (var x = 0; x < data.length; x++) {
-                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                    }
-                    $("#ddlAdvisor").html(markup).show();
-                },
-                error: function (reponse) {
-                    alert("zıbam : " + reponse);
-                }
-            });
-
-        }
-    </script>
+  
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable();
         });
 
     </script>
-
-    <script>
-        function GetSection(LectureID) {
-            var procemessage = "<option value='0'> Lütfen Bekleyiniz...</option>";
-            $("#ddlSection").html(procemessage).show();
-            var url = "/ManageStudent/GetSectionsFromLectures/";
-
-            $.ajax({
-                url: url,
-                data: { LectureID: LectureID },
-                cache: false,
-                type: "POST",
-                success: function (data) {
-                    var markup = "<option value='' disabled hidden selected>Şube Seçiniz</option>";
-                    for (var x = 0; x < data.length; x++) {
-                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                    }
-                    $("#ddlSection").html(markup).show();
-                },
-                error: function (reponse) {
-                    alert("zıbam : " + reponse);
-                }
-            });
-
-        }
-
-    </script>
+    
 
 
 
