@@ -187,6 +187,7 @@
     <Compile Include="ViewModels\LecturerListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\StudentRecordViewModel.cs" />
+    <Compile Include="ViewModels\TimeTableViewModel.cs" />
     <Compile Include="ViewModels\UpdateAdminViewModel.cs" />
     <Compile Include="ViewModels\UpdateDepartmentViewModel.cs" />
     <Compile Include="ViewModels\UpdateLecturerViewModel.cs" />

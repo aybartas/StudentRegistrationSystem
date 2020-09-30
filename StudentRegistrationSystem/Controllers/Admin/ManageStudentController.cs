@@ -229,7 +229,7 @@ namespace StudentRegistrationSystem.Controllers.Admin
             Section currentSelectedSection = sectionHelper._dbContext.Sections.Find(enrollment.SectionID);
 
             List<Enrollment> currentEnrollmentsOfStudent = enrollmentHelper.GetEnrollments().Where(m => m.UserID == UserID).ToList();
-            List<Section> currentSectionsOfStudent = sectionHelper.GetSectionsOfEnrollemnts(currentEnrollmentsOfStudent);
+            List<Section> currentSectionsOfStudent = sectionHelper.GetSectionsOfEnrollments(currentEnrollmentsOfStudent);
 
             foreach(Enrollment e in currentEnrollmentsOfStudent)
             {
