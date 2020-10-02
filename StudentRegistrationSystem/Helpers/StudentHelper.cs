@@ -7,16 +7,14 @@ using System.Web;
 
 namespace StudentRegistrationSystem.Helpers
 {
-    public class StudentHelper
+    public class StudentHelper:EntityHelper
     {
         public LectureHelper lectureHelper { get; set; }
         //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
-        public  StudentRegistrationContext _dbContext  { get; set; }
 
         public StudentHelper()
         {
             lectureHelper = new LectureHelper();
-            _dbContext = new StudentRegistrationContext();
         }
 
         public List<User> GetOnlyStudents()

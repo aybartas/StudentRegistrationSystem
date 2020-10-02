@@ -12,6 +12,7 @@ namespace StudentRegistrationSystem.Controllers.Students
 {
     public class DepartmentInfoController: Controller
     {
+
         public ActionResult All()
         {
 
