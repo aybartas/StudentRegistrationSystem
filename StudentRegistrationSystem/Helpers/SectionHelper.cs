@@ -7,14 +7,12 @@ using System.Web;
 
 namespace StudentRegistrationSystem.Helpers
 {
-    public class SectionHelper
+    public class SectionHelper:EntityHelper
     {
         //readonly StudentRegistrationContext _dbContext = new StudentRegistrationContext();
-        public StudentRegistrationContext _dbContext { get; set; }
 
         public SectionHelper()
         {
-            _dbContext = new StudentRegistrationContext();
         }
 
         public List<Section> GetAllSections()

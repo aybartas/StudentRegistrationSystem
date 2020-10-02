@@ -7,13 +7,11 @@ using System.Web;
 
 namespace StudentRegistrationSystem.Helpers
 {
-    public class EnrollmentHelper
+    public class EnrollmentHelper:EntityHelper
     {
-        public StudentRegistrationContext  _dbContext { get; set; }
 
         public EnrollmentHelper()
         {
-            _dbContext = new StudentRegistrationContext();
         }
 
         public List<Enrollment> GetEnrollments()
