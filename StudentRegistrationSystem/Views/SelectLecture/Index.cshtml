@@ -6,6 +6,7 @@
 
 
 <div class="container ml-3 mr-lg-4" style="margin-top:10vh">
+
     <div class="">
         <h2 class="text-muted text-center mb-4"><b> Ders Listesi</b></h2>
         <div class="text-center mt-2">
@@ -121,10 +122,163 @@
         </div>
 
     </div>
+    <br />
+    @if (@TempData["EnrollmentStatus"] == null)
+    {
+
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("SameSectionSameNumber"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarısız!</b></h5>
+            <p>Seçilen ders ve şube öğrenciye zaten tanımlanmış.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("DifferentSectionSameLesson"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarısız!</b></h5>
+            <p style="margin-bottom:0">Seçilen dersin başka bir şubesi öğrenciye zaten tanımlanmış.</p>
+            <p>Lütfen önce tanımlı olan şubeyi silerek tekrar deneyiniz.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("DifferentLessonSameTime"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+            <p style="margin-bottom:0">Seçilen şube öğrencinin aldığı diğer şubelerle çakışıyor.</p>
+            <p>Eş zamanlı ders eklenemez.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    else if (@TempData["EnrollmentStatus"].Equals("QuotaIsFull"))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Şube ekleme başarısız!</b></h5>
+            <p style="margin-bottom:0">Seçilen şube dolu</p>
+            <p>Lütfen başka bir şube seçiniz</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading"><b>Başarılı!</b></h5>
+            <p>Şube öğrenciye başarıyla eklendi.</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
 
- 
+    <div class="">
+        @if (@TempData["DropSectionStatus"] != null && @TempData["DropSectionStatus"].Equals("Success"))
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading"><b>Başarılı!</b></h5>
+                <p>Şubeyi bıraktınız.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <h2 class="text-muted text-center mb-4"><b> Alınan Dersler Listesi</b></h2>
+        <div class="text-center mt-2">
+
+            <table class="table table-striped bg-light text-center" id="addedSectionsable">
+                <thead>
+                    <tr class="text-muted">
+                        <th>Ders</th>
+                        <th>Akademisyen</th>
+                        <th>Şube</th>
+                        <th>Gün</th>
+                        <th>Başlama Saati</th>
+                        <th>Bitiş Saati</th>
+                        <th>Kota</th>
+                        <th>Bina</th>
+                        <th>Sınıf</th>
+
+                        <th> </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var currentSection in Model.currentlySelectedSections)
+                    {
+
+                        <tr>
+                            <th>@currentSection.Section.Lecture.Name</th>
+                            <th>@currentSection.Section.Lecturer.Name @currentSection.Section.Lecturer.LastName</th>
+                            <th>@currentSection.Section.Number</th>
+                            <th>@currentSection.Section.Day</th>
+                            <th>@currentSection.Section.Time</th>
+                            <th>@currentSection.Section.EndTime</th>
+                            <th>@currentSection.Section.Quota</th>
+                            <th>@currentSection.Section.Building </th>
+                            <th>@currentSection.Section.Classroom</th>
+
+                            <th>
+                                <div class="bnt-group">
+                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#@currentSection.SectionID">
+                                        Sil
+                                    </button>
+
+
+
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="@currentSection.SectionID" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Şube Silme</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Seçilen dersi silmek istediğinizden emin misiniz?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+                                                <a href="@Url.Action("DeleteSection","SelectLecture",new{SectionID= currentSection.SectionID})" class="btn btn-success ">Evet </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
 </div>
+
+  
+
+
+
 @section Javascript {
 
 
@@ -133,6 +287,8 @@
 
         $(document).ready(function () {
             $('#lectureTable').DataTable();
+            $('#addedSectionsable').DataTable();
+
         });
 
 
