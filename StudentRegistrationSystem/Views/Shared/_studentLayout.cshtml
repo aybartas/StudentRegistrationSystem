@@ -36,13 +36,78 @@
 
                         </div>
                         <ul class="navbar-nav flex-column mt-4">
-                            <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
-                            <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
-                            <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
-                            <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
-                            <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
-                            <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
-                            <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            @{string absolutepath = HttpContext.Current.Request.Url.AbsolutePath;
+                                string currentDecider = absolutepath.Split('/')[1];},
+                            @if (currentDecider.Equals("Home"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("SearchCourse"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("SelectLecture"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("StudentProfile"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("Transcript"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("TimeTable"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
+                            @if (currentDecider.Equals("DepartmentInfo"))
+                            {
+                                <li class="nav-item"><a href="@Url.Action("Users", "Home")" class="nav-link text-white p-3 mb-2"><i class="fas fa-home text-light fa-lg mr-3"></i>Anasayfa</a></li>
+                                <li class="nav-item"><a href="@Url.Action("List", "SearchCourse")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-search text-light fa-lg mr-3"></i>Ders Ara</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "SelectLecture")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-book text-light fa-lg mr-3"></i>Ders Seç </a></li>
+                                <li class="nav-item"><a href="@Url.Action("Edit", "StudentProfile")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-address-card text-light fa-lg mr-3"></i>Profili Yönet</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Transcript", "Transcript")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Transkript Al</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index", "TimeTable")" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-table text-light fa-lg mr-3"></i>Ders Programı</a></li>
+                                <li class="nav-item"><a href="@Url.Action("All", "DepartmentInfo")" class="nav-link text-white p-3 mb-2 current sidebar-link"><i class="fas fa-graduation-cap text-light fa-lg mr-3"></i>Öğretim Programı</a></li>
+                            }
 
                         </ul>
                     </div>
