@@ -10,13 +10,11 @@ namespace StudentRegistrationSystem.ViewModels
     {
         public Section section { get; set; }
         public int dayDecider { get; set; }
-        public int rowDecider { get; set; }
         public double startTime { get; set; }
-        public TimeTableViewModel(Section section, int day, int row, double time)
+        public TimeTableViewModel(Section section, int day, double time)
         {
             this.section = section;
             this.dayDecider = day;
-            this.rowDecider = row;
             this.startTime = time;
         }
 

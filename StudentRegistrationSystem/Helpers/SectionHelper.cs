@@ -61,55 +61,19 @@ namespace StudentRegistrationSystem.Helpers
             if (section.Day.Equals("Cuma")) { return 4; }
             else { return -1; }
         }
-        public int rowSpanDecider (Section section)
+        public Boolean isThereASection (Section section, double duo)
         {
             double startTime = Convert.ToDouble(section.Time.Replace(".", ","));
             double endTime = Convert.ToDouble(section.EndTime.Replace(".", ","));
-            if ((endTime -startTime > 0.69 && endTime - startTime < 0.71) || (endTime - startTime > 0.29 && endTime - startTime < 0.31))
+            if (startTime <= duo && duo < endTime)
             {
-                return 1;
-            }
-            if (endTime - startTime == 1)
-            {
-                return 2;
-            }
-            if ((endTime - startTime > 1.69 && endTime - startTime < 1.71) || (endTime - startTime > 1.29 && endTime - startTime < 1.31))
-            {
-                return 3;
-            }
-            if (endTime - startTime == 2)
-            {
-                return 4;
-            }
-            if ((endTime - startTime > 2.69 && endTime - startTime < 2.71) || (endTime - startTime > 2.29 && endTime - startTime < 2.31))
-            {
-                return 5;
-            }
-            if (endTime - startTime == 3)
-            {
-                return 6;
-            }
-            if ((endTime - startTime > 3.69 && endTime - startTime < 3.71) || (endTime - startTime > 3.29 && endTime - startTime < 3.31))
-            {
-                return 7;
-            }
-            if (endTime - startTime == 4)
-            {
-                return 8;
-            }
-            if ((endTime - startTime > 4.69 && endTime - startTime < 4.71) || (endTime - startTime > 4.29 && endTime - startTime < 4.31))
-            {
-                return 9;
-            }
-            if (endTime - startTime == 5)
-            {
-                return 10;
+                return true;
             }
             else
             {
-                return 0;
+                return false;
             }
-           
+
         }
      
     }

@@ -25,7 +25,7 @@
         foreach (Enrollment e in currentEnrollments)
         {
             Section section = studentHelper._dbContext.Sections.Find(e.SectionID);
-            TimeTableViewModel timeTableElement = new TimeTableViewModel(section, sectionHelper.dayToInt(section), sectionHelper.rowSpanDecider(section), Convert.ToDouble(section.Time.Replace(".", ",")));
+            TimeTableViewModel timeTableElement = new TimeTableViewModel(section, sectionHelper.dayToInt(section), Convert.ToDouble(section.Time.Replace(".", ",")));
             timeTableModelList.Add(timeTableElement);
         }
     }
@@ -44,70 +44,21 @@
             <th scope="row" bgcolor="#212529" style="color:white">09:00</th>
             @for (int i = 0; i < 5; i++)
             {
-                int control = 0;
+                int control = -1;
                 foreach (TimeTableViewModel t in timeTableModelList)
                 {
-                    if (t.startTime == 9)
+                    if (sectionHelper.isThereASection(t.section, 9))
                     {
                         if (t.dayDecider == i)
                         {
                             Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
-                            if (t.rowDecider == 1)
-                            {
-                                <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 2)
-                            {
-                                <td rowspan="2">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 3)
-                            {
-                                <td rowspan="3">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 4)
-                            {
-                                <td rowspan="4">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 5)
-                            {
-                                <td rowspan="5">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 6)
-                            {
-                                <td rowspan="6">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 7)
-                            {
-                                <td rowspan="7">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 8)
-                            {
-                                <td rowspan="8">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 9)
-                            {
-                                <td rowspan="9">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 10)
-                            {
-                                <td rowspan="10">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
                         }
-
                     }
 
                 }
-                if (control == 0)
+                if (control == -1)
                 {
                     <td></td>
                 }
@@ -117,70 +68,21 @@
             <th scope="row" bgcolor="#212529" style="color:white">09:30</th>
             @for (int i = 0; i < 5; i++)
             {
-                int control = 0;
+                int control = -1;
                 foreach (TimeTableViewModel t in timeTableModelList)
                 {
-                    if (t.startTime == 9.30)
+                    if (sectionHelper.isThereASection(t.section, 9.30))
                     {
                         if (t.dayDecider == i)
                         {
                             Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
-                            if (t.rowDecider == 1)
-                            {
-                                <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 2)
-                            {
-                                <td rowspan="2">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 3)
-                            {
-                                <td rowspan="3">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 4)
-                            {
-                                <td rowspan="4">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 5)
-                            {
-                                <td rowspan="5">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 6)
-                            {
-                                <td rowspan="6">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 7)
-                            {
-                                <td rowspan="7">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 8)
-                            {
-                                <td rowspan="8">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 9)
-                            {
-                                <td rowspan="9">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 10)
-                            {
-                                <td rowspan="10">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
                         }
-
                     }
 
                 }
-                if (control == 0)
+                if (control == -1)
                 {
                     <td></td>
                 }
@@ -190,70 +92,21 @@
             <th scope="row" bgcolor="#212529" style="color:white">10:00</th>
             @for (int i = 0; i < 5; i++)
             {
-                int control = 0;
+                int control = -1;
                 foreach (TimeTableViewModel t in timeTableModelList)
                 {
-                    if (t.startTime == 10)
+                    if (sectionHelper.isThereASection(t.section, 10))
                     {
                         if (t.dayDecider == i)
                         {
                             Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
-                            if (t.rowDecider == 1)
-                            {
-                                <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 2)
-                            {
-                                <td rowspan="2">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 3)
-                            {
-                                <td rowspan="3">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 4)
-                            {
-                                <td rowspan="4">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 5)
-                            {
-                                <td rowspan="5">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 6)
-                            {
-                                <td rowspan="6">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 7)
-                            {
-                                <td rowspan="7">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 8)
-                            {
-                                <td rowspan="8">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 9)
-                            {
-                                <td rowspan="9">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
-                            if (t.rowDecider == 10)
-                            {
-                                <td rowspan="10">@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
-                                control = 1;
-                            }
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
                         }
-
                     }
 
                 }
-                if (control == 0)
+                if (control == -1)
                 {
                     <td></td>
                 }
@@ -261,59 +114,339 @@
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">10:30</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 10.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">11:00</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 11))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">11:30</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 11.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">12:00</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 12))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">12:30</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 12.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">13:00</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 13))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">13:30</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 13.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">14:00</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 14))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">14:30</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 14.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">15:00</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 15))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">15:30</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 15.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">16:00</th>
-            
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 16))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">16:30</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section, 16.30))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
         <tr>
             <th scope="row" bgcolor="#212529" style="color:white">17:00</th>
-           
+            @for (int i = 0; i < 5; i++)
+            {
+                int control = -1;
+                foreach (TimeTableViewModel t in timeTableModelList)
+                {
+                    if (sectionHelper.isThereASection(t.section,17))
+                    {
+                        if (t.dayDecider == i)
+                        {
+                            Lecture l = sectionHelper._dbContext.Lectures.Find(t.section.LectureID);
+                            <td>@user.DepartmentCode @l.LectureCode.@t.section.Number - @t.section.Classroom<br /> @t.section.Building</td>
+                            control = 0;
+                        }
+                    }
+
+                }
+                if (control == -1)
+                {
+                    <td></td>
+                }
+            }
         </tr>
     </tbody>
 </table>
