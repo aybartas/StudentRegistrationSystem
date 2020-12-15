@@ -1,7 +1,6 @@
 # StudentRegistrationSystem
 
-A student course registration system with both admin and student modules powered by ASP.NET MVC and runs on AZURE SQL (SQL Server Engine) database within the context of Ford Otosan internship.
-
+A student course registration system with both admin and student modules powered by ASP.NET MVC and runs on AZURE SQL (SQL Server Engine) database.
 Some of the views from the project can be observed below.
 
 
